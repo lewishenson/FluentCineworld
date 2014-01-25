@@ -7,88 +7,89 @@ using System.Threading;
 
 namespace LewisHenson.CineworldCinemas.Listings
 {
-    internal class WhatsOnScraper : IScraper<IEnumerable<Movie>>
+    internal class SiteListingsScraper : IScraper<IEnumerable<Film>>
     {
-        public IEnumerable<Movie> Scrape(string url)
+        public IEnumerable<Film> Scrape(Cinema cinema)
         {
-            var content = WebRequestHelper.GetContent(url);
+            var uri = UriGenerator.WhatsOn(cinema);
+            var content = WebRequestHelper.GetContent(uri);
             if (string.IsNullOrWhiteSpace(content))
             {
-                return new List<Movie>();
+                return new List<Film>();
             }
 
             var parser = new WhatsOnParser();
-            var movies = parser.Parse(content);
+            var films = parser.Parse(content);
 
-            return movies;
+            return films;
         }
 
         private class WhatsOnParser
         {
-            private readonly MovieParser _movieParser = new MovieParser();
+            private readonly FilmParser _filmParser = new FilmParser();
 
-            public IEnumerable<Movie> Parse(string content)
+            public IEnumerable<Film> Parse(string content)
             {
-                var moviesStart = content.IndexOf("<div id=\"filter-reload\" class=\"row\">", StringComparison.InvariantCultureIgnoreCase);
-                var moviesEnd = content.IndexOf("<div class=\"filter\">", moviesStart, StringComparison.InvariantCultureIgnoreCase);
+                var filmsStart = content.IndexOf("<div id=\"filter-reload\" class=\"row\">", StringComparison.InvariantCultureIgnoreCase);
+                var filmsEnd = content.IndexOf("<div class=\"filter\">", filmsStart, StringComparison.InvariantCultureIgnoreCase);
 
-                var moviesSubString = content.Substring(moviesStart, moviesEnd - moviesStart);
-                var movieSubStrings = moviesSubString.Split(new[] { "<div class=\"poster\">" }, StringSplitOptions.RemoveEmptyEntries);
+                var filmsSubString = content.Substring(filmsStart, filmsEnd - filmsStart);
+                var filmSubStrings = filmsSubString.Split(new[] { "<div class=\"poster\">" }, StringSplitOptions.RemoveEmptyEntries);
 
-                var movies = new List<Movie>();
+                var films = new List<Film>();
 
-                foreach (var movieSubString in movieSubStrings)
+                foreach (var filmSubString in filmSubStrings)
                 {
-                    var movie = _movieParser.Parse(movieSubString);
-                    if (movie != null)
+                    var film = _filmParser.Parse(filmSubString);
+                    if (film != null)
                     {
-                        movies.Add(movie);
+                        films.Add(film);
                     }
                 }
 
-                return movies;
+                return films;
             }
         }
 
-        private class MovieParser
+        private class FilmParser
         {
             private readonly DaysParser _daysParser = new DaysParser();
 
-            public Movie Parse(string content)
+            public Film Parse(string content)
             {
                 if (!content.Contains("<h1>"))
                 {
                     return null;
                 }
 
-                var movie = new Movie();
+                var film = new Film();
 
                 try
                 {
-                    var movieNameStart = content.IndexOf("<h1>", StringComparison.InvariantCultureIgnoreCase) + 4;
-                    movieNameStart = content.IndexOf(">", movieNameStart, StringComparison.InvariantCultureIgnoreCase) + 1;
+                    var filmTitleStart = content.IndexOf("<h1>", StringComparison.InvariantCultureIgnoreCase) + 4;
+                    filmTitleStart = content.IndexOf(">", filmTitleStart, StringComparison.InvariantCultureIgnoreCase) + 1;
 
-                    var movieNameEnd = content.IndexOf("<", movieNameStart, StringComparison.InvariantCultureIgnoreCase);
+                    var filmTitleEnd = content.IndexOf("<", filmTitleStart, StringComparison.InvariantCultureIgnoreCase);
 
-                    var rawMovieName = content.Substring(movieNameStart, movieNameEnd - movieNameStart);
-                    movie.Name = FormatTitle(rawMovieName.Trim());
+                    var rawFilmTitle = content.Substring(filmTitleStart, filmTitleEnd - filmTitleStart);
+                    film.Title = FormatTitle(rawFilmTitle.Trim());
 
-                    if (string.IsNullOrWhiteSpace(movie.Name))
+                    if (string.IsNullOrWhiteSpace(film.Title))
                     {
                         return null;
                     }
 
-                    var certificationStart = content.IndexOf("<a class=\"classification", movieNameEnd, StringComparison.InvariantCultureIgnoreCase);
+                    var certificationStart = content.IndexOf("<a class=\"classification", filmTitleEnd, StringComparison.InvariantCultureIgnoreCase);
                     if (certificationStart > 0)
                     {
                         certificationStart = content.IndexOf(">", certificationStart, StringComparison.InvariantCultureIgnoreCase) + 2;
                         var certificationEnd = content.IndexOf("<", certificationStart, StringComparison.InvariantCultureIgnoreCase) - 1;
-                        movie.Certificate = content.Substring(certificationStart, certificationEnd - certificationStart).Trim();
+                        film.Rating = content.Substring(certificationStart, certificationEnd - certificationStart).Trim();
                     }
                     else
                     {
-                        movie.Certificate = "?";
-                        certificationStart = movieNameEnd;
+                        film.Rating = "?";
+                        certificationStart = filmTitleEnd;
                     }
 
                     var runningTimeStart = content.IndexOf("<h3>Running time:</h3>", certificationStart, StringComparison.InvariantCultureIgnoreCase);
@@ -96,11 +97,11 @@ namespace LewisHenson.CineworldCinemas.Listings
                     {
                         runningTimeStart = content.IndexOf("<p>", runningTimeStart, StringComparison.InvariantCultureIgnoreCase) + 3;
                         var runningTimeEnd = content.IndexOf("</p>", runningTimeStart, StringComparison.InvariantCultureIgnoreCase);
-                        movie.RunningTime = content.Substring(runningTimeStart, runningTimeEnd - runningTimeStart).Trim();
+                        film.RunningTime = content.Substring(runningTimeStart, runningTimeEnd - runningTimeStart).Trim();
                     }
                     else
                     {
-                        movie.RunningTime = "(unavailable)";
+                        film.RunningTime = "(unavailable)";
                         runningTimeStart = certificationStart;
                     }
 
@@ -109,11 +110,11 @@ namespace LewisHenson.CineworldCinemas.Listings
                     {
                         synopsisStart = content.IndexOf("<p>", synopsisStart, StringComparison.InvariantCultureIgnoreCase) + 3;
                         var synopsisEnd = content.IndexOf("</p>", synopsisStart, StringComparison.InvariantCultureIgnoreCase);
-                        movie.Synopsis = content.Substring(synopsisStart, synopsisEnd - synopsisStart).Trim();
+                        film.Synopsis = content.Substring(synopsisStart, synopsisEnd - synopsisStart).Trim();
                     }
                     else
                     {
-                        movie.Synopsis = "?";
+                        film.Synopsis = "?";
                         synopsisStart = runningTimeStart;
                     }
 
@@ -121,20 +122,20 @@ namespace LewisHenson.CineworldCinemas.Listings
                     var days = _daysParser.Parse(daysSubstring);
                     if (days != null && days.Any())
                     {
-                        movie.Days = new List<Day>(days);
+                        film.Days = new List<Day>(days);
                     }
                     else
                     {
-                        movie = null;
+                        film = null;
                     }
                 }
                 catch (Exception ex)
                 {
                     Debug.Fail(ex.ToString());
-                    movie = null;
+                    film = null;
                 }
 
-                return movie;
+                return film;
             }
 
             private static string FormatTitle(string rawTitle)
@@ -204,6 +205,9 @@ namespace LewisHenson.CineworldCinemas.Listings
                             continue;
                         }
 
+                        var dateString = daySubString.Substring(0, dayEnd);
+                        var date = _dateParser.GetDate(dateString);
+
                         var timesSubStringStart = daySubString.IndexOf("<ol", dayEnd, StringComparison.InvariantCultureIgnoreCase);
                         if (timesSubStringStart < 0)
                         {
@@ -213,7 +217,7 @@ namespace LewisHenson.CineworldCinemas.Listings
                         var timesSubStringEnd = daySubString.IndexOf("</ol>", timesSubStringStart, StringComparison.InvariantCultureIgnoreCase);
                         var timesSubString = daySubString.Substring(timesSubStringStart, timesSubStringEnd - timesSubStringStart);
 
-                        var showings = new List<Showing>();
+                        var showings = new List<Show>();
 
                         var timeSubStrings = timesSubString.Split(new[] { "<li>" }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (var timeSubString in timeSubStrings)
@@ -225,27 +229,28 @@ namespace LewisHenson.CineworldCinemas.Listings
                                 continue;
                             }
 
-                            var showing = new Showing
+                            var time = timeSubString.Substring(timeStart, timeEnd - timeStart);
+                            var timeSpan = TimeSpan.Parse(time);
+
+                            var showing = new Show
                                 {
-                                    Time = timeSubString.Substring(timeStart, timeEnd - timeStart)
+                                    Time = date.Add(timeSpan)
                                 };
 
                             var remainingText = timeSubString.Substring(timeEnd);
                             showing.Is2D = remainingText.Contains("icon-service-2d");
                             showing.Is3D = remainingText.Contains("icon-service-3d");
-                            showing.IsDBox = remainingText.Contains("icon-service-dx");
+                            showing.DBox = remainingText.Contains("icon-service-dx");
 
                             showings.Add(showing);
                         }
 
                         if (showings.Any())
                         {
-                            var dateString = daySubString.Substring(0, dayEnd);
-
                             var day = new Day
                                 {
-                                    Date = _dateParser.GetDate(dateString),
-                                    Showings = showings
+                                    Date = date,
+                                    Shows = showings
                                 };
 
                             days.Add(day);

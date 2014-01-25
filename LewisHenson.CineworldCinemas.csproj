@@ -45,13 +45,14 @@
     <Compile Include="Enumeration.cs" />
     <Compile Include="Listings\CineworldListings.cs" />
     <Compile Include="Listings\Day.cs" />
-    <Compile Include="Listings\Movie.cs" />
+    <Compile Include="Listings\Film.cs" />
     <Compile Include="Listings\Filter.cs" />
     <Compile Include="Listings\ICineworldListings.cs" />
     <Compile Include="Listings\IScraper.cs" />
-    <Compile Include="Listings\Showing.cs" />
-    <Compile Include="Listings\UrlGenerator.cs" />
-    <Compile Include="Listings\WhatsOnScraper.cs" />
+    <Compile Include="Listings\Show.cs" />
+    <Compile Include="Listings\SyndicationListingsScraper.cs" />
+    <Compile Include="Listings\UriGenerator.cs" />
+    <Compile Include="Listings\SiteListingsScraper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRequestHelper.cs" />
   </ItemGroup>

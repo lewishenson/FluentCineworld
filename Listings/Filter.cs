@@ -33,7 +33,7 @@ namespace LewisHenson.CineworldCinemas.Listings
             _to = value.Date;
         }
 
-        public IEnumerable<Movie> Apply(IEnumerable<Movie> movies)
+        public IEnumerable<Film> Apply(IEnumerable<Film> movies)
         {
             if (_daysOfWeek.Any())
             {
@@ -53,7 +53,7 @@ namespace LewisHenson.CineworldCinemas.Listings
             return movies;
         }
 
-        private IEnumerable<Movie> ApplyDayFilter(IEnumerable<Movie> movies, Func<Day, bool> filter)
+        private IEnumerable<Film> ApplyDayFilter(IEnumerable<Film> movies, Func<Day, bool> filter)
         {
             var filteredItems = movies.Where(f => f.Days.Any(filter));
 

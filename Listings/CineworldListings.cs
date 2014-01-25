@@ -7,14 +7,37 @@ namespace LewisHenson.CineworldCinemas.Listings
     public class CineworldListings : ICineworldListings
     {
         private readonly Cinema _cinema;
-        private readonly IScraper<IEnumerable<Movie>> _scraper;
         private readonly Filter _filter;
+        private IScraper<IEnumerable<Film>> _scraper;
 
-        internal CineworldListings(Cinema cinema, IScraper<IEnumerable<Movie>> scraper)
+        internal CineworldListings(Cinema cinema)
         {
             _cinema = cinema;
-            _scraper = scraper;
             _filter = new Filter();
+            _scraper = new SyndicationListingsScraper();
+        }
+
+        public ICineworldListings UsingSyndication(bool useSyndication)
+        {
+            if (useSyndication)
+            {
+                InitialiseScraper<SyndicationListingsScraper>();
+            }
+            else
+            {
+                InitialiseScraper<SiteListingsScraper>();
+            }
+
+            return this;
+        }
+
+        private void InitialiseScraper<TScraper>()
+            where TScraper : IScraper<IEnumerable<Film>>
+        {
+            if (_scraper.GetType() != typeof(TScraper))
+            {
+                _scraper = Activator.CreateInstance<TScraper>();
+            }
         }
 
         public ICineworldListings ForDayOfWeek(DayOfWeek dayOfWeek)
@@ -35,13 +58,12 @@ namespace LewisHenson.CineworldCinemas.Listings
             return this;
         }
 
-        public IEnumerable<Movie> Retrieve()
+        public IEnumerable<Film> Retrieve()
         {
-            var url = UrlGenerator.WhatsOn(_cinema);
-            var movies = _scraper.Scrape(url);
+            var movies = _scraper.Scrape(_cinema);
 
             movies = _filter.Apply(movies);
-            movies = movies.OrderBy(f => f.Name);
+            movies = movies.OrderBy(f => f.Title);
 
             return movies;
         }

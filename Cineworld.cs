@@ -6,7 +6,7 @@ namespace LewisHenson.CineworldCinemas
     {
         public static ICineworldListings WhatsOn(Cinema cinema)
         {
-            return new CineworldListings(cinema, new WhatsOnScraper());
+            return new CineworldListings(cinema);
         }
     }
 }

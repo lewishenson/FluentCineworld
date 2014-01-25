@@ -2,6 +2,6 @@
 {
     public interface IScraper<out T>
     {
-        T Scrape(string url);
+        T Scrape(Cinema cinema);
     }
 }
