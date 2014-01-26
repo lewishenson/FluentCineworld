@@ -49,7 +49,9 @@
     <Compile Include="Listings\Filter.cs" />
     <Compile Include="Listings\ICineworldListings.cs" />
     <Compile Include="Listings\IScraper.cs" />
-    <Compile Include="Listings\Show.cs" />
+    <Compile Include="Listings\Show.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Listings\SyndicationListingsScraper.cs" />
     <Compile Include="Listings\UriGenerator.cs" />
     <Compile Include="Listings\SiteListingsScraper.cs" />
