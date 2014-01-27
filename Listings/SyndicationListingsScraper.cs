@@ -53,7 +53,7 @@ namespace LewisHenson.CineworldCinemas.Listings
             {
                 var film = new Film
                                {
-                                   Title = filmElement.Attribute("title").Value,
+                                   Title = TextFormatter.FormatTitle(filmElement.Attribute("title").Value),
                                    Rating = filmElement.Attribute("rating").Value,
                                    Days = _daysParser.Parse(filmElement.Descendants("shows").Descendants("show"))
                                };

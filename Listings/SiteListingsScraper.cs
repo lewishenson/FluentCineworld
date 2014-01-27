@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 
 namespace LewisHenson.CineworldCinemas.Listings
 {
@@ -72,7 +71,7 @@ namespace LewisHenson.CineworldCinemas.Listings
                     var filmTitleEnd = content.IndexOf("<", filmTitleStart, StringComparison.InvariantCultureIgnoreCase);
 
                     var rawFilmTitle = content.Substring(filmTitleStart, filmTitleEnd - filmTitleStart);
-                    film.Title = FormatTitle(rawFilmTitle.Trim());
+                    film.Title = TextFormatter.FormatTitle(rawFilmTitle.Trim());
 
                     if (string.IsNullOrWhiteSpace(film.Title))
                     {
@@ -92,16 +91,17 @@ namespace LewisHenson.CineworldCinemas.Listings
                         certificationStart = filmTitleEnd;
                     }
 
+                    film.Data = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
+
                     var runningTimeStart = content.IndexOf("<h3>Running time:</h3>", certificationStart, StringComparison.InvariantCultureIgnoreCase);
                     if (runningTimeStart > 0)
                     {
                         runningTimeStart = content.IndexOf("<p>", runningTimeStart, StringComparison.InvariantCultureIgnoreCase) + 3;
                         var runningTimeEnd = content.IndexOf("</p>", runningTimeStart, StringComparison.InvariantCultureIgnoreCase);
-                        film.RunningTime = content.Substring(runningTimeStart, runningTimeEnd - runningTimeStart).Trim();
+                        film.Data["RunningTime"] = content.Substring(runningTimeStart, runningTimeEnd - runningTimeStart).Trim();
                     }
                     else
                     {
-                        film.RunningTime = "(unavailable)";
                         runningTimeStart = certificationStart;
                     }
 
@@ -110,11 +110,10 @@ namespace LewisHenson.CineworldCinemas.Listings
                     {
                         synopsisStart = content.IndexOf("<p>", synopsisStart, StringComparison.InvariantCultureIgnoreCase) + 3;
                         var synopsisEnd = content.IndexOf("</p>", synopsisStart, StringComparison.InvariantCultureIgnoreCase);
-                        film.Synopsis = content.Substring(synopsisStart, synopsisEnd - synopsisStart).Trim();
+                        film.Data["Synopsis"] = content.Substring(synopsisStart, synopsisEnd - synopsisStart).Trim();
                     }
                     else
                     {
-                        film.Synopsis = "?";
                         synopsisStart = runningTimeStart;
                     }
 
@@ -136,53 +135,6 @@ namespace LewisHenson.CineworldCinemas.Listings
                 }
 
                 return film;
-            }
-
-            private static string FormatTitle(string rawTitle)
-            {
-                var formattedTitle = Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(rawTitle.Trim().ToLower());
-
-                if (formattedTitle.Contains("&Amp;"))
-                {
-                    formattedTitle = formattedTitle.Replace("&Amp;", "&");
-                }
-
-                if (formattedTitle.EndsWith("Ii"))
-                {
-                    formattedTitle = formattedTitle.Replace("Ii", "II");
-                }
-                else if (formattedTitle.EndsWith("Iii"))
-                {
-                    formattedTitle = formattedTitle.Replace("Iii", "III");
-                }
-                else if (formattedTitle.EndsWith("Iv"))
-                {
-                    formattedTitle = formattedTitle.Replace("Iv", "IV");
-                }
-                else if (formattedTitle.EndsWith("- Unlimited Screening"))
-                {
-                    formattedTitle = formattedTitle.Replace("- Unlimited Screening", string.Empty);
-                }
-                else if (formattedTitle.EndsWith(": Cineworld Unlimited Exclusive Show"))
-                {
-                    formattedTitle = formattedTitle.Replace(": Cineworld Unlimited Exclusive Show", string.Empty);
-                }
-
-                if (formattedTitle.StartsWith("Take 2 Thursday -"))
-                {
-                    formattedTitle = formattedTitle.Replace("Take 2 Thursday - ", string.Empty);
-                }
-
-                if (formattedTitle.StartsWith("2D - "))
-                {
-                    formattedTitle = formattedTitle.Substring(5) + " [2D]";
-                }
-                else if (formattedTitle.StartsWith("3D - "))
-                {
-                    formattedTitle = formattedTitle.Substring(5) + " [3D]";
-                }
-
-                return formattedTitle.Trim();
             }
         }
 
@@ -206,7 +158,6 @@ namespace LewisHenson.CineworldCinemas.Listings
                         }
 
                         var dateString = daySubString.Substring(0, dayEnd);
-                        var date = _dateParser.GetDate(dateString);
 
                         var timesSubStringStart = daySubString.IndexOf("<ol", dayEnd, StringComparison.InvariantCultureIgnoreCase);
                         if (timesSubStringStart < 0)
@@ -218,6 +169,7 @@ namespace LewisHenson.CineworldCinemas.Listings
                         var timesSubString = daySubString.Substring(timesSubStringStart, timesSubStringEnd - timesSubStringStart);
 
                         var showings = new List<Show>();
+                        var date = _dateParser.GetDate(dateString);
 
                         var timeSubStrings = timesSubString.Split(new[] { "<li>" }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (var timeSubString in timeSubStrings)
