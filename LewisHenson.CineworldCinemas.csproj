@@ -53,6 +53,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Listings\SyndicationListingsScraper.cs" />
+    <Compile Include="Listings\TextFormatter.cs" />
     <Compile Include="Listings\UriGenerator.cs" />
     <Compile Include="Listings\SiteListingsScraper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,10 +10,8 @@ namespace LewisHenson.CineworldCinemas.Listings
 
         public string Rating { get; set; }
 
-        public string Synopsis { get; set; }
-
-        public string RunningTime { get; set; }
-
         public IEnumerable<Day> Days { get; set; }
+
+        public IDictionary<string, object> Data { get; set; }
     }
 }
