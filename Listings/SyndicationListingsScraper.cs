@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace LewisHenson.CineworldCinemas.Listings
+namespace LewisHenson.FluentCineworld.Listings
 {
     internal class SyndicationListingsScraper : IScraper<IEnumerable<Film>>
     {

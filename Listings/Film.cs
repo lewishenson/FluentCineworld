@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace LewisHenson.CineworldCinemas.Listings
+namespace LewisHenson.FluentCineworld.Listings
 {
     [DebuggerDisplay("Title = {Title}")]
     public class Film
