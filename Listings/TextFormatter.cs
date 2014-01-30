@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace LewisHenson.CineworldCinemas.Listings
+namespace LewisHenson.FluentCineworld.Listings
 {
     public class TextFormatter
     {

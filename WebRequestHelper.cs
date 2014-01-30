@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 
-namespace LewisHenson.CineworldCinemas
+namespace LewisHenson.FluentCineworld
 {
     internal static class WebRequestHelper
     {
