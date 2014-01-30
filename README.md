@@ -1,7 +1,7 @@
-CineworldCinemas
-================
+FluentCineworld
+===============
 
-C# API for obtaining Cineworld listings.
+Fluent C# API for obtaining Cineworld listings.
 
 Two methods are supported - using the Cineworld syndication feed (default behaviour) or scraping the Cineworld site.
 
