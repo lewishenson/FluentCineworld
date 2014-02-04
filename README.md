@@ -3,7 +3,7 @@ FluentCineworld
 
 Fluent C# API for obtaining Cineworld listings.
 
-Two methods are supported - using the Cineworld syndication feed (default behaviour) or scraping the Cineworld site.
+Two approaches are supported - using the Cineworld syndication feed (default behaviour) or scraping the Cineworld site.
 
 The API uses the fluid builder pattern so the below examples can be combined.
 
