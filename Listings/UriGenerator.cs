@@ -1,4 +1,4 @@
-﻿namespace LewisHenson.FluentCineworld.Listings
+﻿namespace FluentCineworld.Listings
 {
     internal static class UriGenerator
     {

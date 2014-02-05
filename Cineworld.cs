@@ -1,6 +1,6 @@
-﻿using LewisHenson.FluentCineworld.Listings;
+﻿using FluentCineworld.Listings;
 
-namespace LewisHenson.FluentCineworld
+namespace FluentCineworld
 {
     public static class Cineworld
     {

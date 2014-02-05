@@ -7,8 +7,8 @@
     <ProjectGuid>{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LewisHenson.FluentCineworld</RootNamespace>
-    <AssemblyName>LewisHenson.FluentCineworld</AssemblyName>
+    <RootNamespace>FluentCineworld</RootNamespace>
+    <AssemblyName>FluentCineworld</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

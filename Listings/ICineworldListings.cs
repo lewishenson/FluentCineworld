@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LewisHenson.FluentCineworld.Listings
+namespace FluentCineworld.Listings
 {
     public interface ICineworldListings
     {
