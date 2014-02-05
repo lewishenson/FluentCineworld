@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 
-namespace LewisHenson.FluentCineworld.Listings
+namespace FluentCineworld.Listings
 {
     internal class SiteListingsScraper : IScraper<IEnumerable<Film>>
     {

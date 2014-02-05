@@ -1,4 +1,4 @@
-﻿namespace LewisHenson.FluentCineworld
+﻿namespace FluentCineworld
 {
     public class Cinema : Enumeration
     {

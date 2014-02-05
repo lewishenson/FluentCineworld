@@ -1,4 +1,4 @@
-﻿namespace LewisHenson.FluentCineworld.Listings
+﻿namespace FluentCineworld.Listings
 {
     public interface IScraper<out T>
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LewisHenson.FluentCineworld.Listings
+namespace FluentCineworld.Listings
 {
     public class Show
     {
