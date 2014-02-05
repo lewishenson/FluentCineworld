@@ -1,0 +1,14 @@
+﻿FluentCineworld changelog
+=========================
+
+v1.1.2.0
+Renamed to FluentCineworld.
+
+v1.1.1.0
+Data property added to film to store extra information (where possible).
+
+v1.1.0.0
+Added XML syndication support.
+
+v1.0.0.0
+Initial version.
