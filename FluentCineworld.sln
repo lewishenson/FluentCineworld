@@ -1,7 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentCineworld", "FluentCineworld.csproj", "{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentCineworld", "Code\FluentCineworld.csproj", "{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{497A5321-BD33-4A57-804B-B5FCD4E214F5}"
+	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.txt = CHANGELOG.txt
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{C2F32C4E-8473-4789-9EA8-A185AB74AD20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,5 +26,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2B7E708C-9B52-4EC0-84B7-0530F5A042D8} = {C2F32C4E-8473-4789-9EA8-A185AB74AD20}
 	EndGlobalSection
 EndGlobal
