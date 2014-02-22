@@ -59,7 +59,7 @@ namespace FluentCineworld
             return matchingItem;
         }
 
-        public static T FromDisplayName<T>(string displayName) where T : Enumeration, new()
+        public static T FromDisplayName<T>(string displayName) where T : Enumeration
         {
             var matchingItem = Parse<T, string>(displayName, "display name", item => string.Compare(item.DisplayName, displayName, StringComparison.OrdinalIgnoreCase) == 0);
             return matchingItem;
