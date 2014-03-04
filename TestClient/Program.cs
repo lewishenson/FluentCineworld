@@ -8,12 +8,10 @@ namespace FluentCineworld.TestClient
     {
         public static void Main(string[] args)
         {
-            var writer = new ConsoleWriter();
-
             var cinema = GetCinema(args);
-
             var films = Cineworld.WhatsOn(cinema).Retrieve();
 
+            var writer = new ConsoleWriter();
             writer.Output(films);
 
             Console.Read();

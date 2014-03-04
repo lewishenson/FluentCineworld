@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v1.1.3.0
+Scraping via XML syndication now handles the cinema not appearing in the XML.
+
 v1.1.2.0
 Renamed to FluentCineworld.
 

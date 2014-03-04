@@ -43,7 +43,13 @@ namespace FluentCineworld.Listings
                 return shows.Single();
             }
 
-            var mergeResult = new Show { Time = shows.First().Time };
+            var firstShow = shows.First();
+            if (shows.Any(s => s.Time != firstShow.Time))
+            {
+                throw new ArgumentException("All shows must have the same time.");
+            }
+
+            var mergeResult = new Show { Time = firstShow.Time };
 
             foreach (var show in shows)
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentCineworld.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -6,15 +7,22 @@ using System.Linq;
 
 namespace FluentCineworld.Listings
 {
-    internal class SiteListingsScraper : IScraper<IEnumerable<Film>>
+    public class SiteListingsScraper : IScraper<IEnumerable<Film>>
     {
+        private readonly IWebClient _webClient;
+
+        public SiteListingsScraper(IWebClient webClient)
+        {
+            _webClient = webClient;
+        }
+
         public IEnumerable<Film> Scrape(Cinema cinema)
         {
             var uri = UriGenerator.WhatsOn(cinema);
-            var content = WebRequestHelper.GetContent(uri);
+            var content = _webClient.GetContent(uri);
             if (string.IsNullOrWhiteSpace(content))
             {
-                return new List<Film>();
+                return Enumerable.Empty<Film>();
             }
 
             var parser = new WhatsOnParser();

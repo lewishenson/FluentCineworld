@@ -1,21 +1,28 @@
-﻿using System;
+﻿using FluentCineworld.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace FluentCineworld.Listings
 {
-    internal class SyndicationListingsScraper : IScraper<IEnumerable<Film>>
+    public class SyndicationListingsScraper : IScraper<IEnumerable<Film>>
     {
+        private readonly IWebClient _webClient;
+
+        public SyndicationListingsScraper(IWebClient webClient)
+        {
+            _webClient = webClient;
+        }
+
         public IEnumerable<Film> Scrape(Cinema cinema)
         {
             var uri = UriGenerator.SyndicationListings();
-            var content = WebRequestHelper.GetContent(uri);
+            var content = _webClient.GetContent(uri);
             if (string.IsNullOrWhiteSpace(content))
             {
-                return new List<Film>();
+                return Enumerable.Empty<Film>();
             }
 
             var parser = new SyndicationListingsParser();
@@ -30,14 +37,15 @@ namespace FluentCineworld.Listings
 
             public IEnumerable<Film> Parse(string content, int cinemaId)
             {
+                var cinemasElement = XElement.Parse(content);
+                var cinemaPath = string.Format("/cinema[@id={0}]", cinemaId);
+                var cinemaElement = cinemasElement.XPathSelectElement(cinemaPath);
+
                 var films = new List<Film>();
 
-                using (var stringReader = new StringReader(content))
+                if (cinemaElement != null)
                 {
-                    var cinemasElement = XElement.Load(stringReader);
-                    var cinemaElement = cinemasElement.Descendants("cinema").Single(e => e.Attribute("id").Value == cinemaId.ToString(CultureInfo.InvariantCulture));
                     var filmElements = cinemaElement.Descendants("listing").Descendants("film");
-
                     films.AddRange(filmElements.Select(filmElement => _filmParser.Parse(filmElement)));
                 }
 

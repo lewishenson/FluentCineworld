@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentCineworld.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,7 +15,7 @@ namespace FluentCineworld.Listings
         {
             _cinema = cinema;
             _filter = new Filter();
-            _scraper = new SyndicationListingsScraper();
+            _scraper = new SyndicationListingsScraper(new WebClient());
         }
 
         public ICineworldListings UsingSyndication(bool useSyndication)

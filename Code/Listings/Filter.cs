@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FluentCineworld.Listings
 {
-    internal class Filter
+    public class Filter
     {
         private readonly ICollection<DayOfWeek> _daysOfWeek;
         private DateTime? _from;
@@ -33,29 +33,29 @@ namespace FluentCineworld.Listings
             _to = value.Date;
         }
 
-        public IEnumerable<Film> Apply(IEnumerable<Film> movies)
+        public IEnumerable<Film> Apply(IEnumerable<Film> films)
         {
             if (_daysOfWeek.Any())
             {
-                movies = ApplyDayFilter(movies, d => _daysOfWeek.Contains(d.Date.DayOfWeek));
+                films = ApplyDayFilter(films, d => _daysOfWeek.Contains(d.Date.DayOfWeek));
             }
 
             if (_from.HasValue)
             {
-                movies = ApplyDayFilter(movies, d => d.Date >= _from.Value);
+                films = ApplyDayFilter(films, d => d.Date >= _from.Value);
             }
 
             if (_to.HasValue)
             {
-                movies = ApplyDayFilter(movies, d => d.Date <= _to.Value);
+                films = ApplyDayFilter(films, d => d.Date <= _to.Value);
             }
 
-            return movies;
+            return films;
         }
 
-        private IEnumerable<Film> ApplyDayFilter(IEnumerable<Film> movies, Func<Day, bool> filter)
+        private IEnumerable<Film> ApplyDayFilter(IEnumerable<Film> films, Func<Day, bool> filter)
         {
-            var filteredItems = movies.Where(f => f.Days.Any(filter));
+            var filteredItems = films.Where(f => f.Days.Any(filter));
 
             foreach (var item in filteredItems)
             {
