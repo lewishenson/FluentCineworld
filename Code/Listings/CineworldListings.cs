@@ -8,14 +8,19 @@ namespace FluentCineworld.Listings
     public class CineworldListings : ICineworldListings
     {
         private readonly Cinema _cinema;
+
         private readonly Filter _filter;
+
+        private readonly IWebClient _webClient;
+
         private IScraper<IEnumerable<Film>> _scraper;
 
         internal CineworldListings(Cinema cinema)
         {
             _cinema = cinema;
             _filter = new Filter();
-            _scraper = new SyndicationListingsScraper(new WebClient());
+            _webClient = new WebClient();
+            _scraper = new SyndicationListingsScraper(_webClient);
         }
 
         public ICineworldListings UsingSyndication(bool useSyndication)
@@ -37,7 +42,7 @@ namespace FluentCineworld.Listings
         {
             if (_scraper.GetType() != typeof(TScraper))
             {
-                _scraper = Activator.CreateInstance<TScraper>();
+                _scraper = (TScraper)Activator.CreateInstance(typeof(TScraper), _webClient);
             }
         }
 
