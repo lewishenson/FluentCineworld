@@ -40,3 +40,10 @@ var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
                      .UsingSyndication(false)
                      .Retrieve();
 ```
+
+
+## NuGet
+
+If you don't care about the source code you can just install FluentCineworld using NuGet.
+
+    PM> Install-Package FluentCineworld
