@@ -11,5 +11,10 @@
         {
             return "http://www.cineworld.co.uk/syndication/listings.xml";
         }
+
+        public static string CinemaNames()
+        {
+            return "http://www.cineworld.co.uk/syndication/cinema_names.xml";
+        }
     }
 }

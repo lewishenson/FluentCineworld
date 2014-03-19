@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace FluentCineworld.TestClient
 {
-    public interface IWriter
+    public interface IWriter<T>
     {
-        void Output(IEnumerable<Film> films);
+        void Output(T item);
     }
 }
