@@ -1,4 +1,5 @@
-﻿using FluentCineworld.Listings;
+﻿using FluentCineworld.Details;
+using FluentCineworld.Listings;
 
 namespace FluentCineworld
 {
@@ -7,6 +8,11 @@ namespace FluentCineworld
         public static ICineworldListings WhatsOn(Cinema cinema)
         {
             return new CineworldListings(cinema);
+        }
+
+        public static CinemaDetails Details(Cinema cinema)
+        {
+            return new CineworldDetails(cinema).Retreive();
         }
     }
 }

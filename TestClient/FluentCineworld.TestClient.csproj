@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="DetailsConsoleWriter.cs" />
+    <Compile Include="FilmConsoleWriter.cs" />
     <Compile Include="IWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

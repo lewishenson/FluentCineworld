@@ -42,6 +42,10 @@
   <ItemGroup>
     <Compile Include="Cinema.cs" />
     <Compile Include="Cineworld.cs" />
+    <Compile Include="Details\CinemaDetails.cs" />
+    <Compile Include="Details\CineworldDetails.cs" />
+    <Compile Include="Details\ICineworldDetails.cs" />
+    <Compile Include="Details\SyndicationDetailsScraper.cs" />
     <Compile Include="Enumeration.cs" />
     <Compile Include="Listings\CineworldListings.cs" />
     <Compile Include="Listings\Day.cs" />
@@ -60,6 +64,7 @@
     <Compile Include="Utilities\IWebClient.cs" />
     <Compile Include="Utilities\WebClient.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

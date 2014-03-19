@@ -52,6 +52,7 @@
     <Compile Include="Builders\DayBuilder.cs" />
     <Compile Include="Builders\FilmBuilder.cs" />
     <Compile Include="Builders\IBuilder.cs" />
+    <Compile Include="Details\SyndicationDetailsScraperTests.cs" />
     <Compile Include="Listings\SiteListingsScraperTests.cs" />
     <Compile Include="Listings\FilterTests.cs" />
     <Compile Include="Listings\ShowTests.cs" />
@@ -69,10 +70,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\cinema_names.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\listings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace FluentCineworld.TestClient
 {
-    public class ConsoleWriter : IWriter
+    public class FilmConsoleWriter : IWriter<IEnumerable<Film>>
     {
         public void Output(IEnumerable<Film> films)
         {
