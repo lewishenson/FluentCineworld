@@ -64,7 +64,8 @@ namespace FluentCineworld.Listings
 
             public Film Parse(string content)
             {
-                if (!content.Contains("<h1>"))
+                var filmTitleStart = content.IndexOf("<h3 class=\"h1\">", StringComparison.InvariantCultureIgnoreCase);
+                if (filmTitleStart < 0)
                 {
                     return null;
                 }
@@ -73,8 +74,7 @@ namespace FluentCineworld.Listings
 
                 try
                 {
-                    var filmTitleStart = content.IndexOf("<h1>", StringComparison.InvariantCultureIgnoreCase) + 4;
-                    filmTitleStart = content.IndexOf(">", filmTitleStart, StringComparison.InvariantCultureIgnoreCase) + 1;
+                    filmTitleStart = content.IndexOf(">", filmTitleStart + 15, StringComparison.InvariantCultureIgnoreCase) + 1;
 
                     var filmTitleEnd = content.IndexOf("<", filmTitleStart, StringComparison.InvariantCultureIgnoreCase);
 
@@ -156,16 +156,24 @@ namespace FluentCineworld.Listings
 
                 try
                 {
-                    var daySubStrings = content.Split(new[] { "<h3>" }, StringSplitOptions.RemoveEmptyEntries);
+                    var daySubStrings = content.Split(new[] { "<div class=\"date row\">" }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (var daySubString in daySubStrings)
                     {
-                        var dayEnd = daySubString.IndexOf("</h3>", StringComparison.InvariantCultureIgnoreCase);
+                        var dayStart = daySubString.IndexOf("<h3>");
+                        if (dayStart < 0)
+                        {
+                            continue;
+                        }
+
+                        dayStart = dayStart + 4;
+
+                        var dayEnd = daySubString.IndexOf("</h3>", dayStart, StringComparison.InvariantCultureIgnoreCase);
                         if (dayEnd < 0)
                         {
                             continue;
                         }
 
-                        var dateString = daySubString.Substring(0, dayEnd);
+                        var dateString = daySubString.Substring(dayStart, dayEnd - dayStart);
 
                         var timesSubStringStart = daySubString.IndexOf("<ol", dayEnd, StringComparison.InvariantCultureIgnoreCase);
                         if (timesSubStringStart < 0)
@@ -173,8 +181,7 @@ namespace FluentCineworld.Listings
                             continue;
                         }
 
-                        var timesSubStringEnd = daySubString.IndexOf("</ol>", timesSubStringStart, StringComparison.InvariantCultureIgnoreCase);
-                        var timesSubString = daySubString.Substring(timesSubStringStart, timesSubStringEnd - timesSubStringStart);
+                        var timesSubString = daySubString.Substring(timesSubStringStart);
 
                         var showings = new List<Show>();
                         var date = _dateParser.GetDate(dateString);
