@@ -41,7 +41,7 @@ namespace FluentCineworld.Listings
                 var filmsEnd = content.IndexOf("<div class=\"filter\">", filmsStart, StringComparison.InvariantCultureIgnoreCase);
 
                 var filmsSubString = content.Substring(filmsStart, filmsEnd - filmsStart);
-                var filmSubStrings = filmsSubString.Split(new[] { "<div class=\"poster\">" }, StringSplitOptions.RemoveEmptyEntries);
+                var filmSubStrings = filmsSubString.Split(new[] { "<div class=\"poster \">" }, StringSplitOptions.RemoveEmptyEntries);
 
                 var films = new List<Film>();
 
