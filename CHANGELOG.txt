@@ -1,6 +1,10 @@
 ﻿FluentCineworld changelog
 =========================
 
+v1.2.2.0
+Updated site scraping so works with new Cineworld site layout.
+Syndication feed functionality not affected and therefore unchanged.
+
 v1.2.1.0
 Updated site scraping so works with new Cineworld site layout.
 Syndication feed functionality not affected and therefore unchanged.
