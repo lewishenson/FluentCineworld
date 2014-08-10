@@ -156,7 +156,7 @@ namespace FluentCineworld.Listings
 
                 try
                 {
-                    var daySubStrings = content.Split(new[] { "<div class=\"date row\">" }, StringSplitOptions.RemoveEmptyEntries);
+                    var daySubStrings = content.Split(new[] { "<div class=\"row day\">" }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (var daySubString in daySubStrings)
                     {
                         var dayStart = daySubString.IndexOf("<h3>");
