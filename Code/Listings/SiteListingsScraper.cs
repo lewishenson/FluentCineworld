@@ -208,6 +208,11 @@ namespace FluentCineworld.Listings
                             showing.Is2D = remainingText.Contains("icon-service-2d");
                             showing.Is3D = remainingText.Contains("icon-service-3d");
                             showing.DBox = remainingText.Contains("icon-service-dx");
+                            showing.Superscreen = remainingText.Contains("icon-service-sr");
+                            showing.Is4Dx = remainingText.Contains("icon-service-4dx");
+                            showing.Vip = remainingText.Contains("icon-service-vp");
+                            showing.AudioDescribed = remainingText.Contains("icon-service-ad");
+                            showing.Imax = remainingText.Contains("icon-service-ix");
 
                             showings.Add(showing);
                         }

@@ -30,7 +30,7 @@ namespace FluentCineworld.UnitTests.Listings
             var webClient = Mock.Of<IWebClient>(w => w.GetContent(It.IsAny<string>()) == content);
             var scraper = new SyndicationListingsScraper(webClient);
 
-            var films = scraper.Scrape(Cinema.MiltonKeynes);
+            var films = scraper.Scrape(Cinema.Northampton);
 
             films.Should().BeEmpty();
         }
@@ -42,20 +42,20 @@ namespace FluentCineworld.UnitTests.Listings
             var webClient = Mock.Of<IWebClient>(w => w.GetContent(It.IsAny<string>()) == content);
             var scraper = new SyndicationListingsScraper(webClient);
 
-            var films = scraper.Scrape(Cinema.Aberdeen);
+            var films = scraper.Scrape(Cinema.MiltonKeynes);
 
-            films.Should().HaveCount(31);
+            films.Should().HaveCount(50);
 
-            var nonStopFilm = films.Single(f => f.Title == "Non-Stop");
+            var nonStopFilm = films.Last(f => f.Title == "The Divergent Series: Insurgent");
             nonStopFilm.Rating.Should().Be("12A");
-            nonStopFilm.Days.Should().HaveCount(10);
+            nonStopFilm.Days.Should().HaveCount(6);
 
             var firstDay = nonStopFilm.Days.First();
-            firstDay.Date.Should().Be(new DateTime(2014, 3, 4));
-            firstDay.Shows.Should().HaveCount(2);
+            firstDay.Date.Should().Be(new DateTime(2015, 3, 21));
+            firstDay.Shows.Should().HaveCount(12);
 
             var firstShow = firstDay.Shows.First();
-            firstShow.ToString().Should().Be("18:30 (2D, Audio Described)");
+            firstShow.ToString().Should().Be("11:00 (3D, 4DX)");
         }
     }
 }

@@ -118,6 +118,8 @@ namespace FluentCineworld.Listings
                 {
                     show.DBox = sessionTypeAttribute.Value.Contains("dbox");
                     show.Vip = sessionTypeAttribute.Value.Contains("vip");
+                    show.Is4Dx = sessionTypeAttribute.Value.Contains("4dx");
+                    show.Superscreen = sessionTypeAttribute.Value.Contains("sr");
                 }
 
                 var audioTypeAttribute = showElement.Attribute("audioType");
