@@ -1,6 +1,6 @@
 ﻿namespace FluentCineworld.UnitTests.Builders
 {
-    internal interface IBuilder<T>
+    internal interface IBuilder<out T>
     {
         T Build();
     }

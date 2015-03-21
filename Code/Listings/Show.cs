@@ -19,6 +19,10 @@ namespace FluentCineworld.Listings
 
         public bool Imax { get; set; }
 
+        public bool Superscreen { get; set; }
+
+        public bool Is4Dx { get; set; }
+
         public bool AudioDescribed { get; set; }
 
         public bool Subtitled { get; set; }
@@ -60,6 +64,8 @@ namespace FluentCineworld.Listings
                 mergeResult.Imax |= show.Imax;
                 mergeResult.AudioDescribed |= show.AudioDescribed;
                 mergeResult.Subtitled |= show.Subtitled;
+                mergeResult.Is4Dx |= show.Is4Dx;
+                mergeResult.Superscreen |= show.Superscreen;
             }
 
             return mergeResult;
@@ -74,6 +80,8 @@ namespace FluentCineworld.Listings
             AppendWithCommaIfPropertyEqualToTrue(DBox, outputBuilder, "DBOX");
             AppendWithCommaIfPropertyEqualToTrue(Vip, outputBuilder, "VIP");
             AppendWithCommaIfPropertyEqualToTrue(Imax, outputBuilder, "IMAX");
+            AppendWithCommaIfPropertyEqualToTrue(Superscreen, outputBuilder, "Superscreen");
+            AppendWithCommaIfPropertyEqualToTrue(Is4Dx, outputBuilder, "4DX");
             AppendWithCommaIfPropertyEqualToTrue(AudioDescribed, outputBuilder, "Audio Described");
             AppendWithCommaIfPropertyEqualToTrue(Subtitled, outputBuilder, "Subtitled");
 

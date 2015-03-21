@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lewis Henson")]
 [assembly: AssemblyProduct("FluentCineworld.TestClient")]
-[assembly: AssemblyCopyright("Copyright © Lewis Henson 2014")]
+[assembly: AssemblyCopyright("Copyright © Lewis Henson 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
