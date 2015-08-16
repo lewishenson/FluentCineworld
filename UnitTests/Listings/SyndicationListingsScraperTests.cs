@@ -44,18 +44,31 @@ namespace FluentCineworld.UnitTests.Listings
 
             var films = scraper.Scrape(Cinema.MiltonKeynes);
 
-            films.Should().HaveCount(50);
+            films.Should().HaveCount(41);
 
-            var nonStopFilm = films.Last(f => f.Title == "The Divergent Series: Insurgent");
+            var nonStopFilm = films.Last(f => f.Title == "Mission: Impossible - Rogue Nation");
             nonStopFilm.Rating.Should().Be("12A");
-            nonStopFilm.Days.Should().HaveCount(6);
+            nonStopFilm.Days.Should().HaveCount(8);
 
             var firstDay = nonStopFilm.Days.First();
-            firstDay.Date.Should().Be(new DateTime(2015, 3, 21));
-            firstDay.Shows.Should().HaveCount(12);
+            firstDay.Date.Should().Be(new DateTime(2015, 7, 30));
+            firstDay.Shows.Should().HaveCount(16);
 
             var firstShow = firstDay.Shows.First();
-            firstShow.ToString().Should().Be("11:00 (3D, 4DX)");
+            firstShow.ToString().Should().Be("10:45 (2D, Superscreen)");
+        }
+
+        [Fact]
+        public void GivenAFilmIsInTheListingsTwice_WhenTheFilmsAreRequested_ThenItAppearsOnlyOnce()
+        {
+            var content = File.ReadAllText(@"Data\listings.xml");
+            var webClient = Mock.Of<IWebClient>(w => w.GetContent(It.IsAny<string>()) == content);
+            var scraper = new SyndicationListingsScraper(webClient);
+
+            var films = scraper.Scrape(Cinema.MiltonKeynes).ToList();
+
+            var insideOutFilmCount = films.Count(f => f.Title == "Inside Out");
+            insideOutFilmCount.Should().Be(1);
         }
     }
 }

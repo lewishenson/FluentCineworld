@@ -28,7 +28,11 @@ namespace FluentCineworld.Listings
             var parser = new SyndicationListingsParser();
             var films = parser.Parse(content, cinema.Value);
 
-            return films;
+            var mergedFilms = films.GroupBy(f => f.Title)
+                                   .Select(Film.Merge)
+                                   .ToList();
+
+            return mergedFilms;
         }
 
         private class SyndicationListingsParser
