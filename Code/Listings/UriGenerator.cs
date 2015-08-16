@@ -1,7 +1,10 @@
-﻿namespace FluentCineworld.Listings
+﻿using System;
+
+namespace FluentCineworld.Listings
 {
     internal static class UriGenerator
     {
+        [Obsolete("Do not use, site scrapping no longer works.")]
         public static string WhatsOn(Cinema cinema)
         {
             return "http://www.cineworld.co.uk/whatson?cinema=" + cinema.Value;

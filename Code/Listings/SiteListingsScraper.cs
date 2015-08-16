@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace FluentCineworld.Listings
 {
+    [Obsolete("Do not use, site scrapping no longer works.")]
     public class SiteListingsScraper : IScraper<IEnumerable<Film>>
     {
         private readonly IWebClient _webClient;
@@ -37,11 +38,11 @@ namespace FluentCineworld.Listings
 
             public IEnumerable<Film> Parse(string content)
             {
-                var filmsStart = content.IndexOf("<div id=\"filter-reload\" class=\"row\">", StringComparison.InvariantCultureIgnoreCase);
-                var filmsEnd = content.IndexOf("<div class=\"filter\">", filmsStart, StringComparison.InvariantCultureIgnoreCase);
+                var filmsStart = content.IndexOf("<!-- SEE WHAT'S ON START -->", StringComparison.InvariantCultureIgnoreCase);
+                var filmsEnd = content.IndexOf("<!-- SEE WHAT'S ON END -->", filmsStart, StringComparison.InvariantCultureIgnoreCase);
 
                 var filmsSubString = content.Substring(filmsStart, filmsEnd - filmsStart);
-                var filmSubStrings = filmsSubString.Split(new[] { "<div class=\"poster" }, StringSplitOptions.RemoveEmptyEntries);
+                var filmSubStrings = filmsSubString.Split(new[] { "<div class=\"mix " }, StringSplitOptions.RemoveEmptyEntries);
 
                 var films = new List<Film>();
 
@@ -200,9 +201,9 @@ namespace FluentCineworld.Listings
                             var timeSpan = TimeSpan.Parse(time);
 
                             var showing = new Show
-                                {
-                                    Time = date.Add(timeSpan)
-                                };
+                            {
+                                Time = date.Add(timeSpan)
+                            };
 
                             var remainingText = timeSubString.Substring(timeEnd);
                             showing.Is2D = remainingText.Contains("icon-service-2d");
@@ -220,10 +221,10 @@ namespace FluentCineworld.Listings
                         if (showings.Any())
                         {
                             var day = new Day
-                                {
-                                    Date = date,
-                                    Shows = showings
-                                };
+                            {
+                                Date = date,
+                                Shows = showings
+                            };
 
                             days.Add(day);
                         }
