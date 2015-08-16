@@ -1,6 +1,10 @@
 ﻿FluentCineworld changelog
 =========================
 
+v1.2.4.0
+Scraping via XML syndication now merges duplicates.
+Marked site scraping classes as obsolete (to be removed in future release).
+
 v1.2.3.0
 Update scraping to handle new screening types (Superscreen, 4DX).
 
