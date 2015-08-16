@@ -84,6 +84,11 @@
         public static readonly Cinema GlasgowImaxAtGsc = new Cinema(88, "Glasgow - IMAX at GSC");
         public static readonly Cinema Wembley = new Cinema(89, "Wembley");
         public static readonly Cinema GloucesterQuays = new Cinema(90, "Gloucester Quays");
+        public static readonly Cinema StNeots = new Cinema(91, "St. Neots");
+        public static readonly Cinema Telford = new Cinema(92, "Telford");
+        public static readonly Cinema SwindonRegentCircus = new Cinema(93, "Swindon - Regent Circus");
+        public static readonly Cinema Broughton = new Cinema(94, "Broughton");
+        public static readonly Cinema GlasgowSilverburn = new Cinema(95, "Glasgow - Silverburn");
 
         protected Cinema()
         {
