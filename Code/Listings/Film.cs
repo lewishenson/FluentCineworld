@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System;
 
 namespace FluentCineworld.Listings
 {
@@ -47,16 +47,17 @@ namespace FluentCineworld.Listings
             }
 
             var mergeResult = new Film
-                {
-                    Title = firstFilm.Title,
-                    Rating = firstFilm.Rating,
-                    Data = mergedData,
-                    Days = films.Where(f => f.Days != null)
+            {
+                Title = firstFilm.Title,
+                Rating = firstFilm.Rating,
+                Data = mergedData,
+                Days = films.Where(f => f.Days != null)
                                 .SelectMany(f => f.Days)
                                 .GroupBy(d => d.Date)
                                 .Select(Day.Merge)
+                                .OrderBy(d => d.Date)
                                 .ToList()
-                };
+            };
 
             return mergeResult;
         }
