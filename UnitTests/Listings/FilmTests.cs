@@ -1,10 +1,10 @@
-﻿using System;
+﻿using FluentAssertions;
+using FluentCineworld.Listings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluentAssertions;
-using FluentCineworld.Listings;
 using Xunit;
 
 namespace FluentCineworld.UnitTests.Listings
@@ -123,6 +123,36 @@ namespace FluentCineworld.UnitTests.Listings
             };
 
             mergeResult.ShouldBeEquivalentTo(expectedResult);
+        }
+
+        [Fact]
+        public void GivenThereAreMultipleFilms_WhenMerging_ThenTheResultShouldHaveSortedDays()
+        {
+            var film1 = new Film
+            {
+                Title = "Ant-Man",
+                Rating = "12A",
+                Days = new List<Day>
+                    {
+                        new Day { Date = new DateTime(2015, 1, 31)}
+                    }
+            };
+
+            var film2 = new Film
+            {
+                Title = "Ant-Man",
+                Rating = "12A",
+                Data = new Dictionary<string, object>(),
+                Days = new List<Day>
+                    {
+                        new Day { Date = new DateTime(2015, 1, 1) }
+                    }
+            };
+
+            var mergeResult = Film.Merge(new[] { film1, film2 });
+
+            var mergedDays = mergeResult.Days.Select(d => d.Date).ToList();
+            mergedDays.Should().BeInAscendingOrder();
         }
     }
 }

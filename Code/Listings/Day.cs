@@ -40,7 +40,11 @@ namespace FluentCineworld.Listings
                 throw new ArgumentException("All days must have the same date.");
             }
 
-            var mergedShows = days.SelectMany(day => day.Shows).GroupBy(s => s.Time).Select(Show.Merge);
+            var mergedShows = days.SelectMany(day => day.Shows).
+                                   GroupBy(s => s.Time)
+                                  .Select(Show.Merge)
+                                  .OrderBy(s => s.Time);
+
             var mergeResult = new Day(firstDay.Date, mergedShows);
 
             return mergeResult;

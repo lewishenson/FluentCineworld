@@ -1,10 +1,10 @@
-﻿using System;
+﻿using FluentAssertions;
+using FluentCineworld.Listings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluentAssertions;
-using FluentCineworld.Listings;
 using Xunit;
 
 namespace FluentCineworld.UnitTests.Listings
@@ -46,13 +46,13 @@ namespace FluentCineworld.UnitTests.Listings
         public void GivenThereAreMultipleDays_WhenMerging_ThenTheResultShouldContainAllShows()
         {
             var day1 = new Day
-                {
-                    Date = new DateTime(2015, 1, 1),
-                    Shows = new List<Show>
+            {
+                Date = new DateTime(2015, 1, 1),
+                Shows = new List<Show>
                         {
                             new Show { Time = new DateTime(2015, 1, 1, 12, 0, 0) }
                         }
-                };
+            };
 
             var day2 = new Day
             {
@@ -76,6 +76,33 @@ namespace FluentCineworld.UnitTests.Listings
             };
 
             mergeResult.ShouldBeEquivalentTo(expectedResult);
+        }
+
+        [Fact]
+        public void GivenThereAreMultipleDays_WhenMerging_ThenTheResultShouldHaveSortedShows()
+        {
+            var day1 = new Day
+            {
+                Date = new DateTime(2015, 1, 1),
+                Shows = new List<Show>
+                        {
+                            new Show { Time = new DateTime(2015, 1, 1, 12, 0, 0) }
+                        }
+            };
+
+            var day2 = new Day
+            {
+                Date = new DateTime(2015, 1, 1),
+                Shows = new List<Show>
+                        {
+                            new Show { Time = new DateTime(2015, 1, 1, 0, 0, 0) }
+                        }
+            };
+
+            var mergeResult = Day.Merge(new[] { day1, day2 });
+
+            var mergedShows = mergeResult.Shows.Select(d => d.Time).ToList();
+            mergedShows.Should().BeInAscendingOrder();
         }
     }
 }
