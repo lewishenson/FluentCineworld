@@ -45,7 +45,7 @@
         public static readonly Cinema Luton = new Cinema(43, "Luton");
         public static readonly Cinema Middlesbrough = new Cinema(44, "Middlesbrough");
         public static readonly Cinema Bexleyheath = new Cinema(45, "Bexleyheath");
-        public static readonly Cinema MiltonKeynes = new Cinema(46, "Milton Keynes");
+        public static readonly Cinema MiltonKeynes = new Cinema(1010861, "Milton Keynes");
         public static readonly Cinema NewportWales = new Cinema(47, "Newport Wales");
         public static readonly Cinema Northampton = new Cinema(48, "Northampton");
         public static readonly Cinema Nottingham = new Cinema(49, "Nottingham");

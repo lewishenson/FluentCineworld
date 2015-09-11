@@ -42,20 +42,20 @@ namespace FluentCineworld.UnitTests.Listings
             var webClient = Mock.Of<IWebClient>(w => w.GetContent(It.IsAny<string>()) == content);
             var scraper = new SyndicationListingsScraper(webClient);
 
-            var films = scraper.Scrape(Cinema.MiltonKeynes);
+            var films = scraper.Scrape(Cinema.Bedford);
 
-            films.Should().HaveCount(41);
+            films.Should().HaveCount(32);
 
-            var nonStopFilm = films.Last(f => f.Title == "Mission: Impossible - Rogue Nation");
-            nonStopFilm.Rating.Should().Be("12A");
-            nonStopFilm.Days.Should().HaveCount(8);
+            var missionImpossibleFilm = films.Last(f => f.Title == "Mission: Impossible - Rogue Nation");
+            missionImpossibleFilm.Rating.Should().Be("12A");
+            missionImpossibleFilm.Days.Should().HaveCount(5);
 
-            var firstDay = nonStopFilm.Days.First();
+            var firstDay = missionImpossibleFilm.Days.First();
             firstDay.Date.Should().Be(new DateTime(2015, 7, 30));
-            firstDay.Shows.Should().HaveCount(16);
+            firstDay.Shows.Should().HaveCount(5);
 
             var firstShow = firstDay.Shows.First();
-            firstShow.ToString().Should().Be("10:45 (2D, Superscreen)");
+            firstShow.ToString().Should().Be("11:20 (2D)");
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace FluentCineworld.UnitTests.Listings
             var webClient = Mock.Of<IWebClient>(w => w.GetContent(It.IsAny<string>()) == content);
             var scraper = new SyndicationListingsScraper(webClient);
 
-            var films = scraper.Scrape(Cinema.MiltonKeynes).ToList();
+            var films = scraper.Scrape(Cinema.Bedford).ToList();
 
             var insideOutFilmCount = films.Count(f => f.Title == "Inside Out");
             insideOutFilmCount.Should().Be(1);

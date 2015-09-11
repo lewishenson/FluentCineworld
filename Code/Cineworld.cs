@@ -1,5 +1,7 @@
-﻿using FluentCineworld.Details;
+﻿using System;
+using FluentCineworld.Details;
 using FluentCineworld.Listings;
+using FluentCineworld.Sites;
 
 namespace FluentCineworld
 {
@@ -10,9 +12,15 @@ namespace FluentCineworld
             return new CineworldListings(cinema);
         }
 
+        [Obsolete]
         public static CinemaDetails Details(Cinema cinema)
         {
             return new CineworldDetails(cinema).Retreive();
+        }
+
+        public static SiteDetails Site(Cinema cinema)
+        {
+            return new SiteDetailsQueryExecutor(cinema).Execute();
         }
     }
 }
