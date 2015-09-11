@@ -7,6 +7,7 @@ using System.Xml.XPath;
 
 namespace FluentCineworld.Details
 {
+    [Obsolete]
     public class SyndicationDetailsScraper : IScraper<CinemaDetails>
     {
         private readonly IWebClient _webClient;

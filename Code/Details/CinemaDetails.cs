@@ -1,7 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace FluentCineworld.Details
 {
+    [Obsolete]
     [DebuggerDisplay("Name = {Name}")]
     public class CinemaDetails
     {
