@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.OldListings
 {
     public class Filter
     {

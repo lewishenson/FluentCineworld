@@ -1,5 +1,4 @@
-﻿using FluentCineworld.Listings;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FluentCineworld.TestClient
 {

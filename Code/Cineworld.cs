@@ -1,6 +1,6 @@
 ﻿using System;
 using FluentCineworld.Details;
-using FluentCineworld.Listings;
+using FluentCineworld.OldListings;
 using FluentCineworld.Sites;
 
 namespace FluentCineworld

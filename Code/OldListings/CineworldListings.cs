@@ -1,9 +1,9 @@
-﻿using FluentCineworld.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentCineworld.Utilities;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.OldListings
 {
     public class CineworldListings : ICineworldListings
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using FluentCineworld.Listings;
+using FluentCineworld.OldListings;
 using FluentCineworld.Utilities;
 
 namespace FluentCineworld.Details

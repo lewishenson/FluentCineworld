@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.OldListings
 {
     internal static class UriGenerator
     {

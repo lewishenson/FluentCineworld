@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.OldListings
 {
     [DebuggerDisplay("Date = {Date}")]
     public class Day

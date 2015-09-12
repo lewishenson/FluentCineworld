@@ -1,11 +1,11 @@
-﻿using FluentCineworld.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using FluentCineworld.Utilities;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.OldListings
 {
     [Obsolete("Do not use, site scrapping no longer works.")]
     public class SiteListingsScraper : IScraper<IEnumerable<Film>>

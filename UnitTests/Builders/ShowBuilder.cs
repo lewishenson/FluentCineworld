@@ -1,4 +1,4 @@
-﻿using FluentCineworld.Listings;
+﻿using FluentCineworld.OldListings;
 
 namespace FluentCineworld.UnitTests.Builders
 {

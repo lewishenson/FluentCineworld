@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
-using FluentCineworld.Listings;
 using FluentCineworld.UnitTests.Builders;
 using System;
+using FluentCineworld.OldListings;
 using Xunit;
 
 namespace FluentCineworld.UnitTests.Listings

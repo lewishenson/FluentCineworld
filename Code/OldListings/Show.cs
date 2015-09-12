@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.OldListings
 {
     public class Show
     {
