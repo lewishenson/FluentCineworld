@@ -1,13 +1,13 @@
-﻿using FluentAssertions;
-using FluentCineworld.Utilities;
-using Moq;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
+using FluentAssertions;
 using FluentCineworld.OldListings;
+using FluentCineworld.Utilities;
+using Moq;
 using Xunit;
 
-namespace FluentCineworld.UnitTests.Listings
+namespace FluentCineworld.UnitTests.OldListings
 {
     [Trait("Category", "UnitTest")]
     public class SyndicationListingsScraperTests
