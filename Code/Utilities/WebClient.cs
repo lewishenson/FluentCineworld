@@ -29,50 +29,24 @@ namespace FluentCineworld.Utilities
             }
         }
 
-        public string GetContent(string uri)
+        public string GetContent(string address)
         {
-            var request = CreateRequest(uri);
+            string content;
 
-            return GetContent(request);
-        }
-
-        private HttpWebRequest CreateRequest(string uri)
-        {
-            var request = (HttpWebRequest)WebRequest.Create(uri);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            request.UserAgent = UserAgent;
-
-            return request;
-        }
-
-        private string GetContent(HttpWebRequest request)
-        {
-            string content = null;
-
-            try
+            using (var webClient = CreateWebClient())
             {
-                using (var response = (HttpWebResponse)request.GetResponse())
-                {
-                    using (var stream = response.GetResponseStream())
-                    {
-                        if (stream != null)
-                        {
-                            using (var streamReader = new StreamReader(stream))
-                            {
-                                content = streamReader.ReadToEnd().Trim();
-                            }
-                        }
-                    }
-
-                    response.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.Fail(ex.ToString());
+                content = webClient.DownloadString(address);
             }
 
             return content;
+        }
+
+        private System.Net.WebClient CreateWebClient()
+        {
+            return new System.Net.WebClient
+                {
+                    Headers = { ["UserAgent"] = _userAgent }
+                };
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IWebClient
     {
-        string GetContent(string uri);
+        string GetContent(string address);
     }
 }
