@@ -1,20 +1,7 @@
-﻿using System;
-
-namespace FluentCineworld.Utilities
+﻿namespace FluentCineworld.Utilities
 {
     internal static class UriGenerator
     {
-        [Obsolete("Do not use, site scrapping no longer works.")]
-        public static string WhatsOn(Cinema cinema)
-        {
-            return "http://www.cineworld.co.uk/whatson?cinema=" + cinema.Value;
-        }
-
-        public static string SyndicationListings()
-        {
-            return "http://www.cineworld.co.uk/syndication/listings.xml";
-        }
-
         public static string Listings(Cinema cinema)
         {
             return "https://www1.cineworld.co.uk/cinemas/pgm-site?si=" + cinema.Value;
