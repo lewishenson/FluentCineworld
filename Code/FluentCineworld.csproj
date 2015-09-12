@@ -46,10 +46,6 @@
   <ItemGroup>
     <Compile Include="Cinema.cs" />
     <Compile Include="Cineworld.cs" />
-    <Compile Include="Details\CinemaDetails.cs" />
-    <Compile Include="Details\CineworldDetails.cs" />
-    <Compile Include="Details\ICineworldDetails.cs" />
-    <Compile Include="Details\SyndicationDetailsScraper.cs" />
     <Compile Include="Enumeration.cs" />
     <Compile Include="Listings\CineworldListings.cs" />
     <Compile Include="Listings\Day.cs" />
@@ -64,19 +60,9 @@
     <Compile Include="Listings\Showing.cs" />
     <Compile Include="Listings\ShowingAttributes.cs" />
     <Compile Include="Listings\ShowingDto.cs" />
-    <Compile Include="OldListings\CineworldListings.cs" />
-    <Compile Include="OldListings\Day.cs" />
-    <Compile Include="OldListings\Film.cs" />
-    <Compile Include="OldListings\Filter.cs" />
-    <Compile Include="OldListings\ICineworldListings.cs" />
-    <Compile Include="OldListings\IScraper.cs" />
-    <Compile Include="OldListings\Show.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="OldListings\SyndicationListingsScraper.cs" />
-    <Compile Include="OldListings\TextFormatter.cs" />
-    <Compile Include="OldListings\UriGenerator.cs" />
-    <Compile Include="OldListings\SiteListingsScraper.cs" />
+    <Compile Include="Listings\Filter.cs" />
+    <Compile Include="Utilities\TextFormatter.cs" />
+    <Compile Include="Utilities\UriGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sites\ISiteMapper.cs" />
     <Compile Include="Sites\SiteDetails.cs" />
