@@ -71,6 +71,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\BuildA.cs" />
+    <Compile Include="Builders\DayBuilder.cs" />
+    <Compile Include="Builders\FilmBuilder.cs" />
+    <Compile Include="Builders\IBuilder.cs" />
+    <Compile Include="Listings\FilterTests.cs" />
     <Compile Include="Listings\ListingsMapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sites\SiteDetailsQueryTests.cs" />
