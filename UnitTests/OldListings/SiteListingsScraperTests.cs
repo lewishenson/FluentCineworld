@@ -4,7 +4,7 @@ using FluentCineworld.Utilities;
 using Moq;
 using Xunit;
 
-namespace FluentCineworld.UnitTests.Listings
+namespace FluentCineworld.UnitTests.OldListings
 {
     [Trait("Category", "UnitTest")]
     public class SiteListingsScraperTests

@@ -1,13 +1,11 @@
-﻿using FluentAssertions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentAssertions;
 using FluentCineworld.OldListings;
 using Xunit;
 
-namespace FluentCineworld.UnitTests.Listings
+namespace FluentCineworld.UnitTests.OldListings
 {
     [Trait("Category", "UnitTest")]
     public class FilmTests

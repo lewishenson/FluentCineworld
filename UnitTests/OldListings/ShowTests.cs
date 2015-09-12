@@ -1,10 +1,10 @@
-﻿using FluentAssertions;
-using System;
+﻿using System;
 using System.Linq;
+using FluentAssertions;
 using FluentCineworld.OldListings;
 using Xunit;
 
-namespace FluentCineworld.UnitTests.Listings
+namespace FluentCineworld.UnitTests.OldListings
 {
     [Trait("Category", "UnitTest")]
     public class ShowTests

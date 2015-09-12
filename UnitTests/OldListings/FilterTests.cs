@@ -1,10 +1,10 @@
-﻿using FluentAssertions;
-using FluentCineworld.UnitTests.Builders;
-using System;
+﻿using System;
+using FluentAssertions;
 using FluentCineworld.OldListings;
+using FluentCineworld.UnitTests.Builders;
 using Xunit;
 
-namespace FluentCineworld.UnitTests.Listings
+namespace FluentCineworld.UnitTests.OldListings
 {
     [Trait("Category", "UnitTest")]
     public class FilterTests
