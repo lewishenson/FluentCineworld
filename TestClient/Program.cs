@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FluentCineworld.Sites;
-using FluentCineworld.Utilities;
 
 namespace FluentCineworld.TestClient
 {
@@ -13,7 +11,6 @@ namespace FluentCineworld.TestClient
             var cinema = GetCinema(args);
 
             RetrieveSite(cinema);
-            RetrieveDetails(cinema);
             RetrieveFilms(cinema);
 
             Console.Read();
@@ -27,19 +24,11 @@ namespace FluentCineworld.TestClient
             writer.Output(site);
         }
 
-        private static void RetrieveDetails(Cinema cinema)
-        {
-            var details = Cineworld.Details(cinema);
-
-            var writer = new DetailsConsoleWriter();
-            writer.Output(details);
-        }
-
         private static void RetrieveFilms(Cinema cinema)
         {
             var films = Cineworld.WhatsOn(cinema)
                                  .Retrieve();
-
+           
             var writer = new FilmConsoleWriter();
             writer.Output(films);
         }

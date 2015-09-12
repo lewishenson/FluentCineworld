@@ -1,15 +1,16 @@
 ﻿using System;
 using FluentCineworld.Details;
-using FluentCineworld.OldListings;
+using FluentCineworld.Listings;
 using FluentCineworld.Sites;
 
 namespace FluentCineworld
 {
     public static class Cineworld
     {
-        public static ICineworldListings WhatsOn(Cinema cinema)
+        [Obsolete]
+        public static OldListings.ICineworldListings WhatsOnOld(Cinema cinema)
         {
-            return new CineworldListings(cinema);
+            return new OldListings.CineworldListings(cinema);
         }
 
         [Obsolete]
@@ -21,6 +22,11 @@ namespace FluentCineworld
         public static SiteDetails Site(Cinema cinema)
         {
             return new SiteDetailsQueryExecutor(cinema).Execute();
+        }
+
+        public static ICineworldListings WhatsOn(Cinema cinema)
+        {
+            return new CineworldListings(cinema);
         }
     }
 }
