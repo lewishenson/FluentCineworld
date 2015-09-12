@@ -1,4 +1,4 @@
-﻿namespace FluentCineworld.Listings
+﻿namespace FluentCineworld.OldListings
 {
     public interface IScraper<out T>
     {

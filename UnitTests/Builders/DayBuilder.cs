@@ -1,8 +1,7 @@
-﻿using FluentCineworld.Listings;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentCineworld.OldListings;
 
 namespace FluentCineworld.UnitTests.Builders
 {

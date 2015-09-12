@@ -1,11 +1,11 @@
-﻿using FluentCineworld.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using FluentCineworld.Utilities;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.OldListings
 {
     public class SyndicationListingsScraper : IScraper<IEnumerable<Film>>
     {

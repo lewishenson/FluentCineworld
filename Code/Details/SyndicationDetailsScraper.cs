@@ -1,9 +1,9 @@
-﻿using FluentCineworld.Listings;
-using FluentCineworld.Utilities;
+﻿using FluentCineworld.Utilities;
 using System;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using FluentCineworld.OldListings;
 
 namespace FluentCineworld.Details
 {

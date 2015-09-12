@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using FluentCineworld.Listings;
+using FluentCineworld.OldListings;
 using FluentCineworld.Utilities;
 using Moq;
 using Xunit;
