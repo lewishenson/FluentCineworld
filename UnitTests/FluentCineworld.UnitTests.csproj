@@ -71,20 +71,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\BuildA.cs" />
-    <Compile Include="Builders\DayBuilder.cs" />
-    <Compile Include="Builders\FilmBuilder.cs" />
-    <Compile Include="Builders\IBuilder.cs" />
-    <Compile Include="Details\SyndicationDetailsScraperTests.cs" />
     <Compile Include="Listings\ListingsMapperTests.cs" />
-    <Compile Include="OldListings\DayTests.cs" />
-    <Compile Include="OldListings\FilmTests.cs" />
-    <Compile Include="OldListings\SiteListingsScraperTests.cs" />
-    <Compile Include="OldListings\FilterTests.cs" />
-    <Compile Include="OldListings\ShowTests.cs" />
-    <Compile Include="OldListings\SyndicationListingsScraperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Builders\ShowBuilder.cs" />
     <Compile Include="Sites\SiteDetailsQueryTests.cs" />
     <Compile Include="Sites\SiteMapperTests.cs" />
   </ItemGroup>

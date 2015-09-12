@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using FluentCineworld.OldListings;
 using FluentCineworld.Utilities;
 
 namespace FluentCineworld.Listings

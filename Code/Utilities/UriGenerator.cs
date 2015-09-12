@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FluentCineworld.OldListings
+namespace FluentCineworld.Utilities
 {
     internal static class UriGenerator
     {
@@ -13,11 +13,6 @@ namespace FluentCineworld.OldListings
         public static string SyndicationListings()
         {
             return "http://www.cineworld.co.uk/syndication/listings.xml";
-        }
-
-        public static string CinemaNames()
-        {
-            return "http://www.cineworld.co.uk/syndication/cinema_names.xml";
         }
 
         public static string Listings(Cinema cinema)
