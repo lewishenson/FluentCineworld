@@ -76,6 +76,7 @@
     <Compile Include="Builders\FilmBuilder.cs" />
     <Compile Include="Builders\IBuilder.cs" />
     <Compile Include="Details\SyndicationDetailsScraperTests.cs" />
+    <Compile Include="Listings\ListingsMapperTests.cs" />
     <Compile Include="OldListings\DayTests.cs" />
     <Compile Include="OldListings\FilmTests.cs" />
     <Compile Include="OldListings\SiteListingsScraperTests.cs" />

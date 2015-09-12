@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FluentCineworld.OldListings;
+using FluentCineworld.Listings;
 
 namespace FluentCineworld.TestClient
 {
@@ -19,7 +19,7 @@ namespace FluentCineworld.TestClient
 
         private void Output(Film film)
         {
-            Console.WriteLine("> {0} ({1})", film.Title, film.Rating);
+            Console.WriteLine("> {0} ({1})", film.Name, film.Rating);
 
             foreach (var day in film.Days)
             {
@@ -31,9 +31,9 @@ namespace FluentCineworld.TestClient
         {
             Console.Write("  {0} : ", day.Date.ToShortDateString());
 
-            foreach (var show in day.Shows)
+            foreach (var show in day.Showings)
             {
-                Console.Write(show.ToString());
+                Console.Write(show.DisplayText);
                 Console.Write(" ");
             }
 
