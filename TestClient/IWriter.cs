@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace FluentCineworld.TestClient
+﻿namespace FluentCineworld.TestClient
 {
-    public interface IWriter<T>
+    public interface IWriter<in T>
     {
         void Output(T item);
     }

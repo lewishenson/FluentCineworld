@@ -1,9 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
-
-namespace FluentCineworld.Utilities
+﻿namespace FluentCineworld.Utilities
 {
     public class WebClient : IWebClient
     {
