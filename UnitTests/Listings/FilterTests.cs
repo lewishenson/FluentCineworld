@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using FluentCineworld.Listings;
 using FluentCineworld.UnitTests.Builders;
@@ -22,9 +23,9 @@ namespace FluentCineworld.UnitTests.Listings
 
             var allFilms = new[] { film1, film2 };
 
-            var target = new Filter();
+            var filter = new Filter();
 
-            var filteredFilms = target.Apply(allFilms);
+            var filteredFilms = allFilms.Where(filter.Apply);
 
             filteredFilms.ShouldAllBeEquivalentTo(allFilms);
         }
@@ -49,11 +50,11 @@ namespace FluentCineworld.UnitTests.Listings
 
             var allFilms = new[] { fridayFilm, saturdayFilm, sundayFilm };
 
-            var target = new Filter();
-            target.DayOfWeek(DayOfWeek.Friday);
-            target.DayOfWeek(DayOfWeek.Saturday);
+            var filter = new Filter();
+            filter.DayOfWeek(DayOfWeek.Friday);
+            filter.DayOfWeek(DayOfWeek.Saturday);
 
-            var filteredFilms = target.Apply(allFilms);
+            var filteredFilms = allFilms.Where(filter.Apply);
 
             var expectedFilms = new[] { fridayFilm, saturdayFilm };
             filteredFilms.ShouldAllBeEquivalentTo(expectedFilms);
@@ -81,10 +82,10 @@ namespace FluentCineworld.UnitTests.Listings
 
             var allFilms = new[] { yesterdayFilm, todayFilm, tomorrowFilm };
 
-            var target = new Filter();
-            target.From(today);
+            var filter = new Filter();
+            filter.From(today);
 
-            var filteredFilms = target.Apply(allFilms);
+            var filteredFilms = allFilms.Where(filter.Apply);
 
             var expectedFilms = new[] { todayFilm, tomorrowFilm };
             filteredFilms.ShouldAllBeEquivalentTo(expectedFilms);
@@ -112,10 +113,10 @@ namespace FluentCineworld.UnitTests.Listings
 
             var allFilms = new[] { yesterdayFilm, todayFilm, tomorrowFilm };
 
-            var target = new Filter();
-            target.To(today);
+            var filter = new Filter();
+            filter.To(today);
 
-            var filteredFilms = target.Apply(allFilms);
+            var filteredFilms = allFilms.Where(filter.Apply);
 
             var expectedFilms = new[] { yesterdayFilm, todayFilm };
             filteredFilms.ShouldAllBeEquivalentTo(expectedFilms);

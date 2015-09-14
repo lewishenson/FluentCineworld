@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FluentCineworld.Listings
 {
-    public class Filter
+    public class Filter : IFilter
     {
         private readonly ICollection<DayOfWeek> _daysOfWeek;
         private DateTime? _from;
@@ -33,36 +33,38 @@ namespace FluentCineworld.Listings
             _to = value.Date;
         }
 
-        public IEnumerable<Film> Apply(IEnumerable<Film> films)
+        public bool Apply(Film film)
         {
+            var include = true;
+
             if (_daysOfWeek.Any())
             {
-                films = ApplyDayFilter(films, d => _daysOfWeek.Contains(d.Date.DayOfWeek));
+                include = ApplyDayFilter(film, d => _daysOfWeek.Contains(d.Date.DayOfWeek));
             }
 
             if (_from.HasValue)
             {
-                films = ApplyDayFilter(films, d => d.Date >= _from.Value);
+                include = include && ApplyDayFilter(film, d => d.Date >= _from.Value);
             }
 
             if (_to.HasValue)
             {
-                films = ApplyDayFilter(films, d => d.Date <= _to.Value);
+                include = include && ApplyDayFilter(film, d => d.Date <= _to.Value);
             }
 
-            return films;
+            return include;
         }
 
-        private IEnumerable<Film> ApplyDayFilter(IEnumerable<Film> films, Func<Day, bool> filter)
+        private bool ApplyDayFilter(Film film, Func<Day, bool> filter)
         {
-            var filteredItems = films.Where(f => f.Days.Any(filter));
+            var include = film.Days.Any(filter);
 
-            foreach (var item in filteredItems)
+            if (include)
             {
-                item.Days = item.Days.Where(filter);
+                film.Days = film.Days.Where(filter);
             }
 
-            return filteredItems;
+            return include;
         }
     }
 }

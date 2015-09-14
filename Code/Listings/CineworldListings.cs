@@ -1,19 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FluentCineworld.Listings
 {
     public class CineworldListings : ICineworldListings
     {
-        private readonly ListingsQueryExecutor _queryExecutor;
+        private readonly IListingsQueryExecutor _queryExecutor;
+        private readonly IFilter _filter;
 
-        internal CineworldListings(Cinema cinema)
+        internal CineworldListings(IListingsQueryExecutor queryExecutor, IFilter filter)
         {
-            _queryExecutor = new ListingsQueryExecutor(cinema);
+            _queryExecutor = queryExecutor;
+            _filter = filter;
+        }
+
+        public ICineworldListings ForDayOfWeek(DayOfWeek dayOfWeek)
+        {
+            _filter.DayOfWeek(dayOfWeek);
+            return this;
+        }
+
+        public ICineworldListings From(DateTime from)
+        {
+            _filter.From(from);
+            return this;
+        }
+
+        public ICineworldListings To(DateTime to)
+        {
+            _filter.To(to);
+            return this;
         }
 
         public IEnumerable<Film> Retrieve()
         {
-            return _queryExecutor.Execute();
+            var films = _queryExecutor.Execute()
+                                      .Where(_filter.Apply)
+                                      .OrderBy(film => film.Name);
+
+            return films;
         }
     }
 }

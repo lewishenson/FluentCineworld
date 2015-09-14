@@ -3,7 +3,7 @@ using FluentCineworld.Utilities;
 
 namespace FluentCineworld.Listings
 {
-    public class ListingsQueryExecutor
+    public class ListingsQueryExecutor : IListingsQueryExecutor
     {
         private readonly Cinema _cinema;
         private readonly ListingsQuery _query;

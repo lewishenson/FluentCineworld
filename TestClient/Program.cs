@@ -27,7 +27,10 @@ namespace FluentCineworld.TestClient
         private static void RetrieveFilms(Cinema cinema)
         {
             var films = Cineworld.WhatsOn(cinema)
-                                 .Retrieve();
+                                 .ForDayOfWeek(DayOfWeek.Tuesday)
+                                 .ForDayOfWeek(DayOfWeek.Thursday)
+                                 .Retrieve()
+                                 .ToList();
            
             var writer = new FilmConsoleWriter();
             writer.Output(films);

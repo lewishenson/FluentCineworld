@@ -53,7 +53,9 @@
     <Compile Include="Listings\Film.cs" />
     <Compile Include="Listings\FilmDto.cs" />
     <Compile Include="Listings\ICineworldListings.cs" />
+    <Compile Include="Listings\IFilter.cs" />
     <Compile Include="Listings\IListingsMapper.cs" />
+    <Compile Include="Listings\IListingsQueryExecutor.cs" />
     <Compile Include="Listings\ListingsMapper.cs" />
     <Compile Include="Listings\ListingsQuery.cs" />
     <Compile Include="Listings\ListingsQueryExecutor.cs" />
