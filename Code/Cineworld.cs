@@ -12,7 +12,8 @@ namespace FluentCineworld
 
         public static ICineworldListings WhatsOn(Cinema cinema)
         {
-            return new CineworldListings(cinema);
+            var queryExecutor = new ListingsQueryExecutor(cinema);
+            return new CineworldListings(queryExecutor, new Filter());
         }
     }
 }
