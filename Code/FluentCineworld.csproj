@@ -63,7 +63,7 @@
     <Compile Include="Listings\ShowingAttributes.cs" />
     <Compile Include="Listings\ShowingDto.cs" />
     <Compile Include="Listings\Filter.cs" />
-    <Compile Include="Utilities\TextFormatter.cs" />
+    <Compile Include="Listings\TitleFormatter.cs" />
     <Compile Include="Utilities\UriGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sites\ISiteMapper.cs" />

@@ -29,7 +29,7 @@ namespace FluentCineworld.Listings
             return new Film
                 {
                     Duration = filmDto.Duration,
-                    Name = filmDto.Name,
+                    Name = TitleFormatter.Format(filmDto.Name),
                     Rating = filmDto.RatingName,
                     Days = filmDto.Days.Select(Map)
                 };
