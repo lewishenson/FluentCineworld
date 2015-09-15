@@ -38,10 +38,11 @@
 
         private System.Net.WebClient CreateWebClient()
         {
-            return new System.Net.WebClient
-                {
-                    Headers = { ["UserAgent"] = _userAgent }
-                };
+            var webClient = new System.Net.WebClient();
+
+            webClient.Headers.Add("UserAgent", _userAgent);
+
+            return webClient;
         }
     }
 }
