@@ -2,9 +2,11 @@
 
 Fluent C# API for obtaining Cineworld listings.
 
-Two approaches are supported - using the Cineworld syndication feed (default behaviour) or scraping the Cineworld site.
-
 The API uses the fluid builder pattern so the below examples can be combined.
+
+## Version 2.x
+
+FluentCineworld has been changed to use the JSON data from the Cineworld site now, the HTML scraping and XML parsing approach has been thrown away. Version 2 is faster than before and features some different information - for example, the screen number. Unfortunately there are also a few API breaking changes but hopefully it is worth the pain.
 
 ## Usage
 
@@ -31,14 +33,6 @@ var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
                      .ForDayOfWeek(DayOfWeek.Friday)
                      .Retrieve();
 ```                     
-
-Using the alternative behaviour of scraping the Cineworld site to obtain the data:
-
-```csharp
-var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                     .UsingSyndication(false)
-                     .Retrieve();
-```
 
 
 ## NuGet
