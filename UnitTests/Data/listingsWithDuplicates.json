@@ -1,0 +1,87 @@
+[
+    {
+        "rdesc": "Unaccompanied children of any age may watch. A 'PG' film should not disturb a child aged around eight or older. However, parents are advised to consider whether the content may upset younger or more sensitive children.",
+        "rn": "PG",
+        "TYP": [ "2D,AC" ],
+        "rtn": "PG",
+        "dur": 165,
+        "rid": 10,
+        "BD": [
+            {
+                "d": 1442271600000,
+                "P": [
+                    {
+                        "dt": 1442338200000,
+                        "time": "18:30",
+                        "sub": 0,
+                        "dattr": "2D,Alternative Content,Audio Described,3D,Superscreen,4DX,Movies for Juniors,Subtitled,Unlimited Preview,IMAX",
+                        "vt": 1,
+                        "is3d": false,
+                        "attr": "2D,AC,AD,3D,SS,4DX,M4J,ST,PRE,IMAX",
+                        "code": "86631",
+                        "dub": 0,
+                        "vn": "Screen 4",
+                        "sold": true
+                    }
+                ],
+                "date": "15/09/2015"
+            }
+        ],
+        "n": "2D - Aida On Sydney Harbour",
+        "rfn": "/xmedia-cw/img/rating/uk/PG.png",
+        "code": "HO00002679",
+        "TYPD": [ "2D,AC" ]
+    },
+    {
+        "rdesc": "Unaccompanied children of any age may watch. A 'PG' film should not disturb a child aged around eight or older. However, parents are advised to consider whether the content may upset younger or more sensitive children.",
+        "rn": "PG",
+        "TYP": [ "2D,AC" ],
+        "rtn": "PG",
+        "dur": 165,
+        "rid": 10,
+        "BD": [
+            {
+                "d": 1442271600000,
+                "P": [
+                    {
+                        "dt": 1442338200000,
+                        "time": "19:30",
+                        "sub": 0,
+                        "dattr": "2D,Alternative Content,Audio Described,3D,Superscreen,4DX,Movies for Juniors,Subtitled,Unlimited Preview,IMAX",
+                        "vt": 1,
+                        "is3d": false,
+                        "attr": "2D,AC,AD,3D,SS,4DX,M4J,ST,PRE,IMAX",
+                        "code": "86631",
+                        "dub": 0,
+                        "vn": "Screen 5",
+                        "sold": true
+                    }
+                ],
+                "date": "15/09/2015"
+            },
+            {
+                "d": 1442271600000,
+                "P": [
+                    {
+                        "dt": 1442338200000,
+                        "time": "19:30",
+                        "sub": 0,
+                        "dattr": "2D,Alternative Content,Audio Described,3D,Superscreen,4DX,Movies for Juniors,Subtitled,Unlimited Preview,IMAX",
+                        "vt": 1,
+                        "is3d": false,
+                        "attr": "2D,AC,AD,3D,SS,4DX,M4J,ST,PRE,IMAX",
+                        "code": "86631",
+                        "dub": 0,
+                        "vn": "Screen 5",
+                        "sold": true
+                    }
+                ],
+                "date": "16/09/2015"
+            }
+        ],
+        "n": "2D - Aida On Sydney Harbour",
+        "rfn": "/xmedia-cw/img/rating/uk/PG.png",
+        "code": "HO00002679",
+        "TYPD": [ "2D,AC" ]
+    }
+]

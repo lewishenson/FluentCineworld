@@ -17,7 +17,51 @@ namespace FluentCineworld.Listings
 
             var dateConverter = new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" };
             var filmDtos = JsonConvert.DeserializeObject<FilmDto[]>(json, dateConverter);
+            var films = Map(filmDtos);
 
+            var filmsGroupedByName = films.GroupBy(film => film.Name).ToArray();
+            foreach (var filmGroup in filmsGroupedByName)
+            {
+                if (filmGroup.Count() == 1)
+                {
+                    yield return filmGroup.Single();
+                }
+                else
+                {
+                    yield return MergeFilms(filmGroup);
+                }
+            }
+        }
+
+        private static Film MergeFilms(IEnumerable<Film> films)
+        {
+            var primaryFilm = films.First();
+
+            foreach (var currentFilm in films.Where(film => film != primaryFilm))
+            {
+                foreach (var currentDay in currentFilm.Days)
+                {
+                    var primaryDay = primaryFilm.Days.SingleOrDefault(day => day.Date == currentDay.Date);
+                    if (primaryDay == null)
+                    {
+                        primaryFilm.Days = primaryFilm.Days.Concat(new[] { currentDay })
+                                                           .OrderBy(day => day.Date)
+                                                           .ToArray();
+                    }
+                    else
+                    {
+                        primaryDay.Showings = primaryDay.Showings.Concat(currentDay.Showings)
+                                                                 .OrderBy(showing => showing.Time)
+                                                                 .ToArray();
+                    }
+                }
+            }
+
+            return primaryFilm;
+        }
+
+        private static IEnumerable<Film> Map(IEnumerable<FilmDto> filmDtos)
+        {
             foreach (var filmDto in filmDtos)
             {
                 yield return Map(filmDto);
@@ -31,7 +75,7 @@ namespace FluentCineworld.Listings
                     Duration = filmDto.Duration,
                     Name = TitleFormatter.Format(filmDto.Name),
                     Rating = filmDto.RatingName,
-                    Days = filmDto.Days.Select(Map)
+                    Days = filmDto.Days.Select(Map).ToArray()
                 };
         }
 
@@ -40,7 +84,7 @@ namespace FluentCineworld.Listings
             return new Day
                 {
                     Date = dayDto.Date,
-                    Showings = dayDto.Showings.Select(Map)
+                    Showings = dayDto.Showings.Select(Map).ToArray()
                 };
         }
 

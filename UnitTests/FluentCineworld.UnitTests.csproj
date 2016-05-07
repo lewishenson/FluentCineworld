@@ -95,6 +95,9 @@
     <None Include="Data\cinemas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Data\listingsWithDuplicates.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Data\listings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
