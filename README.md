@@ -39,4 +39,6 @@ var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
 
 If you don't care about the source code you can just install FluentCineworld using NuGet.
 
-    PM> Install-Package FluentCineworld
+```powershell
+PM> Install-Package FluentCineworld
+```
