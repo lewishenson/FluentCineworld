@@ -6,8 +6,6 @@ namespace FluentCineworld
     {
         public static readonly Cinema AberdeenQueensLinks = new Cinema(1010804, "Aberdeen - Queens Links");
         public static readonly Cinema AberdeenUnionSquare = new Cinema(1010808, "Aberdeen - Union Square");
-        [Obsolete("Use AberdeenUnionSquare instead - AberdeenUnionSquire will be removed in a future version.")]
-        public static readonly Cinema AberdeenUnionSquire = new Cinema(1010808, "Aberdeen - Union Square");
         public static readonly Cinema Aldershot = new Cinema(1010805, "Aldershot");
         public static readonly Cinema Ashford = new Cinema(1010806, "Ashford");
         public static readonly Cinema AshtonUnderLyne = new Cinema(1010807, "Ashton-under-Lyne");
@@ -57,8 +55,6 @@ namespace FluentCineworld
         public static readonly Cinema LondonEnfield = new Cinema(1010835, "London - Enfield");
         public static readonly Cinema LondonFeltham = new Cinema(1010837, "London - Feltham");
         public static readonly Cinema LondonFulhamRoad = new Cinema(1010838, "London - Fulham Road");
-        [Obsolete("Cinema has closed - LondonHammersmith will be removed in a future version.")]
-        public static readonly Cinema LondonHammersmith = new Cinema(1010845, "London - Hammersmith");
         public static readonly Cinema LondonHaymarket = new Cinema(1010848, "London - Haymarket");
         public static readonly Cinema LondonIlford = new Cinema(1010852, "London - Ilford");
         public static readonly Cinema LondonStaplesCorner = new Cinema(1010873, "London - Staples Corner");
@@ -71,8 +67,6 @@ namespace FluentCineworld
         public static readonly Cinema Luton = new Cinema(1010859, "Luton");
         public static readonly Cinema Middlesbrough = new Cinema(1010860, "Middlesbrough");
         public static readonly Cinema MiltonKeynes = new Cinema(1010861, "Milton Keynes");
-        [Obsolete("Use NewportSpyttyPark instead - Newport will be removed in a future version.")]
-        public static readonly Cinema Newport = new Cinema(1010862, "Newport - Spytty Park");
         public static readonly Cinema NewportFriarsWalk = new Cinema(1010893, "Newport - Friars Walk");
         public static readonly Cinema NewportSpyttyPark = new Cinema(1010862, "Newport - Spytty Park");
         public static readonly Cinema Northampton = new Cinema(1010863, "Northampton");
