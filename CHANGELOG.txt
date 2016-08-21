@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v2.2.0.0
+Updated list of cinemas.
+
 v2.1.0.0
 Updated list of cinemas.
 Duplicate films now merged.
