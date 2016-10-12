@@ -5,16 +5,11 @@ namespace FluentCineworld.Utilities
     // TODO: Rename [LH]
     public class WebClient : IWebClient
     {
+        private static readonly HttpClient Client = new HttpClient();
+
         public string GetContent(string address)
         {
-            string content;
-
-            using (var httpClient = new HttpClient())
-            {
-                content = httpClient.GetStringAsync(address).Result;
-            }
-
-            return content;
+            return Client.GetStringAsync(address).Result;
         }
     }
 }
