@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentCineworld", "Code\FluentCineworld.csproj", "{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}"
-EndProject
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{497A5321-BD33-4A57-804B-B5FCD4E214F5}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.txt = CHANGELOG.txt
@@ -15,11 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{C2F32C4E-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test Client", "Test Client", "{7506D3A7-7B02-43E0-881F-4ED52B2DA814}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentCineworld.TestClient", "TestClient\FluentCineworld.TestClient.csproj", "{D0C01BA5-29EB-48DF-85F9-2FB3CFB09EAD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{DDBE30E2-907E-4A86-9AE5-CE62308B39F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentCineworld.UnitTests", "UnitTests\FluentCineworld.UnitTests.csproj", "{C76F9E85-A7B5-4713-8C33-8A280718FCB4}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld", "Code\FluentCineworld.xproj", "{9CEA9141-8C65-4769-90FE-45AE676FF494}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.TestClient", "TestClient\FluentCineworld.TestClient.xproj", "{9F51CD35-89C7-40CE-9D68-C9577A393468}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.UnitTests", "UnitTests\FluentCineworld.UnitTests.xproj", "{218A5CD1-129F-47DF-8E27-9071DDBE631F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,25 +29,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B7E708C-9B52-4EC0-84B7-0530F5A042D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0C01BA5-29EB-48DF-85F9-2FB3CFB09EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0C01BA5-29EB-48DF-85F9-2FB3CFB09EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0C01BA5-29EB-48DF-85F9-2FB3CFB09EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0C01BA5-29EB-48DF-85F9-2FB3CFB09EAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C76F9E85-A7B5-4713-8C33-8A280718FCB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C76F9E85-A7B5-4713-8C33-8A280718FCB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C76F9E85-A7B5-4713-8C33-8A280718FCB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C76F9E85-A7B5-4713-8C33-8A280718FCB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CEA9141-8C65-4769-90FE-45AE676FF494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CEA9141-8C65-4769-90FE-45AE676FF494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CEA9141-8C65-4769-90FE-45AE676FF494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CEA9141-8C65-4769-90FE-45AE676FF494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F51CD35-89C7-40CE-9D68-C9577A393468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F51CD35-89C7-40CE-9D68-C9577A393468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F51CD35-89C7-40CE-9D68-C9577A393468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F51CD35-89C7-40CE-9D68-C9577A393468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{218A5CD1-129F-47DF-8E27-9071DDBE631F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{218A5CD1-129F-47DF-8E27-9071DDBE631F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{218A5CD1-129F-47DF-8E27-9071DDBE631F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{218A5CD1-129F-47DF-8E27-9071DDBE631F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2B7E708C-9B52-4EC0-84B7-0530F5A042D8} = {C2F32C4E-8473-4789-9EA8-A185AB74AD20}
-		{D0C01BA5-29EB-48DF-85F9-2FB3CFB09EAD} = {7506D3A7-7B02-43E0-881F-4ED52B2DA814}
-		{C76F9E85-A7B5-4713-8C33-8A280718FCB4} = {DDBE30E2-907E-4A86-9AE5-CE62308B39F3}
+		{9CEA9141-8C65-4769-90FE-45AE676FF494} = {C2F32C4E-8473-4789-9EA8-A185AB74AD20}
+		{9F51CD35-89C7-40CE-9D68-C9577A393468} = {7506D3A7-7B02-43E0-881F-4ED52B2DA814}
+		{218A5CD1-129F-47DF-8E27-9071DDBE631F} = {DDBE30E2-907E-4A86-9AE5-CE62308B39F3}
 	EndGlobalSection
 EndGlobal
