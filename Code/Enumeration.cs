@@ -33,7 +33,10 @@ namespace FluentCineworld
         public static IEnumerable<T> GetAll<T>() where T : Enumeration
         {
             var type = typeof(T);
-            var fields = type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
+
+            // TODO: Verify if this works! [LH]
+            var fields = type.GetRuntimeFields();
+            //var fields = type.GetFieldInfos(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
 
             foreach (var info in fields)
             {
@@ -72,7 +75,7 @@ namespace FluentCineworld
             if (matchingItem == null)
             {
                 var message = string.Format("'{0}' is not a valid {1} in {2}", value, description, typeof(T));
-                throw new ApplicationException(message);
+                throw new InvalidOperationException(message);
             }
 
             return matchingItem;

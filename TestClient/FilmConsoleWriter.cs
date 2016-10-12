@@ -29,7 +29,7 @@ namespace FluentCineworld.TestClient
 
         private void Output(Day day)
         {
-            Console.Write("  {0} : ", day.Date.ToShortDateString());
+            Console.Write("  {0} : ", day.Date.ToString("d"));
 
             foreach (var show in day.Showings)
             {
