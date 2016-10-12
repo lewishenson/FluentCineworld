@@ -9,7 +9,7 @@
         "dotnet-test-xunit": "1.0.0-rc2-192208-24",
         "FluentAssertions": "4.15.0",
         "Moq": "4.6.38-alpha",
-        "Microsoft.NETCore.App": "1.0.1"
+        "Code": "1.0.0-*"
     },
     "testRunner": "xunit",
     "frameworks": {
@@ -17,13 +17,17 @@
             "dependencies": {
                 "Microsoft.NETCore.App": {
                     "type": "platform",
-                    "version": "1.0.0"
+                    "version": "1.0.1"
                 }
             },
             "imports": [
-                "dotnet5.4",
-                "portable-net451+win8"
+                "dnxcore50",
+                "portable-net45+win8"
             ]
+        },
+        "net451": {
+            "dependencies": {
+            }
         }
     }
 }
