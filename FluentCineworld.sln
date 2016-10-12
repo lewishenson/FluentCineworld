@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{497A5321-BD33-4A57-804B-B5FCD4E214F5}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.txt = CHANGELOG.txt
+		global.json = global.json
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 		Settings.StyleCop = Settings.StyleCop
