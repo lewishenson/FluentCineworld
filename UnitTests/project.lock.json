@@ -2800,6 +2800,20 @@
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1"
         }
+      },
+      "FluentCineworld/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.6",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "netstandard1.6/FluentCineworld.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/FluentCineworld.dll": {}
+        }
       }
     },
     ".NETFramework,Version=v4.5.1": {
@@ -3575,6 +3589,20 @@
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1"
+        }
+      },
+      "FluentCineworld/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "net451/FluentCineworld.dll": {}
+        },
+        "runtime": {
+          "net451/FluentCineworld.dll": {}
         }
       }
     }
@@ -9053,6 +9081,11 @@
     "Code/1.0.0": {
       "type": "project",
       "path": "../Code/project.json"
+    },
+    "FluentCineworld/1.0.0": {
+      "type": "project",
+      "path": "../Code/project.json",
+      "msbuildProject": "../Code/FluentCineworld.xproj"
     }
   },
   "projectFileDependencyGroups": {
