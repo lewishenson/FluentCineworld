@@ -30,6 +30,7 @@ namespace FluentCineworld
         public static readonly Cinema Chesterfield = new Cinema(1010829, "Chesterfield");
         public static readonly Cinema Chichester = new Cinema(1010823, "Chichester");
         public static readonly Cinema Crawley = new Cinema(1010827, "Crawley");
+        public static readonly Cinema DaltonPark = new Cinema(1010899, "Dalton Park");
         public static readonly Cinema Didcot = new Cinema(1010830, "Didcot");
         public static readonly Cinema Didsbury = new Cinema(1010831, "Didsbury");
         public static readonly Cinema Dundee = new Cinema(1010832, "Dundee");
@@ -52,8 +53,6 @@ namespace FluentCineworld
         public static readonly Cinema IsleOfWight = new Cinema(1010853, "Isle Of Wight");
         public static readonly Cinema Jersey = new Cinema(1010855, "Jersey");
         public static readonly Cinema Leigh = new Cinema(1010856, "Leigh");
-        [Obsolete("Cinema has closed - Liverpool will be removed in a future version.")]
-        public static readonly Cinema Liverpool = new Cinema(1010857, "Liverpool");
         public static readonly Cinema Llandudno = new Cinema(1010858, "Llandudno");
         public static readonly Cinema LondonBexleyheath = new Cinema(1010810, "London - Bexleyheath");
         public static readonly Cinema LondonChelsea = new Cinema(1010825, "London - Chelsea");
@@ -63,9 +62,7 @@ namespace FluentCineworld
         public static readonly Cinema LondonHaymarket = new Cinema(1010848, "London - Haymarket");
         public static readonly Cinema LondonIlford = new Cinema(1010852, "London - Ilford");
         public static readonly Cinema LondonLeicesterSquare = new Cinema(1010820, "London - Leicester Square");
-        [Obsolete("Cinema has closed - LondonStaplesCorner will be removed in a future version.")]
-        public static readonly Cinema LondonStaplesCorner = new Cinema(1010873, "London - Staples Corner");
-        public static readonly Cinema LondonTheO2Greenwich = new Cinema(1010842, "London - The O2, Greenwich");
+        public static readonly Cinema LondonTheO2Greenwich = new Cinema(1010842, "London - The O2 Greenwich");
         public static readonly Cinema LondonWandsworth = new Cinema(1010879, "London - Wandsworth");
         public static readonly Cinema LondonWembley = new Cinema(1010880, "London - Wembley");
         public static readonly Cinema LondonWestIndiaQuay = new Cinema(1010882, "London - West India Quay");
@@ -82,8 +79,6 @@ namespace FluentCineworld
         public static readonly Cinema Rochester = new Cinema(1010865, "Rochester");
         public static readonly Cinema Rugby = new Cinema(1010866, "Rugby");
         public static readonly Cinema Runcorn = new Cinema(1010867, "Runcorn");
-        [Obsolete("Use CheltenhamTheScreeningRooms instead - TheScreeningRoomsCheltenham will be removed in a future version.")]
-        public static readonly Cinema TheScreeningRoomsCheltenham = new Cinema(1010828, "The Screening Rooms - Cheltenham");
         public static readonly Cinema Sheffield = new Cinema(1010869, "Sheffield");
         public static readonly Cinema Shrewsbury = new Cinema(1010870, "Shrewsbury");
         public static readonly Cinema Solihull = new Cinema(1010871, "Solihull");
