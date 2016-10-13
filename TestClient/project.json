@@ -1,5 +1,8 @@
 {
-    "version": "1.0.0-*",
+    "title": "FluentCineworld.TestClient",
+    "copyright": "Copyright © Lewis Henson 2016",
+    "description": "Test Client for FluentCineworld",
+    "version": "3.0.0-*",
     "buildOptions": {
         "emitEntryPoint": true
     },
