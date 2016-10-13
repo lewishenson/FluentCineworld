@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings
 {
     public interface ICineworldListings
     {
-        IEnumerable<Film> Retrieve();
+        Task<IEnumerable<Film>> RetrieveAsync();
 
         ICineworldListings ForDayOfWeek(DayOfWeek dayOfWeek);
 

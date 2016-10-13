@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FluentCineworld.Utilities;
 
 namespace FluentCineworld.Listings
@@ -14,9 +15,9 @@ namespace FluentCineworld.Listings
             _query = new ListingsQuery(new WebClient(), new ListingsMapper());
         }
 
-        public IEnumerable<Film> Execute()
+        public async Task<IEnumerable<Film>> ExecuteAsync()
         {
-            return _query.Execute(_cinema);
+            return await _query.ExecuteAsync(_cinema);
         }
     }
 }

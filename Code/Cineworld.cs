@@ -1,13 +1,15 @@
-﻿using FluentCineworld.Listings;
+﻿using System.Threading.Tasks;
+using FluentCineworld.Listings;
 using FluentCineworld.Sites;
 
 namespace FluentCineworld
 {
     public static class Cineworld
     {
-        public static SiteDetails Site(Cinema cinema)
+        public static async Task<SiteDetails> SiteAsync(Cinema cinema)
         {
-            return new SiteDetailsQueryExecutor(cinema).Execute();
+            var queryExecutor = new SiteDetailsQueryExecutor(cinema);
+            return await queryExecutor.ExecuteAsync();
         }
 
         public static ICineworldListings WhatsOn(Cinema cinema)

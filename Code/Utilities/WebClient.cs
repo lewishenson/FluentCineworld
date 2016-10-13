@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace FluentCineworld.Utilities
 {
@@ -7,9 +8,9 @@ namespace FluentCineworld.Utilities
     {
         private static readonly HttpClient Client = new HttpClient();
 
-        public string GetContent(string address)
+        public async Task<string> GetContentAsync(string address)
         {
-            return Client.GetStringAsync(address).Result;
+            return await Client.GetStringAsync(address);
         }
     }
 }
