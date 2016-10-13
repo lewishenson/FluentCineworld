@@ -42,5 +42,10 @@ namespace FluentCineworld.Listings
 
             return filteredFilms;
         }
+
+        public IEnumerable<Film> Retrieve()
+        {
+            return RetrieveAsync().Result;
+        }
     }
 }
