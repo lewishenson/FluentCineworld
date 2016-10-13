@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using FluentCineworld.Utilities;
 
 namespace FluentCineworld.Sites
@@ -14,10 +15,10 @@ namespace FluentCineworld.Sites
             _siteMapper = siteMapper;
         }
 
-        public SiteDetails Execute(Cinema cinema)
+        public async Task<SiteDetails> ExecuteAsync(Cinema cinema)
         {
             var url = UriGenerator.CinemaSites();
-            var json = _webClient.GetContent(url);
+            var json = await _webClient.GetContentAsync(url);
 
             var allSites = _siteMapper.Map(json);
             var site = allSites.SingleOrDefault(s => s.Id == cinema.Value);

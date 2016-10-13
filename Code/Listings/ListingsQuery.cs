@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FluentCineworld.Utilities;
 
 namespace FluentCineworld.Listings
@@ -14,10 +15,10 @@ namespace FluentCineworld.Listings
             _listingsMapper = listingsMapper;
         }
 
-        public IEnumerable<Film> Execute(Cinema cinema)
+        public async Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema)
         {
             var url = UriGenerator.Listings(cinema);
-            var json = _webClient.GetContent(url);
+            var json = await _webClient.GetContentAsync(url);
 
             var allListings = _listingsMapper.Map(json);
 

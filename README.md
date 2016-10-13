@@ -13,25 +13,25 @@ FluentCineworld has been changed to use the JSON data from the Cineworld site no
 Getting all listings for a cinema:
 
 ```csharp
-var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                     .Retrieve();
+var shows = await Cineworld.WhatsOn(Cinema.MiltonKeynes)
+                           .RetrieveAsync();
 ```
 
 Getting all listings between certain dates:
 
 ```csharp
-var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                     .From(new DateTime(2014, 1, 1))
-                     .To(new DateTime(2014, 1, 8))
-                     .Retrieve();
+var shows = await Cineworld.WhatsOn(Cinema.MiltonKeynes)
+                          .From(new DateTime(2014, 1, 1))
+                          .To(new DateTime(2014, 1, 8))
+                          .RetrieveAsync();
 ```
 
 Getting all listings for a certain day of week:
 
 ```csharp
-var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                     .ForDayOfWeek(DayOfWeek.Friday)
-                     .Retrieve();
+var shows = await Cineworld.WhatsOn(Cinema.MiltonKeynes)
+                           .ForDayOfWeek(DayOfWeek.Friday)
+                           .RetrieveAsync();
 ```                     
 
 
