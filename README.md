@@ -21,9 +21,9 @@ Getting all listings between certain dates:
 
 ```csharp
 var shows = await Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                          .From(new DateTime(2014, 1, 1))
-                          .To(new DateTime(2014, 1, 8))
-                          .RetrieveAsync();
+                           .From(new DateTime(2014, 1, 1))
+                           .To(new DateTime(2014, 1, 8))
+                           .RetrieveAsync();
 ```
 
 Getting all listings for a certain day of week:
