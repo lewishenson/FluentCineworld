@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using FluentAssertions;
 using FluentCineworld.Sites;
 using FluentCineworld.Utilities;
@@ -11,24 +12,33 @@ namespace FluentCineworld.UnitTests.Sites
     public class SiteDetailsQueryTests
     {
         [Fact]
-        public void GivenThereIsNoMatchingCinema_ThenNullShouldBeReturned()
+        public async void GivenThereIsNoMatchingCinema_ThenNullShouldBeReturned()
         {
-            var webClient = Mock.Of<IWebClient>(w => w.GetContent(It.IsAny<string>()) == string.Empty);
+            var webClient = Mock.Of<IWebClient>();
+            Mock.Get(webClient)
+                .Setup(w => w.GetContentAsync(It.IsAny<string>()))
+                .Returns(Task.FromResult(""));
+
             var query = new SiteDetailsQuery(webClient, new SiteMapper());
 
-            var actual = query.Execute(Cinema.MiltonKeynes);
+            var actual = await query.ExecuteAsync(Cinema.MiltonKeynes);
 
             actual.Should().BeNull();
         }
 
         [Fact]
-        public void GivenThereIsAMatchingCinema_ThenItsSiteShouldBeReturned()
+        public async void GivenThereIsAMatchingCinema_ThenItsSiteShouldBeReturned()
         {
             var json = File.ReadAllText(@"Data\cinemas.json");
-            var webClient = Mock.Of<IWebClient>(w => w.GetContent(It.IsAny<string>()) == json);
+
+            var webClient = Mock.Of<IWebClient>();
+            Mock.Get(webClient)
+                .Setup(w => w.GetContentAsync(It.IsAny<string>()))
+                .Returns(Task.FromResult(json));
+
             var query = new SiteDetailsQuery(webClient, new SiteMapper());
 
-            var actual = query.Execute(Cinema.MiltonKeynes);
+            var actual = query.ExecuteAsync(Cinema.MiltonKeynes);
 
             actual.Should().NotBeNull();
         }
