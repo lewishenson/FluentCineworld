@@ -4,9 +4,11 @@ Fluent C# API for obtaining Cineworld listings.
 
 The API uses the fluid builder pattern so the below examples can be combined.
 
-## Version 2.x
+## Version 3.x
 
-FluentCineworld has been changed to use the JSON data from the Cineworld site now, the HTML scraping and XML parsing approach has been thrown away. Version 2 is faster than before and features some different information - for example, the screen number. Unfortunately there are also a few API breaking changes but hopefully it is worth the pain.
+FluentCineworld now runs on both .NET Core and the full .NET Framework.
+
+Asynchronous support has also been added.
 
 ## Usage
 
