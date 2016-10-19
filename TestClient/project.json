@@ -8,7 +8,7 @@
     },
 
     "dependencies": {
-        "Code": "1.0.0-*"
+        "Code": "3.0.0-*"
     },
 
     "frameworks": {
