@@ -1,37 +1,39 @@
-# FluentCineworld [![Build status](http://img.shields.io/appveyor/ci/lewishenson/fluentcineworld.svg?style=flat)](https://ci.appveyor.com/project/lewishenson/FluentCineworld) [![NuGet package](https://buildstats.info/nuget/FluentCineworld)](https://www.nuget.org/packages/FluentCineworld)
+# FluentCineworld [![NuGet package](https://buildstats.info/nuget/FluentCineworld)](https://www.nuget.org/packages/FluentCineworld)
 
 Fluent C# API for obtaining Cineworld listings.
 
 The API uses the fluid builder pattern so the below examples can be combined.
 
-## Version 2.x
+## Version 3.x
 
-FluentCineworld has been changed to use the JSON data from the Cineworld site now, the HTML scraping and XML parsing approach has been thrown away. Version 2 is faster than before and features some different information - for example, the screen number. Unfortunately there are also a few API breaking changes but hopefully it is worth the pain.
+FluentCineworld now runs on both .NET Core and the full .NET Framework.
+
+Asynchronous support has also been added.
 
 ## Usage
 
 Getting all listings for a cinema:
 
 ```csharp
-var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                     .Retrieve();
+var shows = await Cineworld.WhatsOn(Cinema.MiltonKeynes)
+                           .RetrieveAsync();
 ```
 
 Getting all listings between certain dates:
 
 ```csharp
-var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                     .From(new DateTime(2014, 1, 1))
-                     .To(new DateTime(2014, 1, 8))
-                     .Retrieve();
+var shows = await Cineworld.WhatsOn(Cinema.MiltonKeynes)
+                           .From(new DateTime(2014, 1, 1))
+                           .To(new DateTime(2014, 1, 8))
+                           .RetrieveAsync();
 ```
 
 Getting all listings for a certain day of week:
 
 ```csharp
-var shows = Cineworld.WhatsOn(Cinema.MiltonKeynes)
-                     .ForDayOfWeek(DayOfWeek.Friday)
-                     .Retrieve();
+var shows = await Cineworld.WhatsOn(Cinema.MiltonKeynes)
+                           .ForDayOfWeek(DayOfWeek.Friday)
+                           .RetrieveAsync();
 ```                     
 
 

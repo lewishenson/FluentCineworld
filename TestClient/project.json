@@ -1,0 +1,29 @@
+{
+    "title": "FluentCineworld.TestClient",
+    "copyright": "Copyright © Lewis Henson 2016",
+    "description": "Test Client for FluentCineworld",
+    "version": "3.0.0-*",
+    "buildOptions": {
+        "emitEntryPoint": true
+    },
+
+    "dependencies": {
+        "Code": "3.0.0-*"
+    },
+
+    "frameworks": {
+        "netcoreapp1.0": {
+            "imports": "dnxcore50",
+            "dependencies": {
+                "Microsoft.NETCore.App": {
+                    "type": "platform",
+                    "version": "1.0.1"
+                }
+            }
+        },
+        "net451": {
+            "dependencies": {
+            }
+        }
+    }
+}

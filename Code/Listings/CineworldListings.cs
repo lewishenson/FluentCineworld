@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings
 {
@@ -33,13 +34,18 @@ namespace FluentCineworld.Listings
             return this;
         }
 
+        public async Task<IEnumerable<Film>> RetrieveAsync()
+        {
+            var allFilms = await _queryExecutor.ExecuteAsync();
+            var filteredFilms = allFilms.Where(_filter.Apply)
+                                        .OrderBy(film => film.Name);
+
+            return filteredFilms;
+        }
+
         public IEnumerable<Film> Retrieve()
         {
-            var films = _queryExecutor.Execute()
-                                      .Where(_filter.Apply)
-                                      .OrderBy(film => film.Name);
-
-            return films;
+            return RetrieveAsync().Result;
         }
     }
 }

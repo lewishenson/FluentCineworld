@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FluentCineworld.TestClient
 {
@@ -8,27 +9,32 @@ namespace FluentCineworld.TestClient
     {
         public static void Main(string[] args)
         {
+            MainAsync(args).Wait();
+        }
+
+        private static async Task MainAsync(string[] args)
+        {
             var cinema = GetCinema(args);
 
-            RetrieveSite(cinema);
-            RetrieveFilms(cinema);
+            await RetrieveSite(cinema);
+            await RetrieveFilms(cinema);
 
             Console.Read();
         }
 
-        private static void RetrieveSite(Cinema cinema)
+        private static async Task RetrieveSite(Cinema cinema)
         {
-            var site = Cineworld.Site(cinema);
+            var site = await Cineworld.SiteAsync(cinema);
 
             var writer = new SiteConsoleWriter();
             writer.Output(site);
         }
 
-        private static void RetrieveFilms(Cinema cinema)
+        private static async Task RetrieveFilms(Cinema cinema)
         {
-            var films = Cineworld.WhatsOn(cinema)
-                                 .Retrieve();
-           
+            var films = await Cineworld.WhatsOn(cinema)
+                                       .RetrieveAsync();
+
             var writer = new FilmConsoleWriter();
             writer.Output(films);
         }
