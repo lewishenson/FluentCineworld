@@ -3,8 +3,7 @@ using System.Threading.Tasks;
 
 namespace FluentCineworld.Utilities
 {
-    // TODO: Rename [LH]
-    public class WebClient : IWebClient
+    public class HttpClientWrapper : IHttpClient
     {
         private static readonly HttpClient Client = new HttpClient();
 

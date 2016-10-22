@@ -6,19 +6,19 @@ namespace FluentCineworld.Listings
 {
     public class ListingsQuery
     {
-        private readonly IWebClient _webClient;
+        private readonly IHttpClient _httpClient;
         private readonly IListingsMapper _listingsMapper;
 
-        public ListingsQuery(IWebClient webClient, IListingsMapper listingsMapper)
+        public ListingsQuery(IHttpClient httpClient, IListingsMapper listingsMapper)
         {
-            _webClient = webClient;
+            _httpClient = httpClient;
             _listingsMapper = listingsMapper;
         }
 
         public async Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema)
         {
             var url = UriGenerator.Listings(cinema);
-            var json = await _webClient.GetContentAsync(url);
+            var json = await _httpClient.GetContentAsync(url);
 
             var allListings = _listingsMapper.Map(json);
 

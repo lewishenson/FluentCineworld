@@ -2,8 +2,7 @@
 
 namespace FluentCineworld.Utilities
 {
-    // TODO: Rename [LH]
-    public interface IWebClient
+    public interface IHttpClient
     {
         Task<string> GetContentAsync(string address);
     }

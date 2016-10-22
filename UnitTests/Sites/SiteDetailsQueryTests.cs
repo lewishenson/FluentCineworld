@@ -14,12 +14,12 @@ namespace FluentCineworld.UnitTests.Sites
         [Fact]
         public async void GivenThereIsNoMatchingCinema_ThenNullShouldBeReturned()
         {
-            var webClient = Mock.Of<IWebClient>();
-            Mock.Get(webClient)
+            var httpClient = Mock.Of<IHttpClient>();
+            Mock.Get(httpClient)
                 .Setup(w => w.GetContentAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(""));
 
-            var query = new SiteDetailsQuery(webClient, new SiteMapper());
+            var query = new SiteDetailsQuery(httpClient, new SiteMapper());
 
             var actual = await query.ExecuteAsync(Cinema.MiltonKeynes);
 
@@ -31,14 +31,14 @@ namespace FluentCineworld.UnitTests.Sites
         {
             var json = File.ReadAllText(@"Data\cinemas.json");
 
-            var webClient = Mock.Of<IWebClient>();
-            Mock.Get(webClient)
+            var httpClient = Mock.Of<IHttpClient>();
+            Mock.Get(httpClient)
                 .Setup(w => w.GetContentAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(json));
 
-            var query = new SiteDetailsQuery(webClient, new SiteMapper());
+            var query = new SiteDetailsQuery(httpClient, new SiteMapper());
 
-            var actual = query.ExecuteAsync(Cinema.MiltonKeynes);
+            var actual = await query.ExecuteAsync(Cinema.MiltonKeynes);
 
             actual.Should().NotBeNull();
         }

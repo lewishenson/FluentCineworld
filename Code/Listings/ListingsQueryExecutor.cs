@@ -12,7 +12,7 @@ namespace FluentCineworld.Listings
         internal ListingsQueryExecutor(Cinema cinema)
         {
             _cinema = cinema;
-            _query = new ListingsQuery(new WebClient(), new ListingsMapper());
+            _query = new ListingsQuery(new HttpClientWrapper(), new ListingsMapper());
         }
 
         public async Task<IEnumerable<Film>> ExecuteAsync()

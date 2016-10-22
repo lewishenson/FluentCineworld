@@ -11,7 +11,7 @@ namespace FluentCineworld.Sites
         internal SiteDetailsQueryExecutor(Cinema cinema)
         {
             _cinema = cinema;
-            _query = new SiteDetailsQuery(new WebClient(), new SiteMapper());
+            _query = new SiteDetailsQuery(new HttpClientWrapper(), new SiteMapper());
         }
 
         public async Task<SiteDetails> ExecuteAsync()
