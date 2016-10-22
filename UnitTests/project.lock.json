@@ -8089,6 +8089,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Castle.Core >= 4.0.0-beta001",
       "Code >= 3.0.0",
       "FluentAssertions >= 4.15.0",
       "Moq >= 4.6.38-alpha",
