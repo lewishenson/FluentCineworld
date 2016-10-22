@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FluentCineworld.Utilities;
 
 namespace FluentCineworld.Listings
@@ -11,12 +12,12 @@ namespace FluentCineworld.Listings
         internal ListingsQueryExecutor(Cinema cinema)
         {
             _cinema = cinema;
-            _query = new ListingsQuery(new WebClient(), new ListingsMapper());
+            _query = new ListingsQuery(new HttpClientWrapper(), new ListingsMapper());
         }
 
-        public IEnumerable<Film> Execute()
+        public async Task<IEnumerable<Film>> ExecuteAsync()
         {
-            return _query.Execute(_cinema);
+            return await _query.ExecuteAsync(_cinema);
         }
     }
 }
