@@ -1,4 +1,4 @@
-# FluentCineworld [![Build status](http://img.shields.io/appveyor/ci/lewishenson/fluentcineworld.svg?style=flat)](https://ci.appveyor.com/project/lewishenson/FluentCineworld) [![NuGet package](https://buildstats.info/nuget/FluentCineworld)](https://www.nuget.org/packages/FluentCineworld)
+# FluentCineworld [![NuGet package](https://buildstats.info/nuget/FluentCineworld)](https://www.nuget.org/packages/FluentCineworld)
 
 Fluent C# API for obtaining Cineworld listings.
 
