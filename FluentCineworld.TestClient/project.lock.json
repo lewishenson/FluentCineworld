@@ -2074,12 +2074,18 @@
           "lib/netstandard1.3/_._": {}
         }
       },
-      "Code/3.0.0": {
+      "FluentCineworld/3.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.6",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "netstandard1.6/FluentCineworld.dll": {}
+        },
+        "runtime": {
+          "netstandard1.6/FluentCineworld.dll": {}
         }
       }
     },
@@ -2483,12 +2489,18 @@
           "lib/net45/_._": {}
         }
       },
-      "Code/3.0.0": {
+      "FluentCineworld/3.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "net451/FluentCineworld.dll": {}
+        },
+        "runtime": {
+          "net451/FluentCineworld.dll": {}
         }
       }
     }
@@ -7180,14 +7192,15 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Code/3.0.0": {
+    "FluentCineworld/3.0.0": {
       "type": "project",
-      "path": "../Code/project.json"
+      "path": "../FluentCineworld/project.json",
+      "msbuildProject": "../FluentCineworld/FluentCineworld.xproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "Code >= 3.0.0-*"
+      "FluentCineworld >= 3.0.0-*"
     ],
     ".NETCoreApp,Version=v1.0": [
       "Microsoft.NETCore.App >= 1.0.1"

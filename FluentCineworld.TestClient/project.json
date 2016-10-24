@@ -8,7 +8,7 @@
     },
 
     "dependencies": {
-        "Code": "3.0.0-*"
+        "FluentCineworld": "3.0.0-*"
     },
 
     "frameworks": {
