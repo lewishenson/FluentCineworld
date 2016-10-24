@@ -16,13 +16,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{C2F32C4E-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test Client", "Test Client", "{7506D3A7-7B02-43E0-881F-4ED52B2DA814}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld", "Code\FluentCineworld.xproj", "{9CEA9141-8C65-4769-90FE-45AE676FF494}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.TestClient", "TestClient\FluentCineworld.TestClient.xproj", "{9F51CD35-89C7-40CE-9D68-C9577A393468}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.UnitTests", "UnitTests\FluentCineworld.UnitTests.xproj", "{218A5CD1-129F-47DF-8E27-9071DDBE631F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{F72DAB54-1A45-4C4B-95FB-F0B9EB710128}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld", "FluentCineworld\FluentCineworld.xproj", "{9CEA9141-8C65-4769-90FE-45AE676FF494}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.TestClient", "FluentCineworld.TestClient\FluentCineworld.TestClient.xproj", "{9F51CD35-89C7-40CE-9D68-C9577A393468}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.UnitTests", "FluentCineworld.UnitTests\FluentCineworld.UnitTests.xproj", "{218A5CD1-129F-47DF-8E27-9071DDBE631F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
