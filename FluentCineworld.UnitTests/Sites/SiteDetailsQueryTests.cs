@@ -29,7 +29,7 @@ namespace FluentCineworld.UnitTests.Sites
         [Fact]
         public async void GivenThereIsAMatchingCinema_ThenItsSiteShouldBeReturned()
         {
-            var json = File.ReadAllText(@"Data\cinemas.json");
+            var json = File.ReadAllText(@"Data/cinemas.json");
 
             var httpClient = Mock.Of<IHttpClient>();
             Mock.Get(httpClient)

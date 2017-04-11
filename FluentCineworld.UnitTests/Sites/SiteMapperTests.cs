@@ -25,7 +25,7 @@ namespace FluentCineworld.UnitTests.Sites
         [Fact]
         public void GivenThereAreMultipleSitesInTheData_WhenMapping_ThenMultipleSitesShouldBeReturned()
         {
-            var json = File.ReadAllText(@"Data\cinemas.json");
+            var json = File.ReadAllText(@"Data/cinemas.json");
             var siteMapper = new SiteMapper();
 
             var actualCollection = siteMapper.Map(json);
@@ -36,7 +36,7 @@ namespace FluentCineworld.UnitTests.Sites
         [Fact]
         public void GivenThereIsValidData_WhenMapping_ThenAPopulatedSiteDetailsShouldBeReturned()
         {
-            var json = File.ReadAllText(@"Data\cinemas.json");
+            var json = File.ReadAllText(@"Data/cinemas.json");
             var siteMapper = new SiteMapper();
 
             var actual = siteMapper.Map(json).First();
