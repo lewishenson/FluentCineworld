@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FluentCineworld
+﻿namespace FluentCineworld
 {
     public class Cinema : Enumeration
     {
