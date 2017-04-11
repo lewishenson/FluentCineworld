@@ -1,12 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{497A5321-BD33-4A57-804B-B5FCD4E214F5}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.txt = CHANGELOG.txt
-		global.json = global.json
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 		Settings.StyleCop = Settings.StyleCop
@@ -18,11 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test Client", "Test Client"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{F72DAB54-1A45-4C4B-95FB-F0B9EB710128}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld", "FluentCineworld\FluentCineworld.xproj", "{9CEA9141-8C65-4769-90FE-45AE676FF494}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentCineworld", "FluentCineworld\FluentCineworld.csproj", "{9CEA9141-8C65-4769-90FE-45AE676FF494}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.TestClient", "FluentCineworld.TestClient\FluentCineworld.TestClient.xproj", "{9F51CD35-89C7-40CE-9D68-C9577A393468}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentCineworld.TestClient", "FluentCineworld.TestClient\FluentCineworld.TestClient.csproj", "{9F51CD35-89C7-40CE-9D68-C9577A393468}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "FluentCineworld.UnitTests", "FluentCineworld.UnitTests\FluentCineworld.UnitTests.xproj", "{218A5CD1-129F-47DF-8E27-9071DDBE631F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentCineworld.UnitTests", "FluentCineworld.UnitTests\FluentCineworld.UnitTests.csproj", "{218A5CD1-129F-47DF-8E27-9071DDBE631F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
