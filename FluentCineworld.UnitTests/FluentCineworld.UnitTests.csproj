@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Copyright>Copyright © Lewis Henson 2017</Copyright>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <AssemblyName>FluentCineworld.UnitTests</AssemblyName>
     <PackageId>FluentCineworld.UnitTests</PackageId>
