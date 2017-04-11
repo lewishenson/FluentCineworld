@@ -4,7 +4,7 @@
     {
         public static string Listings(Cinema cinema)
         {
-            return "https://www1.cineworld.co.uk/cinemas/pgm-site?si=" + cinema.Value;
+            return "https://www1.cineworld.co.uk/pgm-site?si=" + cinema.Value;
         }
 
         public static string CinemaSites()
