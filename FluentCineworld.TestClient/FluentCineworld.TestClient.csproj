@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <Description>Test Client for FluentCineworld</Description>
-    <Copyright>Copyright © Lewis Henson 2016</Copyright>
+    <Copyright>Copyright © Lewis Henson 2017</Copyright>
     <AssemblyTitle>FluentCineworld.TestClient</AssemblyTitle>
-    <VersionPrefix>3.0.0</VersionPrefix>
+    <VersionPrefix>3.1.0</VersionPrefix>
     <AssemblyName>FluentCineworld.TestClient</AssemblyName>
     <PackageId>FluentCineworld.TestClient</PackageId>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
