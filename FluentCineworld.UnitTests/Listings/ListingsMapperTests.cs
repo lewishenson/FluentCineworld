@@ -27,7 +27,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereAreMultipleFilmsInTheData_WhenMapping_ThenMultipleFilmsShouldBeReturned()
         {
-            var json = File.ReadAllText(@"Data\listings.json");
+            var json = File.ReadAllText(@"Data/listings.json");
             var listingsMapper = new ListingsMapper();
 
             var actualCollection = listingsMapper.Map(json);
@@ -38,7 +38,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsValidData_WhenMapping_ThenAPopulatedFilmDetailsShouldBeReturned()
         {
-            var json = File.ReadAllText(@"Data\listings.json");
+            var json = File.ReadAllText(@"Data/listings.json");
             var listingsMapper = new ListingsMapper();
 
             var actual = listingsMapper.Map(json).First();
@@ -74,7 +74,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereAreDuplicates_WhenMapping_ThenTheDuplicatesShouldBeMerged()
         {
-            var json = File.ReadAllText(@"Data\listingsWithDuplicates.json");
+            var json = File.ReadAllText(@"Data/listingsWithDuplicates.json");
             var listingsMapper = new ListingsMapper();
 
             var actual = listingsMapper.Map(json).Single();
