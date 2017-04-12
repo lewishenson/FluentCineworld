@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v3.1.1
+Bug fix: Enumeration.GetAll now works.
+
 v3.1.0
 Changed URI used to get JSON data from Cineworld site.
 Changed target framework to .NET Standard 1.2.
