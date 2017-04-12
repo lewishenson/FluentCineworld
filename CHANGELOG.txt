@@ -1,6 +1,11 @@
 ﻿FluentCineworld changelog
 =========================
 
+v3.1.0
+Changed URI used to get JSON data from Cineworld site.
+Changed target framework to .NET Standard 1.2.
+Updated list of cinemas.
+
 v3.0.0
 New version that adds .NET Core and async support.
 Updated list of cinemas.
