@@ -33,21 +33,9 @@ namespace FluentCineworld
         public static IEnumerable<T> GetAll<T>() where T : Enumeration
         {
             var type = typeof(T);
-
-            // TODO: Verify if this works! [LH]
             var fields = type.GetRuntimeFields();
-            //var fields = type.GetFieldInfos(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
 
-            foreach (var info in fields)
-            {
-                var instance = (T)Activator.CreateInstance(typeof(T), true);
-                var locatedValue = info.GetValue(instance) as T;
-
-                if (locatedValue != null)
-                {
-                    yield return locatedValue;
-                }
-            }
+            return fields.Select(field => field.GetValue(null)).Cast<T>();
         }
 
         public static int AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
