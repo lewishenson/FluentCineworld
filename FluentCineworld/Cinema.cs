@@ -1,4 +1,6 @@
-﻿namespace FluentCineworld
+﻿using System;
+
+namespace FluentCineworld
 {
     public class Cinema : Enumeration
     {
@@ -40,7 +42,10 @@
         public static readonly Cinema GlasgowRenfrewStreet = new Cinema(1010843, "Glasgow - Renfrew Street");
         public static readonly Cinema GlasgowSilverburn = new Cinema(1010891, "Glasgow - Silverburn");
         public static readonly Cinema GloucesterQuays = new Cinema(1010841, "Gloucester Quays");
+        [Obsolete("Use HarlowQueensgate instead. Harlow will be removed in a future update.")]
         public static readonly Cinema Harlow = new Cinema(1010846, "Harlow");
+        public static readonly Cinema HarlowHarveyCentre = new Cinema(1010900, "Harlow - Harvey Centre");
+        public static readonly Cinema HarlowQueensgate = new Cinema(1010846, "Harlow - Queensgate");
         public static readonly Cinema Haverhill = new Cinema(1010847, "Haverhill");
         public static readonly Cinema HemelHempstead = new Cinema(1010826, "Hemel Hempstead");
         public static readonly Cinema HighWycombe = new Cinema(1010851, "High Wycombe");
