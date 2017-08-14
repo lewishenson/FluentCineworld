@@ -4,12 +4,12 @@
     {
         public static string Listings(Cinema cinema)
         {
-            return "https://www1.cineworld.co.uk/pgm-site?si=" + cinema.Value;
+            return "https://www.cineworld.co.uk/pgm-site?si=" + cinema.Value;
         }
 
         public static string CinemaSites()
         {
-            return "http://www1.cineworld.co.uk/getSites?json=1&max=1000";
+            return "https://www.cineworld.co.uk/getSites?json=1&max=1000";
         }
     }
 }
