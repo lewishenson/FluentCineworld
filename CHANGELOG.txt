@@ -3,6 +3,7 @@
 
 v3.2.0
 Changed URI used to get JSON data from Cineworld site.
+Updated list of cinemas.
 
 v3.1.1
 Bug fix: Enumeration.GetAll now works.
