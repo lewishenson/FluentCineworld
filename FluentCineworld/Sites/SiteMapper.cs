@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace FluentCineworld.Sites
@@ -12,9 +13,9 @@ namespace FluentCineworld.Sites
                 yield break;
             }
 
-            var siteDtos = JsonConvert.DeserializeObject<List<SiteDto>>(json);
+            var response = JsonConvert.DeserializeObject<ResponseDto>(json);
 
-            foreach (var siteDto in siteDtos)
+            foreach (var siteDto in response.Body.Cinemas)
             {
                 yield return Map(siteDto);
             }
@@ -25,12 +26,9 @@ namespace FluentCineworld.Sites
             return new SiteDetails
                 {
                     Address = siteDto.Address,
-                    Id = siteDto.Id,
-                    Latitude = siteDto.Latitude,
-                    Longitude = siteDto.Longitude,
-                    Name = siteDto.Name,
-                    PhoneNumber = siteDto.PhoneNumber,
-                    Url = siteDto.Url
+                    DisplayName = siteDto.DisplayName,
+                    Id = Convert.ToInt32(siteDto.Id),
+                    Link = siteDto.Link
                 };
         }
     }

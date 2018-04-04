@@ -8,12 +8,9 @@ namespace FluentCineworld.TestClient
         public void Output(SiteDetails item)
         {
             Console.WriteLine("Id: {0}", item.Id);
-            Console.WriteLine("Name: {0}", item.Name);
+            Console.WriteLine("Display Name: {0}", item.DisplayName);
             Console.WriteLine("Address: {0}", item.Address);
-            Console.WriteLine("Phone: {0}", item.PhoneNumber);
-            Console.WriteLine("URL: {0}", item.Url);
-            Console.WriteLine("Longitude: {0}", item.Longitude);
-            Console.WriteLine("Latitude: {0}", item.Latitude);
+            Console.WriteLine("Link: {0}", item.Link);
 
             Console.WriteLine();
         }

@@ -30,7 +30,7 @@ namespace FluentCineworld.UnitTests.Sites
 
             var actualCollection = siteMapper.Map(json);
 
-            actualCollection.Count().ShouldBeEquivalentTo(84);
+            actualCollection.Count().ShouldBeEquivalentTo(98);
         }
 
         [Fact]
@@ -43,13 +43,10 @@ namespace FluentCineworld.UnitTests.Sites
 
             var expected = new SiteDetails
                 {
-                    Id = 1010804,
-                    Name = "Aberdeen - Queens Links",
-                    Address = "Queens Link Leisure Park, Links Road, Aberdeen AB24 5EN",
-                    PhoneNumber = "0871 200 2000",
-                    Latitude = 57.150299072265625d,
-                    Longitude = -2.0779600143432617d,
-                    Url = "aberdeen-queens-links"
+                    Id = 8014,
+                    DisplayName = "Aberdeen - Queens Links",
+                    Address = "Queens Links Leisure Park, Links Road, AB24 5EN, Aberdeen",
+                    Link = "/cinemas/aberdeen-queens-links"
             };
 
             actual.ShouldBeEquivalentTo(expected);
