@@ -1,6 +1,11 @@
 ﻿FluentCineworld changelog
 =========================
 
+v4.0.0
+Changed URIs used to get JSON data from Cineworld site.
+Different information returned about sites and films (due to new Cineworld Data API Service).
+Updated list of cinemas.
+
 v3.2.0
 Changed URI used to get JSON data from Cineworld site.
 Updated list of cinemas.
