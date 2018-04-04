@@ -12,7 +12,7 @@ namespace FluentCineworld.TestClient
             MainAsync(args).Wait();
         }
 
-        private static async Task MainAsync(string[] args)
+        private static async Task MainAsync(string[] args)  
         {
             var cinema = GetCinema(args);
 

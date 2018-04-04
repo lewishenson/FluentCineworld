@@ -1,4 +1,6 @@
-﻿namespace FluentCineworld.Utilities
+﻿using System;
+
+namespace FluentCineworld.Utilities
 {
     internal static class UriGenerator
     {
@@ -9,7 +11,9 @@
 
         public static string CinemaSites()
         {
-            return "https://www.cineworld.co.uk/getSites?json=1&max=1000";
+            var oneYearFromNow = DateTime.UtcNow.AddYears(1).ToString("yyyy-MM-dd");
+
+            return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/cinemas/with-event/until/{oneYearFromNow}?attr=&lang=en_GB";
         }
     }
 }

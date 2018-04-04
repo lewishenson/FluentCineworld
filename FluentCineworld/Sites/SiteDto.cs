@@ -3,34 +3,28 @@ using Newtonsoft.Json;
 
 namespace FluentCineworld.Sites
 {
-    [DebuggerDisplay("Name = {Name}")]
+    [DebuggerDisplay("DisplayName = {DisplayName}")]
     internal class SiteDto
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        [JsonProperty("excode")]
-        public int ExCode { get; set; }
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
 
-        [JsonProperty("idx")]
-        public int Index { get; set; }
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
 
-        [JsonProperty("n")]
-        public string Name { get; set; }
+        [JsonProperty("link")]
+        public string Link { get; set; }
 
-        [JsonProperty("addr")]
+        [JsonProperty("address")]
         public string Address { get; set; }
 
-        [JsonProperty("pn")]
-        public string PhoneNumber { get; set; }
+        [JsonProperty("bookingUrl")]
+        public string BookingUrl { get; set; }
 
-        [JsonProperty("long")]
-        public double Longitude { get; set; }
-
-        [JsonProperty("lat")]
-        public double Latitude { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        [JsonProperty("blockOnlineSales")]
+        public bool BlockOnlineSales { get; set; }
     }
 }
