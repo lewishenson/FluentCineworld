@@ -8,8 +8,6 @@ namespace FluentCineworld.Listings
     {
         Task<IEnumerable<Film>> RetrieveAsync();
 
-        IEnumerable<Film> Retrieve();
-
         ICineworldListings ForDayOfWeek(DayOfWeek dayOfWeek);
 
         ICineworldListings From(DateTime from);

@@ -12,11 +12,6 @@ namespace FluentCineworld
             return await queryExecutor.ExecuteAsync();
         }
 
-        public static SiteDetails Site(Cinema cinema)
-        {
-            return SiteAsync(cinema).Result;
-        }
-
         public static ICineworldListings WhatsOn(Cinema cinema)
         {
             var queryExecutor = new ListingsQueryExecutor(cinema);
