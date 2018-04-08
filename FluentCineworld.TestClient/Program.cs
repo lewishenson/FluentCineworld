@@ -7,12 +7,7 @@ namespace FluentCineworld.TestClient
 {
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            MainAsync(args).Wait();
-        }
-
-        private static async Task MainAsync(string[] args)  
+        public static async Task Main(string[] args)  
         {
             var cinema = GetCinema(args);
 
