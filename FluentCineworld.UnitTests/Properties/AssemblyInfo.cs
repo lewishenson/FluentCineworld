@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lewis Henson")]
 [assembly: AssemblyProduct("FluentCineworld.UnitTests")]
-[assembly: AssemblyCopyright("Copyright © Lewis Henson 2015")]
+[assembly: AssemblyCopyright("Copyright © Lewis Henson 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

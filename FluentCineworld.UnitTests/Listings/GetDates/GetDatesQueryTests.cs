@@ -48,7 +48,7 @@ namespace FluentCineworld.UnitTests.Listings.GetDates
 
             var expectedDates = new[] { new DateTime(2018, 4, 5), new DateTime(2018, 4, 6), new DateTime(2018, 4, 7) };
 
-            acutalDates.ShouldAllBeEquivalentTo(expectedDates);
+            acutalDates.Should().BeEquivalentTo(expectedDates);
         }
     }
 }

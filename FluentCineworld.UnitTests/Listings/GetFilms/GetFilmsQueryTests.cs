@@ -100,7 +100,7 @@ namespace FluentCineworld.UnitTests.Listings.GetFilms
                 }
             };
 
-            actualBlackPantherFilm.ShouldBeEquivalentTo(expectedBlackPantherFilm);
+            actualBlackPantherFilm.Should().BeEquivalentTo(expectedBlackPantherFilm);
         }
     }
 }
