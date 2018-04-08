@@ -33,35 +33,23 @@ namespace FluentCineworld.Listings
             _to = value.Date;
         }
 
-        public bool Apply(Film film)
+        public bool Apply(DateTime date)
         {
             var include = true;
 
             if (_daysOfWeek.Any())
             {
-                include = ApplyDayFilter(film, d => _daysOfWeek.Contains(d.Date.DayOfWeek));
+                include = _daysOfWeek.Contains(date.DayOfWeek);
             }
 
             if (_from.HasValue)
             {
-                include = include && ApplyDayFilter(film, d => d.Date >= _from.Value);
+                include = include && date >= _from.Value.Date;
             }
 
             if (_to.HasValue)
             {
-                include = include && ApplyDayFilter(film, d => d.Date <= _to.Value);
-            }
-
-            return include;
-        }
-
-        private bool ApplyDayFilter(Film film, Func<Day, bool> filter)
-        {
-            var include = film.Days.Any(filter);
-
-            if (include)
-            {
-                film.Days = film.Days.Where(filter);
+                include = include && date.Date <= _to.Value.Date;
             }
 
             return include;

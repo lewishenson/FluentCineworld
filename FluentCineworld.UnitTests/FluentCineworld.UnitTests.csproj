@@ -35,7 +35,7 @@
     <None Update="Data/listings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data/listingsWithDuplicates.json">
+    <None Update="Data\dates.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
