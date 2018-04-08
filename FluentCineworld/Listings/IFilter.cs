@@ -10,6 +10,6 @@ namespace FluentCineworld.Listings
 
         void To(DateTime value);
 
-        bool Apply(Film film);
+        bool Apply(DateTime date);
     }
 }

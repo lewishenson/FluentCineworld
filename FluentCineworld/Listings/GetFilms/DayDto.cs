@@ -2,10 +2,10 @@ using System;
 using System.Diagnostics;
 using Newtonsoft.Json;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.Listings.GetFilms
 {
     [DebuggerDisplay("Date = {Date}")]
-    public class DayDto
+    internal class DayDto
     {
         [JsonProperty("date")]
         public DateTime Date { get; set; }

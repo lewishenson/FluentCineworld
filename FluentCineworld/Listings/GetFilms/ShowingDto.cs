@@ -1,10 +1,10 @@
 using System.Diagnostics;
 using Newtonsoft.Json;
 
-namespace FluentCineworld.Listings
+namespace FluentCineworld.Listings.GetFilms
 {
     [DebuggerDisplay("Time = {Time}")]
-    public class ShowingDto
+    internal class ShowingDto
     {
         [JsonProperty("dt")]
         public long Dt { get; set; }

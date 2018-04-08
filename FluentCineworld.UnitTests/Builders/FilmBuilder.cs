@@ -7,35 +7,45 @@ namespace FluentCineworld.UnitTests.Builders
 {
     internal class FilmBuilder : IBuilder<Film>
     {
-        private readonly ICollection<Func<DayBuilder, Day>> _dayBuilders = new List<Func<DayBuilder, Day>>();
+        private readonly ICollection<Func<DayBuilder, Day>> dayBuilders = new List<Func<DayBuilder, Day>>();
 
-        private string _name;
+        private string id;
 
-        private string _rating;
+        private string name;
+
+        private string rating;
 
         public FilmBuilder()
         {
-            _name = "Test Film";
-            _rating = "T";
+            this.id = Guid.NewGuid().ToString();
+            this.name = "Test Film";
+            this.rating = "T";
         }
 
-        public FilmBuilder WithTitle(string name)
+        public FilmBuilder WithId(string value)
         {
-            _name = name;
+            this.id = value;
 
             return this;
         }
 
-        public FilmBuilder WithRating(string rating)
+        public FilmBuilder WithName(string value)
         {
-            _rating = rating;
+            this.name = value;
+
+            return this;
+        }
+
+        public FilmBuilder WithRating(string value)
+        {
+            this.rating = value;
 
             return this;
         }
 
         public FilmBuilder WithDay(Func<DayBuilder, Day> build)
         {
-            _dayBuilders.Add(build);
+            dayBuilders.Add(build);
 
             return this;
         }
@@ -44,9 +54,10 @@ namespace FluentCineworld.UnitTests.Builders
         {
             var film = new Film
                 {
-                    Name = _name,
-                    Rating = _rating,
-                    Days = _dayBuilders.Select(build => build(new DayBuilder()))
+                    Id = this.id,
+                    Name = this.name,
+                    Rating = this.rating,
+                    Days = dayBuilders.Select(build => build(new DayBuilder()))
                 };
 
             return film;
