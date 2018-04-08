@@ -42,8 +42,8 @@ namespace FluentCineworld.Listings
        
         public async Task<IEnumerable<Film>> RetrieveAsync()
         {
-            var dates = await this.GetDates();
-            var films = await this.GetFilms(dates);
+            var dates = await this.GetDates().ConfigureAwait(false);
+            var films = await this.GetFilms(dates).ConfigureAwait(false);
 
             var mergedFilms = this.Merge(films);
             var orderedFilms = mergedFilms.OrderBy(film => film.Name);
@@ -53,7 +53,7 @@ namespace FluentCineworld.Listings
 
         private async Task<IEnumerable<DateTime>> GetDates()
         {
-            var allDates = await this.getDatesQuery.ExecuteAsync(this.cinema);
+            var allDates = await this.getDatesQuery.ExecuteAsync(this.cinema).ConfigureAwait(false);
             var filteredDates = allDates.Where(this.filter.Apply);
 
             return filteredDates;
@@ -69,7 +69,7 @@ namespace FluentCineworld.Listings
                 allTasks.Add(task);
             }
 
-            var films = await Task.WhenAll(allTasks);
+            var films = await Task.WhenAll(allTasks).ConfigureAwait(false);
 
             return films.SelectMany(film => film);
         }

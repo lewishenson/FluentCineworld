@@ -16,7 +16,7 @@ namespace FluentCineworld.Sites
 
         public async Task<SiteDetails> ExecuteAsync()
         {
-            return await this.query.ExecuteAsync(this.cinema);
+            return await this.query.ExecuteAsync(this.cinema).ConfigureAwait(false);
         }
     }
 }

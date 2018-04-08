@@ -9,7 +9,7 @@ namespace FluentCineworld.Utilities
 
         public async Task<string> GetContentAsync(string address)
         {
-            return await Client.GetStringAsync(address);
+            return await Client.GetStringAsync(address).ConfigureAwait(false);
         }
     }
 }

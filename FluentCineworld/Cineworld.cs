@@ -14,7 +14,7 @@ namespace FluentCineworld
         public static async Task<SiteDetails> SiteAsync(Cinema cinema)
         {
             var queryExecutor = new SiteDetailsQueryExecutor(cinema);
-            return await queryExecutor.ExecuteAsync();
+            return await queryExecutor.ExecuteAsync().ConfigureAwait(false);
         }
 
         public static ICineworldListings WhatsOn(Cinema cinema)
