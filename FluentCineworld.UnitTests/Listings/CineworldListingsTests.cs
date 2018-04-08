@@ -39,8 +39,8 @@ namespace FluentCineworld.UnitTests.Listings
             var cineworldListings = new CineworldListings(Cinema, getDatesQuery, filter, getFilmsQuery);
 
             var actualFilms = await cineworldListings.RetrieveAsync();
-
-            actualFilms.ShouldAllBeEquivalentTo(new[] { film1, film2 });
+            
+            actualFilms.Should().BeEquivalentTo(new[] { film1, film2 });
         }
 
         [Fact]
@@ -68,8 +68,8 @@ namespace FluentCineworld.UnitTests.Listings
             var cineworldListings = new CineworldListings(Cinema, getDatesQuery, filter, getFilmsQuery);
 
             var actualFilms = await cineworldListings.RetrieveAsync();
-
-            actualFilms.ShouldAllBeEquivalentTo(new[] { film1, film2 });
+            
+            actualFilms.Should().BeEquivalentTo(new[] { film1, film2 });
         }
 
         [Fact]
@@ -111,7 +111,7 @@ namespace FluentCineworld.UnitTests.Listings
                                      .WithDay(day => day.WithDate(date2).Build())
                                      .Build();
 
-            actualFilms.ShouldAllBeEquivalentTo(new[] { expectedFilm });
+            actualFilms.Should().BeEquivalentTo(new[] { expectedFilm });
         }
 
         [Fact]
@@ -175,7 +175,7 @@ namespace FluentCineworld.UnitTests.Listings
 
             var actualFilms = await cineworldListings.RetrieveAsync();
 
-            actualFilms.ShouldAllBeEquivalentTo(new[] { film1, film2, film3 }, options => options.WithStrictOrderingFor(film => film));
+            actualFilms.Should().BeEquivalentTo(new[] { film1, film2, film3 }, options => options.WithStrictOrderingFor(film => film));
         }
         
         private void SetupGetDatesQueryMock(IGetDatesQuery getDatesQuery, params DateTime[] dates)

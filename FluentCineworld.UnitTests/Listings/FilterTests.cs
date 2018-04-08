@@ -20,7 +20,7 @@ namespace FluentCineworld.UnitTests.Listings
 
             var filteredDates = allDates.Where(filter.Apply);
 
-            filteredDates.ShouldAllBeEquivalentTo(allDates);
+            filteredDates.Should().BeEquivalentTo(allDates);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace FluentCineworld.UnitTests.Listings
             var filteredDates = allDates.Where(filter.Apply);
 
             var expectedDates = new[] { friday, saturday };
-            filteredDates.ShouldAllBeEquivalentTo(expectedDates);
+            filteredDates.Should().BeEquivalentTo(expectedDates);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace FluentCineworld.UnitTests.Listings
             var filteredDates = allDates.Where(filter.Apply);
 
             var expectedDates = new[] { today, tomorrow };
-            filteredDates.ShouldAllBeEquivalentTo(expectedDates);
+            filteredDates.Should().BeEquivalentTo(expectedDates);
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace FluentCineworld.UnitTests.Listings
             var filteredDates = allDates.Where(filter.Apply);
 
             var expectedDates = new[] { yesterday, today };
-            filteredDates.ShouldAllBeEquivalentTo(expectedDates);
+            filteredDates.Should().BeEquivalentTo(expectedDates);
         }
     }
 }

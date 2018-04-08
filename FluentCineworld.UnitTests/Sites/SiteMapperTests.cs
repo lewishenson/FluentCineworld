@@ -19,7 +19,7 @@ namespace FluentCineworld.UnitTests.Sites
 
             var actualCollection = siteMapper.Map(json);
 
-            actualCollection.ShouldBeEquivalentTo(Enumerable.Empty<SiteDetails>());
+            actualCollection.Should().BeEquivalentTo(Enumerable.Empty<SiteDetails>());
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace FluentCineworld.UnitTests.Sites
 
             var actualCollection = siteMapper.Map(json);
 
-            actualCollection.Count().ShouldBeEquivalentTo(98);
+            actualCollection.Count().Should().Be(98);
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace FluentCineworld.UnitTests.Sites
                     Link = "/cinemas/aberdeen-queens-links"
             };
 
-            actual.ShouldBeEquivalentTo(expected);
+            actual.Should().BeEquivalentTo(expected);
         }
     }
 }
