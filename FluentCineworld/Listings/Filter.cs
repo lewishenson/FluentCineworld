@@ -6,50 +6,50 @@ namespace FluentCineworld.Listings
 {
     public class Filter : IFilter
     {
-        private readonly ICollection<DayOfWeek> _daysOfWeek;
-        private DateTime? _from;
-        private DateTime? _to;
+        private readonly ICollection<DayOfWeek> daysOfWeek;
+        private DateTime? from;
+        private DateTime? to;
 
         public Filter()
         {
-            _daysOfWeek = new HashSet<DayOfWeek>();
+            daysOfWeek = new HashSet<DayOfWeek>();
         }
 
-        public void DayOfWeek(DayOfWeek dayOfWeek)
+        public void DayOfWeek(DayOfWeek value)
         {
-            if (!_daysOfWeek.Contains(dayOfWeek))
+            if (!this.daysOfWeek.Contains(value))
             {
-                _daysOfWeek.Add(dayOfWeek);
+                this.daysOfWeek.Add(value);
             }
         }
 
         public void From(DateTime value)
         {
-            _from = value.Date;
+            this.from = value.Date;
         }
 
         public void To(DateTime value)
         {
-            _to = value.Date;
+            this.to = value.Date;
         }
 
         public bool Apply(DateTime date)
         {
             var include = true;
 
-            if (_daysOfWeek.Any())
+            if (this.daysOfWeek.Any())
             {
-                include = _daysOfWeek.Contains(date.DayOfWeek);
+                include = this.daysOfWeek.Contains(date.DayOfWeek);
             }
 
-            if (_from.HasValue)
+            if (this.from.HasValue)
             {
-                include = include && date >= _from.Value.Date;
+                include = include && date >= this.from.Value.Date;
             }
 
-            if (_to.HasValue)
+            if (this.to.HasValue)
             {
-                include = include && date.Date <= _to.Value.Date;
+                include = include && date.Date <= this.to.Value.Date;
             }
 
             return include;

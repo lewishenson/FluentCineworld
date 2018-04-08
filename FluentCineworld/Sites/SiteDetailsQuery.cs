@@ -6,24 +6,24 @@ namespace FluentCineworld.Sites
 {
     public class SiteDetailsQuery
     {
-        private readonly IHttpClient _httpClient;
-        private readonly ISiteMapper _siteMapper;
+        private readonly IHttpClient httpClient;
+        private readonly ISiteMapper siteMapper;
 
         public SiteDetailsQuery(IHttpClient httpClient, ISiteMapper siteMapper)
         {
-            _httpClient = httpClient;
-            _siteMapper = siteMapper;
+            this.httpClient = httpClient;
+            this.siteMapper = siteMapper;
         }
 
         public async Task<SiteDetails> ExecuteAsync(Cinema cinema)
         {
             var url = UriGenerator.CinemaSites();
-            var json = await _httpClient.GetContentAsync(url);
+            var json = await this.httpClient.GetContentAsync(url);
 
-            var allSites = _siteMapper.Map(json);
-            var site = allSites.SingleOrDefault(s => s.Id == cinema.Value);
+            var allSites = this.siteMapper.Map(json);
+            var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Value);
 
-            return site;
+            return targetSite;
         }
     }
 }

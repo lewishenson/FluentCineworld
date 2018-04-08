@@ -5,16 +5,16 @@ namespace FluentCineworld.UnitTests.Builders
 {
     internal class DayBuilder : IBuilder<Day>
     {
-        private DateTime _date;
+        private DateTime date;
 
         public DayBuilder()
         {
-            _date = DateTime.Now.Date;
+            this.date = DateTime.Now.Date;
         }
 
-        public DayBuilder WithDate(DateTime date)
+        public DayBuilder WithDate(DateTime value)
         {
-            _date = date;
+            this.date = value;
 
             return this;
         }
@@ -23,7 +23,7 @@ namespace FluentCineworld.UnitTests.Builders
         {
             var day = new Day
                 {
-                    Date = _date
+                    Date = this.date
                 };
 
             return day;

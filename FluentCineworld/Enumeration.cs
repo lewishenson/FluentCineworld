@@ -7,8 +7,8 @@ namespace FluentCineworld
 {
     public abstract class Enumeration : IComparable
     {
-        private readonly int _value;
-        private readonly string _displayName;
+        private readonly int value;
+        private readonly string displayName;
 
         protected Enumeration()
         {
@@ -16,19 +16,13 @@ namespace FluentCineworld
 
         protected Enumeration(int value, string displayName)
         {
-            _value = value;
-            _displayName = displayName;
+            this.value = value;
+            this.displayName = displayName;
         }
 
-        public int Value
-        {
-            get { return _value; }
-        }
+        public int Value => this.value;
 
-        public string DisplayName
-        {
-            get { return _displayName; }
-        }
+        public string DisplayName => this.displayName;
 
         public static IEnumerable<T> GetAll<T>() where T : Enumeration
         {
@@ -71,7 +65,7 @@ namespace FluentCineworld
 
         public override string ToString()
         {
-            return DisplayName;
+            return this.DisplayName;
         }
 
         public override bool Equals(object obj)
@@ -83,20 +77,20 @@ namespace FluentCineworld
                 return false;
             }
 
-            var typeMatches = GetType().Equals(obj.GetType());
-            var valueMatches = _value.Equals(otherValue.Value);
+            var typeMatches = this.GetType().Equals(obj.GetType());
+            var valueMatches = this.value.Equals(otherValue.Value);
 
             return typeMatches && valueMatches;
         }
 
         public override int GetHashCode()
         {
-            return _value.GetHashCode();
+            return this.value.GetHashCode();
         }
 
         public int CompareTo(object other)
         {
-            return Value.CompareTo(((Enumeration)other).Value);
+            return this.value.CompareTo(((Enumeration)other).Value);
         }
     }
 }
