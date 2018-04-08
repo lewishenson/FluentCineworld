@@ -18,7 +18,7 @@ namespace FluentCineworld.Sites
         public async Task<SiteDetails> ExecuteAsync(Cinema cinema)
         {
             var url = UriGenerator.CinemaSites();
-            var json = await this.httpClient.GetContentAsync(url);
+            var json = await this.httpClient.GetContentAsync(url).ConfigureAwait(false);
 
             var allSites = this.siteMapper.Map(json);
             var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Value);
