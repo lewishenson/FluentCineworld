@@ -5,12 +5,12 @@ using Xunit;
 namespace FluentCineworld.UnitTests.Listings
 {
     [Trait("Category", "UnitTest")]
-    public class TitleFormatterTests
+    public class FilmNameFormatterTests
     {
         [Fact]
         public void GivenThereIsExtraWhitespace_WhenTextIsFormatted_ThenTheExtraWhitespaceIsRemoved()
         {
-            var output = TitleFormatter.Format("  output  ");
+            var output = FilmNameFormatter.Format("  output  ");
 
             output.Should().Be("output");
         }
@@ -18,7 +18,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsAnUnlimitedScreeningSuffix_WhenTextIsFormatted_ThenTheSuffixIsRemoved1()
         {
-            var output = TitleFormatter.Format("The Movie - Unlimited Screening");
+            var output = FilmNameFormatter.Format("The Movie - Unlimited Screening");
 
             output.Should().Be("The Movie");
         }
@@ -26,7 +26,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsAnUnlimitedScreeningSuffix_WhenTextIsFormatted_ThenTheSuffixIsRemoved2()
         {
-            var output = TitleFormatter.Format("The Movie: Unlimited Screening");
+            var output = FilmNameFormatter.Format("The Movie: Unlimited Screening");
 
             output.Should().Be("The Movie");
         }
@@ -34,7 +34,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsAnUnlimitedScreeningSuffix_WhenTextIsFormatted_ThenTheSuffixIsRemoved3()
         {
-            var output = TitleFormatter.Format("The Movie : Cineworld Unlimited Exclusive Show");
+            var output = FilmNameFormatter.Format("The Movie : Cineworld Unlimited Exclusive Show");
 
             output.Should().Be("The Movie");
         }
@@ -42,7 +42,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved1()
         {
-            var output = TitleFormatter.Format("The Movie - Movies For Juniors");
+            var output = FilmNameFormatter.Format("The Movie - Movies For Juniors");
 
             output.Should().Be("The Movie");
         }
@@ -50,7 +50,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved2()
         {
-            var output = TitleFormatter.Format("The Movie - Subtitled Movies For Juniors");
+            var output = FilmNameFormatter.Format("The Movie - Subtitled Movies For Juniors");
 
             output.Should().Be("The Movie");
         }
@@ -58,7 +58,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved3()
         {
-            var output = TitleFormatter.Format("The Movie Movies For Juniors");
+            var output = FilmNameFormatter.Format("The Movie Movies For Juniors");
 
             output.Should().Be("The Movie");
         }
@@ -66,7 +66,7 @@ namespace FluentCineworld.UnitTests.Listings
         [Fact]
         public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved4()
         {
-            var output = TitleFormatter.Format("The Movie Subtitled Movies For Juniors");
+            var output = FilmNameFormatter.Format("The Movie Subtitled Movies For Juniors");
 
             output.Should().Be("The Movie");
         }

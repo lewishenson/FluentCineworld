@@ -48,7 +48,7 @@ namespace FluentCineworld.Listings.GetFilms
             return new Film
             {
                 Id = filmDto.Id,
-                Name = TitleFormatter.Format(filmDto.Name),
+                Name = FilmNameFormatter.Format(filmDto.Name),
                 Duration = filmDto.Length
             };
         }
