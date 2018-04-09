@@ -40,39 +40,7 @@ namespace FluentCineworld.UnitTests.Listings
         }
 
         [Fact]
-        public void GivenThereIsATakeTwoPrefix_WhenTextIsFormatted_ThenThePrefixIsRemoved1()
-        {
-            var output = TitleFormatter.Format("Take 2 Thursday - The Movie");
-
-            output.Should().Be("The Movie");
-        }
-
-        [Fact]
-        public void GivenThereIsATakeTwoPrefix_WhenTextIsFormatted_ThenThePrefixIsRemoved2()
-        {
-            var output = TitleFormatter.Format("Take 2 - The Movie");
-
-            output.Should().Be("The Movie");
-        }
-
-        [Fact]
-        public void GivenThereIsA2DPrefix_WhenTextIsFormatted_ThenThePrefixIsRemoved()
-        {
-            var output = TitleFormatter.Format("2D - The Movie");
-
-            output.Should().Be("The Movie");
-        }
-
-        [Fact]
-        public void GivenThereIsA3DPrefix_WhenTextIsFormatted_ThenThePrefixIsRemoved()
-        {
-            var output = TitleFormatter.Format("3D - The Movie");
-
-            output.Should().Be("The Movie");
-        }
-
-        [Fact]
-        public void GivenThereIsAMoviesForJuniorsSuffix_WhenTextIsFormatted_ThenTheSuffixIsRemoved1()
+        public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved1()
         {
             var output = TitleFormatter.Format("The Movie - Movies For Juniors");
 
@@ -80,9 +48,25 @@ namespace FluentCineworld.UnitTests.Listings
         }
 
         [Fact]
-        public void GivenThereIsAMoviesForJuniorsSuffix_WhenTextIsFormatted_ThenTheSuffixIsRemoved2()
+        public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved2()
         {
             var output = TitleFormatter.Format("The Movie - Subtitled Movies For Juniors");
+
+            output.Should().Be("The Movie");
+        }
+
+        [Fact]
+        public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved3()
+        {
+            var output = TitleFormatter.Format("The Movie Movies For Juniors");
+
+            output.Should().Be("The Movie");
+        }
+
+        [Fact]
+        public void GivenThereIsAMoviesForJuniorsSuffixWithHyphen_WhenTextIsFormatted_ThenTheSuffixIsRemoved4()
+        {
+            var output = TitleFormatter.Format("The Movie Subtitled Movies For Juniors");
 
             output.Should().Be("The Movie");
         }
