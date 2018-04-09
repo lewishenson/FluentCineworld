@@ -1,6 +1,6 @@
 ﻿namespace FluentCineworld.Listings
 {
-    public class TitleFormatter
+    public class FilmNameFormatter
     {
         public static string Format(string rawTitle)
         {
