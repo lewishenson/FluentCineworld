@@ -102,5 +102,27 @@ namespace FluentCineworld.UnitTests.Listings.GetFilms
 
             actualBlackPantherFilm.Should().BeEquivalentTo(expectedBlackPantherFilm);
         }
+
+        [Fact]
+        public async Task GivenThereIsData_WhenExecuted_ThenTheFilmNameIsFormatted()
+        {
+            var httpClient = Mock.Of<IHttpClient>();
+
+            var json = File.ReadAllText(@"Data/listings.json");
+
+            Mock.Get(httpClient)
+                .Setup(client => client.GetContentAsync(It.IsAny<string>()))
+                .Returns(Task.FromResult(json));
+
+            var query = new GetFilmsQuery(httpClient);
+
+            var targetDate = new DateTime(2018, 4, 5);
+            var films = await query.ExecuteAsync(Cinema.MiltonKeynes, targetDate);
+
+            var actualIsleOfDogsFilm = films.SingleOrDefault(film => film.Id == "ho00005040");
+            actualIsleOfDogsFilm.Should().NotBeNull();
+
+            actualIsleOfDogsFilm.Name.Should().Be("Isle Of Dogs");
+        }
     }
 }
