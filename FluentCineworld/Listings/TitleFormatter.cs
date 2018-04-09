@@ -8,8 +8,6 @@
 
             formattedTitle = RemoveUnlimitedScreeningSuffix(formattedTitle);
             formattedTitle = RemoveMoviesForJuniorsSuffix(formattedTitle);
-            formattedTitle = RemoveTake2Prefix(formattedTitle);
-            formattedTitle = Remove2DOr3DPrefix(formattedTitle);
 
             return formattedTitle.Trim();
         }
@@ -41,32 +39,15 @@
             {
                 formattedTitle = formattedTitle.Replace("- Subtitled Movies For Juniors", string.Empty);
             }
-            return formattedTitle;
-        }
+            else if (formattedTitle.EndsWith("Subtitled Movies For Juniors"))
+            {
+                formattedTitle = formattedTitle.Replace("Subtitled Movies For Juniors", string.Empty);
+            }
+            else if (formattedTitle.EndsWith("Movies For Juniors"))
+            {
+                formattedTitle = formattedTitle.Replace("Movies For Juniors", string.Empty);
+            }
 
-        private static string RemoveTake2Prefix(string formattedTitle)
-        {
-            if (formattedTitle.StartsWith("Take 2 Thursday -"))
-            {
-                formattedTitle = formattedTitle.Replace("Take 2 Thursday - ", string.Empty);
-            }
-            else if (formattedTitle.StartsWith("Take 2 -"))
-            {
-                formattedTitle = formattedTitle.Replace("Take 2 - ", string.Empty);
-            }
-            return formattedTitle;
-        }
-
-        private static string Remove2DOr3DPrefix(string formattedTitle)
-        {
-            if (formattedTitle.StartsWith("2D - "))
-            {
-                formattedTitle = formattedTitle.Substring(5);
-            }
-            else if (formattedTitle.StartsWith("3D - "))
-            {
-                formattedTitle = formattedTitle.Substring(5);
-            }
             return formattedTitle;
         }
     }
