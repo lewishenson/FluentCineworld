@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FluentCineworld
+﻿namespace FluentCineworld
 {
     public class Cinema : Enumeration
     {
@@ -20,7 +18,6 @@ namespace FluentCineworld
         public static readonly Cinema Braintree = new Cinema(8025, "Braintree");
         public static readonly Cinema Brighton = new Cinema(8026, "Brighton");
         public static readonly Cinema Bristol = new Cinema(8028, "Bristol");
-        public static readonly Cinema Bromley = new Cinema(8109, "Bromley");
         public static readonly Cinema Broughton = new Cinema(8100, "Broughton");
         public static readonly Cinema BurtonUponTrent = new Cinema(8024, "Burton upon Trent");
         public static readonly Cinema BuryStEdmunds = new Cinema(8027, "Bury St Edmunds");
