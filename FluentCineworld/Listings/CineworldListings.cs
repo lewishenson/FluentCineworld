@@ -48,7 +48,7 @@ namespace FluentCineworld.Listings
             var mergedFilms = this.Merge(films);
             var orderedFilms = mergedFilms.OrderBy(film => film.Name);
 
-            return orderedFilms;
+            return orderedFilms.ToList();
         }
 
         private async Task<IEnumerable<DateTime>> GetDates()
