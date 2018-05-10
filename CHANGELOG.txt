@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v4.0.1
+Bug fix: duplicates showing dates no longer returned.
+
 v4.0.0
 Changed URIs used to get JSON data from Cineworld site.
 Different information returned about sites and films (due to new Cineworld Data API Service).
