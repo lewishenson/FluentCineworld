@@ -5,7 +5,7 @@
     <AssemblyTitle>FluentCineworld</AssemblyTitle>
     <AssemblyVersion>4.0.0</AssemblyVersion>
     <FileVersion>4.0.0</FileVersion>
-    <Version>4.0.0</Version>
+    <Version>4.0.1</Version>
     <TargetFramework>netstandard1.2</TargetFramework>
     <AssemblyName>FluentCineworld</AssemblyName>
     <PackageId>FluentCineworld</PackageId>
