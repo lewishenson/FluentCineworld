@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v4.1.0
+Updated list of cinemas.
+
 v4.0.1
 Bug fix: duplicates showing dates no longer returned.
 
