@@ -51,9 +51,8 @@
         public static readonly Cinema Hull = new Cinema(8059, "Hull");
         public static readonly Cinema Huntingdon = new Cinema(8060, "Huntingdon");
         public static readonly Cinema Ipswich = new Cinema(8064, "Ipswich");
-        public static readonly Cinema IsleofWight = new Cinema(8063, "Isle of Wight");
         public static readonly Cinema Jersey = new Cinema(8065, "Jersey");
-        public static readonly Cinema Leeds = new Cinema(8120, "Leeds");
+        public static readonly Cinema LeedsWhiteRose = new Cinema(8120, "Leeds - White Rose");
         public static readonly Cinema Leigh = new Cinema(8066, "Leigh");
         public static readonly Cinema Llandudno = new Cinema(8068, "Llandudno");
         public static readonly Cinema LondonBexleyheath = new Cinema(8020, "London - Bexleyheath");
@@ -74,6 +73,7 @@
         public static readonly Cinema MiltonKeynes = new Cinema(8071, "Milton Keynes");
         public static readonly Cinema NewcastleUponTyne = new Cinema(8117, "Newcastle upon Tyne");
         public static readonly Cinema NewportFriarsWalk = new Cinema(8103, "Newport - Friars Walk");
+        public static readonly Cinema NewportIsleofWight = new Cinema(8063, "Newport - Isle of Wight");
         public static readonly Cinema NewportSpyttyPark = new Cinema(8072, "Newport - Spytty Park");
         public static readonly Cinema Northampton = new Cinema(8073, "Northampton");
         public static readonly Cinema Nottingham = new Cinema(8074, "Nottingham");
@@ -84,7 +84,7 @@
         public static readonly Cinema Sheffield = new Cinema(8079, "Sheffield");
         public static readonly Cinema Shrewsbury = new Cinema(8080, "Shrewsbury");
         public static readonly Cinema Solihull = new Cinema(8081, "Solihull");
-        public static readonly Cinema Southampton = new Cinema(8082, "Southampton");
+        public static readonly Cinema Speke = new Cinema(8123, "Speke");
         public static readonly Cinema Stevenage = new Cinema(8084, "Stevenage");
         public static readonly Cinema StHelens = new Cinema(8085, "St Helens");
         public static readonly Cinema StNeots = new Cinema(8098, "St Neots");
