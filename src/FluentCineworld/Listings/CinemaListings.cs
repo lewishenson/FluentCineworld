@@ -28,9 +28,8 @@ namespace FluentCineworld.Listings
             var dates = await this.GetDates().ConfigureAwait(false);
             var films = await this.GetFilms(dates).ConfigureAwait(false);
 
-            // TODO: merge films
-
-            var orderedFilms = films.OrderBy(film => film.Name);
+            var mergedFilms = this.Merge(films);
+            var orderedFilms = mergedFilms.OrderBy(film => film.Name);
 
             return orderedFilms.ToList();
         }
@@ -55,6 +54,21 @@ namespace FluentCineworld.Listings
             var films = await Task.WhenAll(allTasks).ConfigureAwait(false);
 
             return films.SelectMany(film => film);
+        }
+
+        private IEnumerable<Film> Merge(IEnumerable<Film> films)
+        {
+            return films.GroupBy(film => film.Id)
+                        .Select(group =>
+                        {
+                            var allDays = group.SelectMany(f => f.Days)
+                                               .OrderBy(day => day.Date);
+
+                            var film = group.First();
+                            film.Days = allDays.ToList();
+
+                            return film;
+                        });
         }
     }
 }
