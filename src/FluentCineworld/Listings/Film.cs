@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace FluentCineworld.Listings
@@ -9,6 +10,10 @@ namespace FluentCineworld.Listings
 
         public string Name { get; set; }
 
+        public string Rating { get; set; }
+
         public int Duration { get; set; }
+
+        public IEnumerable<Day> Days { get; set; }
     }
 }

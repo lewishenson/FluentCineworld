@@ -32,11 +32,12 @@ namespace FluentCineworld.Listings.GetFilms
 
             var response = JsonConvert.DeserializeObject<ResponseDto>(json);
 
-            var films = response.Body.Films.Select(this.MapWithoutShowings);
+            var films = response.Body.Films.Select(this.MapWithoutShowings)
+                                           .ToDictionary(film => film.Id, film => film);
 
-            // TODO: include showings
+            this.AssignEventsToFilms(date, films, response.Body.Events);
 
-            return films.ToList();
+            return films.Values;
         }
 
         private async Task<string> GetJson(Cinema cinema, DateTime date)
@@ -47,16 +48,58 @@ namespace FluentCineworld.Listings.GetFilms
             return json;
         }
 
-        // TODO: extract new class?
-        // TODO: format film name
         private Film MapWithoutShowings(FilmDto filmDto)
         {
+            // TODO: format film name (extract new class)
             return new Film
             {
                 Id = filmDto.Id,
                 Name = filmDto.Name,
                 Duration = filmDto.Length
             };
+        }
+
+        private void AssignEventsToFilms(DateTime date, IDictionary<string, Film> films, IEnumerable<EventDto> eventDtos)
+        {
+            var groupedEvents = eventDtos.GroupBy(eventDto => eventDto.FilmId);
+
+            foreach (var group in groupedEvents)
+            {
+                var film = films[group.Key];
+
+                var day = this.CreateDay(date, group);
+                film.Days = new List<Day> { day };
+
+                film.Rating = this.GetRating(group.First());
+            }
+        }
+
+        private Day CreateDay(DateTime date, IEnumerable<EventDto> eventDtos)
+        {
+            return new Day
+            {
+                Date = date,
+                Showings = eventDtos.Select(this.Map).ToList()
+            };
+        }
+
+        private Showing Map(EventDto eventDto)
+        {
+            return new Showing
+            {
+                Time = DateTime.ParseExact(eventDto.EventDateTime, "yyyy-MM-ddTHH:mm:ss", null),
+                AttributeIds = eventDto.AttributeIds,
+                AttributeTexts = ShowingAttributes.All.Where(attribute => eventDto.AttributeIds.Contains(attribute.Id))
+                                                      .Select(attribute => attribute.Text)
+                                                      .ToList()
+            };
+        }
+
+        private string GetRating(EventDto eventDto)
+        {
+            var ageRestrictionAttribute = ShowingAttributes.AgeRestrictions.FirstOrDefault(attribute => eventDto.AttributeIds.Contains(attribute.Id));
+
+            return ageRestrictionAttribute?.Text;
         }
     }
 }
