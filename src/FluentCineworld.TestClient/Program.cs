@@ -12,10 +12,15 @@ namespace FluentCineworld.TestClient
         {
             try
             {
+                var today = DateTime.Now;
+
                 var cineworld = new Cineworld(Shared.HttpClient);
 
                 var cinema = GetCinema(args);
-                var films = await cineworld.WhatsOn(cinema).RetrieveAsync();
+                var films = await cineworld.WhatsOn(cinema)
+                                           .From(today)
+                                           .To(today.AddDays(2))
+                                           .RetrieveAsync();
 
                 new FilmConsoleWriter().Output(films);
             }
