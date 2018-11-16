@@ -13,15 +13,36 @@ namespace FluentCineworld.Listings
         private readonly Cinema _cinema;
         private readonly IGetDatesQuery _getDatesQuery;
         private readonly IGetFilmsQuery _getFilmsQuery;
+        private readonly IFilter _filter;
 
-        public CinemaListings(Cinema cinema, IGetDatesQuery getDatesQuery, IGetFilmsQuery getFilmsQuery)
+        public CinemaListings(Cinema cinema, IGetDatesQuery getDatesQuery, IGetFilmsQuery getFilmsQuery, IFilter filter)
         {
             _cinema = cinema ?? throw new ArgumentNullException(nameof(cinema));
             _getDatesQuery = getDatesQuery ?? throw new ArgumentNullException(nameof(getDatesQuery));
             _getFilmsQuery = getFilmsQuery ?? throw new ArgumentNullException(nameof(getFilmsQuery));
+            _filter = filter ?? throw new ArgumentNullException(nameof(filter));
         }
 
-        // TODO: include filter functionality
+        public ICinemaListings ForDayOfWeek(DayOfWeek dayOfWeek)
+        {
+            _filter.DayOfWeek(dayOfWeek);
+
+            return this;
+        }
+
+        public ICinemaListings From(DateTime from)
+        {
+            _filter.From(from);
+
+            return this;
+        }
+
+        public ICinemaListings To(DateTime to)
+        {
+            _filter.To(to);
+
+            return this;
+        }
 
         public async Task<IEnumerable<Film>> RetrieveAsync()
         {
@@ -36,9 +57,10 @@ namespace FluentCineworld.Listings
 
         private async Task<IEnumerable<DateTime>> GetDates()
         {
-            var dates = await _getDatesQuery.ExecuteAsync(_cinema).ConfigureAwait(false);
+            var allDates = await _getDatesQuery.ExecuteAsync(_cinema).ConfigureAwait(false);
+            var filteredDates = allDates.Where(_filter.Apply);
 
-            return dates;
+            return filteredDates;
         }
 
         private async Task<IEnumerable<Film>> GetFilms(IEnumerable<DateTime> dates)

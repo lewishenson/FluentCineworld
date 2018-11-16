@@ -24,7 +24,8 @@ namespace FluentCineworld
 
             var getDatesQuery = new GetDatesQuery(_httpClient);
             var getFilmsQuery = new GetFilmsQuery(_httpClient);
-            var cinemaListings = new CinemaListings(cinema, getDatesQuery, getFilmsQuery);
+            var filter = new Filter();
+            var cinemaListings = new CinemaListings(cinema, getDatesQuery, getFilmsQuery, filter);
 
             return cinemaListings;
         }
