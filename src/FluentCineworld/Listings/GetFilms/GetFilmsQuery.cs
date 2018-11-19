@@ -11,11 +11,16 @@ namespace FluentCineworld.Listings.GetFilms
     {
         private readonly IUriGenerator _uriGenerator;
         private readonly HttpClient _httpClient;
+        private readonly IFilmNameFormatter _filmNameFormatter;
 
-        public GetFilmsQuery(IUriGenerator uriGenerator, HttpClient httpClient)
+        public GetFilmsQuery(
+            IUriGenerator uriGenerator,
+            HttpClient httpClient,
+            IFilmNameFormatter filmNameFormatter)
         {
             _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _filmNameFormatter = filmNameFormatter ?? throw new ArgumentNullException(nameof(filmNameFormatter));
         }
 
         public async Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema, DateTime date)
@@ -52,11 +57,10 @@ namespace FluentCineworld.Listings.GetFilms
 
         private Film MapWithoutShowings(FilmDto filmDto)
         {
-            // TODO: format film name (extract new class)
             return new Film
             {
                 Id = filmDto.Id,
-                Name = filmDto.Name,
+                Name = _filmNameFormatter.Format(filmDto.Name),
                 Duration = filmDto.Length
             };
         }
