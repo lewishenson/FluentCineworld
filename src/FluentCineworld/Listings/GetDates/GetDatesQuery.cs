@@ -10,10 +10,12 @@ namespace FluentCineworld.Listings.GetDates
 {
     public class GetDatesQuery : IGetDatesQuery
     {
+        private readonly IUriGenerator _uriGenerator;
         private readonly HttpClient _httpClient;
 
-        public GetDatesQuery(HttpClient httpClient)
+        public GetDatesQuery(IUriGenerator uriGenerator, HttpClient httpClient)
         {
+            _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
@@ -39,7 +41,7 @@ namespace FluentCineworld.Listings.GetDates
 
         private async Task<string> GetJson(Cinema cinema)
         {
-            var url = UriGenerator.DatesWithListings(cinema);
+            var url = _uriGenerator.ForDatesWithListings(cinema);
             var json = await _httpClient.GetStringAsync(url).ConfigureAwait(false);
 
             return json;

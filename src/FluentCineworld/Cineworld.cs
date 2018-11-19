@@ -22,8 +22,9 @@ namespace FluentCineworld
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var getDatesQuery = new GetDatesQuery(_httpClient);
-            var getFilmsQuery = new GetFilmsQuery(_httpClient);
+            var uriGenerator = new UriGenerator();
+            var getDatesQuery = new GetDatesQuery(uriGenerator, _httpClient);
+            var getFilmsQuery = new GetFilmsQuery(uriGenerator, _httpClient);
             var filter = new Filter();
             var cinemaListings = new CinemaListings(cinema, getDatesQuery, getFilmsQuery, filter);
 
