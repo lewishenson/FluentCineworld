@@ -24,7 +24,8 @@ namespace FluentCineworld
 
             var uriGenerator = new UriGenerator();
             var getDatesQuery = new GetDatesQuery(uriGenerator, _httpClient);
-            var getFilmsQuery = new GetFilmsQuery(uriGenerator, _httpClient);
+            var filmNameFormatter = new FilmNameFormatter();
+            var getFilmsQuery = new GetFilmsQuery(uriGenerator, _httpClient, filmNameFormatter);
             var filter = new Filter();
             var cinemaListings = new CinemaListings(cinema, getDatesQuery, getFilmsQuery, filter);
 
