@@ -9,10 +9,12 @@ namespace FluentCineworld.Listings.GetFilms
 {
     public class GetFilmsQuery : IGetFilmsQuery
     {
+        private readonly IUriGenerator _uriGenerator;
         private readonly HttpClient _httpClient;
 
-        public GetFilmsQuery(HttpClient httpClient)
+        public GetFilmsQuery(IUriGenerator uriGenerator, HttpClient httpClient)
         {
+            _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
@@ -42,7 +44,7 @@ namespace FluentCineworld.Listings.GetFilms
 
         private async Task<string> GetJson(Cinema cinema, DateTime date)
         {
-            var url = UriGenerator.Listings(cinema, date);
+            var url = _uriGenerator.ForListings(cinema, date);
             var json = await _httpClient.GetStringAsync(url).ConfigureAwait(false);
 
             return json;
