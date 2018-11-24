@@ -1,6 +1,10 @@
 ﻿FluentCineworld changelog
 =========================
 
+v5.0.0
+New version that is easier to use with Dependency Injection.
+Updated list of showing attributes.
+
 v4.1.0
 Updated list of cinemas.
 
