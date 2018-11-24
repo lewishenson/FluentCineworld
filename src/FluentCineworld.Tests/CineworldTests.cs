@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
 
@@ -32,6 +33,27 @@ namespace FluentCineworld.Tests
             var listings = cineworld.WhatsOn(Cinema.Northampton);
 
             listings.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void SiteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
+        {
+            var cineworld = new Cineworld(Shared.HttpClient);
+
+            Func<Task> action = async () => await cineworld.SiteAsync(null);
+
+            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
+        }
+
+        [Fact]
+        [Trait("Integration", "Http")]
+        public async Task SiteAsync_GivenCinema_ThenDetailsReturned()
+        {
+            var cineworld = new Cineworld(Shared.HttpClient);
+
+            var site = await cineworld.SiteAsync(Cinema.Northampton);
+
+            site.Should().NotBeNull();
         }
     }
 }
