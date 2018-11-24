@@ -12,17 +12,12 @@ namespace FluentCineworld.TestClient
         {
             try
             {
-                var today = DateTime.Now;
-
                 var cineworld = new Cineworld(Shared.HttpClient);
 
                 var cinema = GetCinema(args);
-                var films = await cineworld.WhatsOn(cinema)
-                                           .From(today)
-                                           .To(today.AddDays(2))
-                                           .RetrieveAsync();
 
-                new FilmConsoleWriter().Output(films);
+                await GetSiteDetails(cineworld, cinema);
+                await GetFilms(cineworld, cinema);
             }
             catch (Exception ex)
             {
@@ -37,6 +32,25 @@ namespace FluentCineworld.TestClient
             return string.IsNullOrWhiteSpace(cinemaName)
                     ? Cinema.MiltonKeynes
                     : Enumeration.FromDisplayName<Cinema>(cinemaName);
+        }
+
+        private static async Task GetSiteDetails(ICineworld cineworld, Cinema cinema)
+        {
+            var siteDetails = await cineworld.SiteAsync(cinema);
+
+            new SiteConsoleWriter().Output(siteDetails);
+        }
+
+        private static async Task GetFilms(ICineworld cineworld, Cinema cinema)
+        {
+            var today = DateTime.Now;
+
+            var films = await cineworld.WhatsOn(cinema)
+                                       .From(today)
+                                       .To(today.AddDays(2))
+                                       .RetrieveAsync();
+
+            new FilmConsoleWriter().Output(films);
         }
     }
 }

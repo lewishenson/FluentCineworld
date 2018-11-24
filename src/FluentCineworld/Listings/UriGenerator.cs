@@ -13,7 +13,7 @@ namespace FluentCineworld.Listings
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var oneYearFromNow = GetOneYearFromNow();
+            var oneYearFromNow = this.GetOneYearFromNow();
 
             return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/{cinema.Value}/until/{oneYearFromNow}?attr=&lang=en_GB";
         }
