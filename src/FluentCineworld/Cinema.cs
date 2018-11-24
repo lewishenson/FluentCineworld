@@ -24,7 +24,6 @@ namespace FluentCineworld
         public static readonly Cinema Cardiff = new Cinema(8031, "Cardiff");
         public static readonly Cinema Castleford = new Cinema(8032, "Castleford");
         public static readonly Cinema Cheltenham = new Cinema(8034, "Cheltenham");
-        public static readonly Cinema CheltenhamTheScreeningRooms = new Cinema(8038, "Cheltenham - The Screening Rooms");
         public static readonly Cinema Chesterfield = new Cinema(8039, "Chesterfield");
         public static readonly Cinema Chichester = new Cinema(8033, "Chichester");
         public static readonly Cinema Crawley = new Cinema(8037, "Crawley");
