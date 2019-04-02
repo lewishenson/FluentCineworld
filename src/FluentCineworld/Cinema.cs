@@ -92,6 +92,7 @@ namespace FluentCineworld
         public static readonly Cinema SwindonShawRidge = new Cinema(8087, "Swindon - Shaw Ridge");
         public static readonly Cinema Telford = new Cinema(8097, "Telford");
         public static readonly Cinema Wakefield = new Cinema(8088, "Wakefield");
+        public static readonly Cinema Watford = new Cinema(8124, "Watford");
         public static readonly Cinema WestonSuperMare = new Cinema(8121, "Weston-super-Mare");
         public static readonly Cinema Weymouth = new Cinema(8091, "Weymouth");
         public static readonly Cinema Whiteley = new Cinema(8104, "Whiteley");
