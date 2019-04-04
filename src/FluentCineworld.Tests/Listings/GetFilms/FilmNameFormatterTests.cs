@@ -77,6 +77,16 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         }
 
         [Fact]
+        public void Format_GivenUnlimitedScreeningSuffix_ReturnsTrimmedName()
+        {
+            var formatter = new FilmNameFormatter();
+
+            var result = formatter.Format("Captain Marvel: Unlimited Screening");
+
+            result.Should().Be("Captain Marvel");
+        }
+
+        [Fact]
         public void Format_GivenAutismFriendlyScreeningPrefix_ReturnsTrimmedName()
         {
             var formatter = new FilmNameFormatter();
@@ -84,6 +94,16 @@ namespace FluentCineworld.Tests.Listings.GetFilms
             var result = formatter.Format("Autism Friendly Screening: Moana");
 
             result.Should().Be("Moana");
+        }
+
+        [Fact]
+        public void Format_GivenClassicMoviesPrefix_ReturnsTrimmedName()
+        {
+            var formatter = new FilmNameFormatter();
+
+            var result = formatter.Format("Classic Movies: The Goonies");
+
+            result.Should().Be("The Goonies");
         }
     }
 }
