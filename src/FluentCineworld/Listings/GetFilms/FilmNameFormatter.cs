@@ -17,6 +17,12 @@ namespace FluentCineworld.Listings.GetFilms
                 return result.Name;
             }
 
+            result = this.RemoveUnlimitedScreeningText(trimmedName);
+            if (result.HasChanged)
+            {
+                return result.Name;
+            }
+
             result = this.RemoveRereleaseText(trimmedName);
             if (result.HasChanged)
             {
@@ -24,6 +30,12 @@ namespace FluentCineworld.Listings.GetFilms
             }
 
             result = this.RemoveAutismFriendlyScreeningText(trimmedName);
+            if (result.HasChanged)
+            {
+                return result.Name;
+            }
+
+            result = this.RemoveClassicMoviesText(trimmedName);
             if (result.HasChanged)
             {
                 return result.Name;
@@ -49,6 +61,17 @@ namespace FluentCineworld.Listings.GetFilms
             return Result.AsUnchanged(name);
         }
 
+        private Result RemoveUnlimitedScreeningText(string name)
+        {
+            if (name.EndsWith(": Unlimited Screening"))
+            {
+                var formattedName = name.Replace(": Unlimited Screening", string.Empty);
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
+        }
+
         private Result RemoveRereleaseText(string name)
         {
             if (name.EndsWith(" - Rerelease"))
@@ -65,6 +88,17 @@ namespace FluentCineworld.Listings.GetFilms
             if (name.StartsWith("Autism Friendly Screening: "))
             {
                 var formattedName = name.Replace("Autism Friendly Screening: ", string.Empty);
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
+        }
+
+        private Result RemoveClassicMoviesText(string name)
+        {
+            if (name.StartsWith("Classic Movies: "))
+            {
+                var formattedName = name.Replace("Classic Movies: ", string.Empty);
                 return Result.AsChanged(formattedName);
             }
 
