@@ -57,6 +57,26 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         }
 
         [Fact]
+        public void Format_GivenColonMoviesForJuniorsSuffix_ReturnsTrimmedName()
+        {
+            var formatter = new FilmNameFormatter();
+
+            var result = formatter.Format("Mary Poppins Returns: Movies For Juniors");
+
+            result.Should().Be("Mary Poppins Returns");
+        }
+
+        [Fact]
+        public void Format_GivenHyphenMoviesForJuniorsSuffix_ReturnsTrimmedName()
+        {
+            var formatter = new FilmNameFormatter();
+
+            var result = formatter.Format("The LEGO Movie 2 - Movies For Juniors");
+
+            result.Should().Be("The LEGO Movie 2");
+        }
+
+        [Fact]
         public void Format_GivenSubtitledMoviesForJuniorsSuffix_ReturnsTrimmedName()
         {
             var formatter = new FilmNameFormatter();
@@ -64,6 +84,26 @@ namespace FluentCineworld.Tests.Listings.GetFilms
             var result = formatter.Format("Toy Story Subtitled Movies For Juniors");
 
             result.Should().Be("Toy Story");
+        }
+
+        [Fact]
+        public void Format_GivenColonSubtitledMoviesForJuniorsSuffix_ReturnsTrimmedName()
+        {
+            var formatter = new FilmNameFormatter();
+
+            var result = formatter.Format("Toy Story: Subtitled Movies For Juniors");
+
+            result.Should().Be("Toy Story");
+        }
+
+        [Fact]
+        public void Format_GivenHyphenSubtitledMoviesForJuniorsSuffix_ReturnsTrimmedName()
+        {
+            var formatter = new FilmNameFormatter();
+
+            var result = formatter.Format("The LEGO Movie 2 - Subtitled Movies For Juniors");
+
+            result.Should().Be("The LEGO Movie 2");
         }
 
         [Fact]

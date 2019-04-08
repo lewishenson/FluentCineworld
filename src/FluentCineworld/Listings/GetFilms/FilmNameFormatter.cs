@@ -46,9 +46,33 @@ namespace FluentCineworld.Listings.GetFilms
 
         private Result RemoveMoviesForJuniorsText(string name)
         {
+            if (name.EndsWith(": Subtitled Movies For Juniors"))
+            {
+                var formattedName = name.Replace(": Subtitled Movies For Juniors", string.Empty);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(" - Subtitled Movies For Juniors"))
+            {
+                var formattedName = name.Replace(" - Subtitled Movies For Juniors", string.Empty);
+                return Result.AsChanged(formattedName);
+            }
+
             if (name.EndsWith(" Subtitled Movies For Juniors"))
             {
                 var formattedName = name.Replace(" Subtitled Movies For Juniors", string.Empty);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(": Movies For Juniors"))
+            {
+                var formattedName = name.Replace(": Movies For Juniors", string.Empty);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(" - Movies For Juniors"))
+            {
+                var formattedName = name.Replace(" - Movies For Juniors", string.Empty);
                 return Result.AsChanged(formattedName);
             }
 
