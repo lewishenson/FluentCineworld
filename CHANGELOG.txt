@@ -3,7 +3,7 @@
 
 v5.1.0
 Updated list of cinemas.
-Remove unwanted film title text (Classic Movies; Unlimited Screenings).
+Remove unwanted film title prefixes and suffixes.
 
 v5.0.0
 New version that is easier to use with Dependency Injection.
