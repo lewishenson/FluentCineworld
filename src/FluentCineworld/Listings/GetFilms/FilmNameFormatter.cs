@@ -1,3 +1,5 @@
+using System;
+
 namespace FluentCineworld.Listings.GetFilms
 {
     public class FilmNameFormatter : IFilmNameFormatter
@@ -46,39 +48,39 @@ namespace FluentCineworld.Listings.GetFilms
 
         private Result RemoveMoviesForJuniorsText(string name)
         {
-            if (name.EndsWith(": Subtitled Movies For Juniors"))
+            if (name.EndsWith(": Subtitled Movies For Juniors", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(": Subtitled Movies For Juniors", string.Empty);
+                var formattedName = name.Replace(": Subtitled Movies For Juniors", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
-            if (name.EndsWith(" - Subtitled Movies For Juniors"))
+            if (name.EndsWith(" - Subtitled Movies For Juniors", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(" - Subtitled Movies For Juniors", string.Empty);
+                var formattedName = name.Replace(" - Subtitled Movies For Juniors", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
-            if (name.EndsWith(" Subtitled Movies For Juniors"))
+            if (name.EndsWith(" Subtitled Movies For Juniors", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(" Subtitled Movies For Juniors", string.Empty);
+                var formattedName = name.Replace(" Subtitled Movies For Juniors", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
-            if (name.EndsWith(": Movies For Juniors"))
+            if (name.EndsWith(": Movies For Juniors", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(": Movies For Juniors", string.Empty);
+                var formattedName = name.Replace(": Movies For Juniors", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
-            if (name.EndsWith(" - Movies For Juniors"))
+            if (name.EndsWith(" - Movies For Juniors", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(" - Movies For Juniors", string.Empty);
+                var formattedName = name.Replace(" - Movies For Juniors", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
-            if (name.EndsWith(" Movies For Juniors"))
+            if (name.EndsWith(" Movies For Juniors", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(" Movies For Juniors", string.Empty);
+                var formattedName = name.Replace(" Movies For Juniors", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
@@ -87,9 +89,9 @@ namespace FluentCineworld.Listings.GetFilms
 
         private Result RemoveUnlimitedScreeningText(string name)
         {
-            if (name.EndsWith(": Unlimited Screening"))
+            if (name.EndsWith(": Unlimited Screening", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(": Unlimited Screening", string.Empty);
+                var formattedName = name.Replace(": Unlimited Screening", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
@@ -98,9 +100,9 @@ namespace FluentCineworld.Listings.GetFilms
 
         private Result RemoveRereleaseText(string name)
         {
-            if (name.EndsWith(" - Rerelease"))
+            if (name.EndsWith(" - Rerelease", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace(" - Rerelease", string.Empty);
+                var formattedName = name.Replace(" - Rerelease", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
@@ -109,9 +111,9 @@ namespace FluentCineworld.Listings.GetFilms
 
         private Result RemoveAutismFriendlyScreeningText(string name)
         {
-            if (name.StartsWith("Autism Friendly Screening: "))
+            if (name.StartsWith("Autism Friendly Screening: ", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace("Autism Friendly Screening: ", string.Empty);
+                var formattedName = name.Replace("Autism Friendly Screening: ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
@@ -120,9 +122,9 @@ namespace FluentCineworld.Listings.GetFilms
 
         private Result RemoveClassicMoviesText(string name)
         {
-            if (name.StartsWith("Classic Movies: "))
+            if (name.StartsWith("Classic Movies: ", StringComparison.CurrentCultureIgnoreCase))
             {
-                var formattedName = name.Replace("Classic Movies: ", string.Empty);
+                var formattedName = name.Replace("Classic Movies: ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
