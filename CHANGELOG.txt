@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v5.2.0
+Remove more unwanted film title prefixes and suffixes.
+
 v5.1.0
 Updated list of cinemas.
 Remove unwanted film title prefixes and suffixes.
