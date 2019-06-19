@@ -63,7 +63,7 @@ namespace FluentCineworld.Tests.Listings.GetFilms
 
             var getFilmsQuery = new GetFilmsQuery(uriGenerator, Shared.HttpClient, filmNameFormatter);
 
-            var films = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare, DateTime.UtcNow);
+            var films = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare, DateTime.UtcNow.AddDays(1));
 
             films.Should().NotBeNullOrEmpty();
         }
