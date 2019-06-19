@@ -80,6 +80,7 @@ namespace FluentCineworld
         public static readonly Cinema Rochester = new Cinema(8075, "Rochester");
         public static readonly Cinema Rugby = new Cinema(8076, "Rugby");
         public static readonly Cinema Runcorn = new Cinema(8077, "Runcorn");
+        public static readonly Cinema RushdenLakes = new Cinema(8125, "Rushden Lakes");
         public static readonly Cinema Sheffield = new Cinema(8079, "Sheffield");
         public static readonly Cinema Shrewsbury = new Cinema(8080, "Shrewsbury");
         public static readonly Cinema Solihull = new Cinema(8081, "Solihull");
