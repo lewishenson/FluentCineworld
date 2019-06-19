@@ -22,13 +22,13 @@ namespace FluentCineworld.Tests.Listings
         {
             try
             {
-                SystemDate.UtcNow = () => new DateTime(2018, 10, 31);
+                SystemDate.UtcNow = () => new DateTime(2019, 10, 31);
 
                 var uriGenerator = new UriGenerator();
 
                 var uri = uriGenerator.ForDatesWithListings(Cinema.LondonTheO2Greenwich);
 
-                uri.Should().Be("https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/8052/until/2019-10-31?attr=&lang=en_GB");
+                uri.Should().Be("https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/8052/until/2020-10-31?attr=&lang=en_GB");
             }
             finally
             {
