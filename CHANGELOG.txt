@@ -1,6 +1,11 @@
 ﻿FluentCineworld changelog
 =========================
 
+v5.4.0
+Updated list of cinemas:
+    Added: EastbourneAtTheBeacon, Plymouth, Warrington, York
+    Removed: LondonFulhamRoad
+
 v5.3.0
 Updated list of cinemas.
 
