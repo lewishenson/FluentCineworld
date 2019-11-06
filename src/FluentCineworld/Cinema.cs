@@ -32,7 +32,7 @@ namespace FluentCineworld
         public static readonly Cinema Didsbury = new Cinema(8041, "Didsbury");
         public static readonly Cinema Dover = new Cinema(8122, "Dover");
         public static readonly Cinema Dundee = new Cinema(8042, "Dundee");
-        public static readonly Cinema Eastbourne = new Cinema(8043, "Eastbourne");
+        public static readonly Cinema EastbourneAtTheBeacon = new Cinema(8126, "Eastbourne at The Beacon");
         public static readonly Cinema Edinburgh = new Cinema(8044, "Edinburgh");
         public static readonly Cinema Ely = new Cinema(8116, "Ely");
         public static readonly Cinema Falkirk = new Cinema(8046, "Falkirk");
@@ -57,7 +57,6 @@ namespace FluentCineworld
         public static readonly Cinema LondonBexleyheath = new Cinema(8020, "London - Bexleyheath");
         public static readonly Cinema LondonEnfield = new Cinema(8045, "London - Enfield");
         public static readonly Cinema LondonFeltham = new Cinema(8047, "London - Feltham");
-        public static readonly Cinema LondonFulhamRoad = new Cinema(8048, "London - Fulham Road");
         public static readonly Cinema LondonIlford = new Cinema(8062, "London - Ilford");
         public static readonly Cinema LondonLeicesterSquare = new Cinema(8110, "London - Leicester Square");
         public static readonly Cinema LondonSouthRuislip = new Cinema(8118, "London - South Ruislip");
@@ -76,6 +75,7 @@ namespace FluentCineworld
         public static readonly Cinema NewportSpyttyPark = new Cinema(8072, "Newport - Spytty Park");
         public static readonly Cinema Northampton = new Cinema(8073, "Northampton");
         public static readonly Cinema Nottingham = new Cinema(8074, "Nottingham");
+        public static readonly Cinema Plymouth = new Cinema(8127, "Plymouth");
         public static readonly Cinema Poole = new Cinema(8112, "Poole");
         public static readonly Cinema Rochester = new Cinema(8075, "Rochester");
         public static readonly Cinema Rugby = new Cinema(8076, "Rugby");
@@ -93,6 +93,7 @@ namespace FluentCineworld
         public static readonly Cinema SwindonShawRidge = new Cinema(8087, "Swindon - Shaw Ridge");
         public static readonly Cinema Telford = new Cinema(8097, "Telford");
         public static readonly Cinema Wakefield = new Cinema(8088, "Wakefield");
+        public static readonly Cinema Warrington = new Cinema(8129, "Warrington");
         public static readonly Cinema Watford = new Cinema(8124, "Watford");
         public static readonly Cinema WestonSuperMare = new Cinema(8121, "Weston-super-Mare");
         public static readonly Cinema Weymouth = new Cinema(8091, "Weymouth");
@@ -101,6 +102,7 @@ namespace FluentCineworld
         public static readonly Cinema Wolverhampton = new Cinema(8095, "Wolverhampton");
         public static readonly Cinema Yate = new Cinema(8107, "Yate");
         public static readonly Cinema Yeovil = new Cinema(8096, "Yeovil");
+        public static readonly Cinema York = new Cinema(8128, "York");
 
         protected Cinema()
         {
