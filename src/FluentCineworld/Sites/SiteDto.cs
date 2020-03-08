@@ -1,30 +1,30 @@
 using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Sites
 {
     [DebuggerDisplay("DisplayName = {DisplayName}")]
     internal class SiteDto
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("groupId")]
+        [JsonPropertyName("groupId")]
         public string GroupId { get; set; }
 
-        [JsonProperty("displayName")]
+        [JsonPropertyName("displayName")]
         public string DisplayName { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public string Link { get; set; }
 
-        [JsonProperty("address")]
+        [JsonPropertyName("address")]
         public string Address { get; set; }
 
-        [JsonProperty("bookingUrl")]
+        [JsonPropertyName("bookingUrl")]
         public string BookingUrl { get; set; }
 
-        [JsonProperty("blockOnlineSales")]
+        [JsonPropertyName("blockOnlineSales")]
         public bool BlockOnlineSales { get; set; }
     }
 }

@@ -1,10 +1,10 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Listings.GetDates
 {
     internal class ResponseDto
     {
-        [JsonProperty("body")]
-        internal BodyDto Body { get; set; }
+        [JsonPropertyName("body")]
+        public BodyDto Body { get; set; }
     }
 }

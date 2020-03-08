@@ -1,36 +1,36 @@
 using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Listings.GetFilms
 {
     [DebuggerDisplay("Name = {Name}")]
     internal class FilmDto
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("length")]
+        [JsonPropertyName("length")]
         public int Length { get; set; }
 
-        [JsonProperty("posterLink")]
+        [JsonPropertyName("posterLink")]
         public string PosterLink { get; set; }
 
-        [JsonProperty("videoLink")]
+        [JsonPropertyName("videoLink")]
         public string VideoLink { get; set; }
 
-        [JsonProperty("link")]
+        [JsonPropertyName("link")]
         public string Link { get; set; }
 
-        [JsonProperty("weight")]
+        [JsonPropertyName("weight")]
         public int Weight { get; set; }
 
-        [JsonProperty("releaseYear")]
+        [JsonPropertyName("releaseYear")]
         public string ReleaseYear { get; set; }
 
-        [JsonProperty("attributeIds")]
+        [JsonPropertyName("attributeIds")]
         public string[] AttributeIds { get; set; }
     }
 }

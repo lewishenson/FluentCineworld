@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace FluentCineworld.Listings.GetFilms
 {
@@ -37,7 +37,7 @@ namespace FluentCineworld.Listings.GetFilms
                 return Enumerable.Empty<Film>();
             }
 
-            var response = JsonConvert.DeserializeObject<ResponseDto>(json);
+            var response = JsonSerializer.Deserialize<ResponseDto>(json);
 
             var films = response.Body.Films.Select(this.MapWithoutShowings)
                                            .ToDictionary(film => film.Id, film => film);

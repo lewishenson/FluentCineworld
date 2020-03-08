@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace FluentCineworld.Listings.GetDates
 {
@@ -33,8 +32,7 @@ namespace FluentCineworld.Listings.GetDates
                 return Enumerable.Empty<DateTime>();
             }
 
-            var dateConverter = new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd" };
-            var response = JsonConvert.DeserializeObject<ResponseDto>(json, dateConverter);
+            var response = JsonSerializer.Deserialize<ResponseDto>(json);
 
             return response.Body.Dates;
         }
