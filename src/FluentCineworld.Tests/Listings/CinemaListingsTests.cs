@@ -47,7 +47,7 @@ namespace FluentCineworld.Tests.Listings
             action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("getFilmsQuery");
         }
 
-         [Fact]
+        [Fact]
         public void Constructor_GivenNullFilter_ThenArgumentNullExceptionThrown()
         {
             var mockGetDatesQuery = new Mock<IGetDatesQuery>();
@@ -273,7 +273,7 @@ namespace FluentCineworld.Tests.Listings
             films.Single().Should().BeEquivalentTo(expectedFilm);
         }
 
-         [Fact]
+        [Fact]
         public async Task RetrieveAsync_GivenValidConstructorArguments_ShouldFilterByDayOfWeek()
         {
             var mockGetDatesQuery = new Mock<IGetDatesQuery>();
