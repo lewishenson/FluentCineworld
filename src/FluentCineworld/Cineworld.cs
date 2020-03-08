@@ -36,7 +36,7 @@ namespace FluentCineworld
 
         public async Task<SiteDetails> SiteAsync(Cinema cinema)
         {
-             if (cinema == null)
+            if (cinema == null)
             {
                 throw new ArgumentNullException(nameof(cinema));
             }

@@ -18,7 +18,7 @@ namespace FluentCineworld.Tests.Listings.GetDates
             action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
         }
 
-         [Fact]
+        [Fact]
         public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown()
         {
             var mockUriGenerator = new Mock<IUriGenerator>();
