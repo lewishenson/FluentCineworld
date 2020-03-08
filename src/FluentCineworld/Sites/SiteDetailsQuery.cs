@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace FluentCineworld.Sites
 {
@@ -28,7 +28,7 @@ namespace FluentCineworld.Sites
 
             var json = await this.GetJson();
 
-            var response = JsonConvert.DeserializeObject<ResponseDto>(json);
+            var response = JsonSerializer.Deserialize<ResponseDto>(json);
 
             var allSites = response.Body.Cinemas.Select(this.Map).ToList();
             var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Value);

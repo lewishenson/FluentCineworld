@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Listings.GetDates
 {
     internal class BodyDto
     {
-        [JsonProperty("dates")]
-        internal IEnumerable<DateTime> Dates { get; set; }
+        [JsonPropertyName("dates")]
+        public IEnumerable<DateTime> Dates { get; set; }
     }
 }
