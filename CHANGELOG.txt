@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v6.0.0
+Switch from Newtonsoft.Json to System.Text.Json.
+
 v5.4.0
 Updated list of cinemas:
     Added: EastbourneAtTheBeacon, Plymouth, Warrington, York
