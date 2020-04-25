@@ -26,7 +26,7 @@ namespace FluentCineworld.Sites
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var json = await this.GetJson();
+            var json = await this.GetJson().ConfigureAwait(false);
 
             var response = JsonSerializer.Deserialize<ResponseDto>(json);
 
