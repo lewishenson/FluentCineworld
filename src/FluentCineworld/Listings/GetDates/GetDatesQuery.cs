@@ -27,7 +27,7 @@ namespace FluentCineworld.Listings.GetDates
 
             var json = await this.GetJson(cinema).ConfigureAwait(false);
 
-            if (string.IsNullOrWhiteSpace(json))
+            if (json.Length == 0)
             {
                 return Enumerable.Empty<DateTime>();
             }
@@ -37,10 +37,10 @@ namespace FluentCineworld.Listings.GetDates
             return response.Body.Dates;
         }
 
-        private async Task<string> GetJson(Cinema cinema)
+        private async Task<byte[]> GetJson(Cinema cinema)
         {
             var url = _uriGenerator.ForDatesWithListings(cinema);
-            var json = await _httpClient.GetStringAsync(url).ConfigureAwait(false);
+            var json = await _httpClient.GetByteArrayAsync(url).ConfigureAwait(false);
 
             return json;
         }

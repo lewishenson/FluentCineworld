@@ -36,10 +36,10 @@ namespace FluentCineworld.Sites
             return targetSite;
         }
 
-        private async Task<string> GetJson()
+        private async Task<byte[]> GetJson()
         {
             var url = _uriGenerator.ForCinemaSites();
-            var json = await _httpClient.GetStringAsync(url).ConfigureAwait(false);
+            var json = await _httpClient.GetByteArrayAsync(url).ConfigureAwait(false);
 
             return json;
         }

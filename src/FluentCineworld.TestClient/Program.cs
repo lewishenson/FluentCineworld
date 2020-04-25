@@ -47,7 +47,7 @@ namespace FluentCineworld.TestClient
 
             var films = await cineworld.WhatsOn(cinema)
                                        .From(today)
-                                       .To(today.AddDays(2))
+                                       .To(today.AddDays(30))
                                        .RetrieveAsync();
 
             new FilmConsoleWriter().Output(films);

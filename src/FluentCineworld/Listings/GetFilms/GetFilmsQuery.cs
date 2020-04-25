@@ -32,7 +32,7 @@ namespace FluentCineworld.Listings.GetFilms
 
             var json = await this.GetJson(cinema, date).ConfigureAwait(false);
 
-            if (string.IsNullOrWhiteSpace(json))
+            if (json.Length == 0)
             {
                 return Enumerable.Empty<Film>();
             }
@@ -47,10 +47,10 @@ namespace FluentCineworld.Listings.GetFilms
             return films.Values;
         }
 
-        private async Task<string> GetJson(Cinema cinema, DateTime date)
+        private async Task<byte[]> GetJson(Cinema cinema, DateTime date)
         {
             var url = _uriGenerator.ForListings(cinema, date);
-            var json = await _httpClient.GetStringAsync(url).ConfigureAwait(false);
+            var json = await _httpClient.GetByteArrayAsync(url).ConfigureAwait(false);
 
             return json;
         }
