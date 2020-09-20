@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Listings.GetFilms
 {
     internal class BodyDto
     {
-        [JsonProperty("films")]
-        internal IEnumerable<FilmDto> Films { get; set; }
+        [JsonPropertyName("films")]
+        public IEnumerable<FilmDto> Films { get; set; }
 
-        [JsonProperty("events")]
-        internal IEnumerable<EventDto> Events { get; set; }
+        [JsonPropertyName("events")]
+        public IEnumerable<EventDto> Events { get; set; }
     }
 }

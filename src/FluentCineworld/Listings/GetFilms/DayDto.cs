@@ -1,19 +1,19 @@
 using System;
 using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Listings.GetFilms
 {
     [DebuggerDisplay("Date = {Date}")]
     internal class DayDto
     {
-        [JsonProperty("date")]
+        [JsonPropertyName("date")]
         public DateTime Date { get; set; }
 
-        [JsonProperty("P")]
+        [JsonPropertyName("P")]
         public ShowingDto[] Showings { get; set; }
 
-        [JsonProperty("d")]
+        [JsonPropertyName("d")]
         public long D { get; set; }
     }
 }
