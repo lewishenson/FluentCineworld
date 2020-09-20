@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text.Json;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings.GetDates
@@ -25,24 +25,17 @@ namespace FluentCineworld.Listings.GetDates
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var json = await this.GetJson(cinema).ConfigureAwait(false);
+            var response = await this.GetResponse(cinema).ConfigureAwait(false);
 
-            if (json.Length == 0)
-            {
-                return Enumerable.Empty<DateTime>();
-            }
-
-            var response = JsonSerializer.Deserialize<ResponseDto>(json);
-
-            return response.Body.Dates;
+            return response?.Body == null ? Enumerable.Empty<DateTime>() : response.Body.Dates;
         }
 
-        private async Task<byte[]> GetJson(Cinema cinema)
+        private async Task<ResponseDto> GetResponse(Cinema cinema)
         {
             var url = _uriGenerator.ForDatesWithListings(cinema);
-            var json = await _httpClient.GetByteArrayAsync(url).ConfigureAwait(false);
+            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
 
-            return json;
+            return response;
         }
     }
 }
