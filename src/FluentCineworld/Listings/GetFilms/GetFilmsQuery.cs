@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace FluentCineworld.Listings.GetFilms
 {
@@ -30,14 +30,12 @@ namespace FluentCineworld.Listings.GetFilms
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var json = await this.GetJson(cinema, date).ConfigureAwait(false);
+            var response = await this.GetResponse(cinema, date).ConfigureAwait(false);
 
-            if (string.IsNullOrWhiteSpace(json))
+            if (response?.Body == null)
             {
                 return Enumerable.Empty<Film>();
             }
-
-            var response = JsonConvert.DeserializeObject<ResponseDto>(json);
 
             var films = response.Body.Films.Select(this.MapWithoutShowings)
                                            .ToDictionary(film => film.Id, film => film);
@@ -47,12 +45,12 @@ namespace FluentCineworld.Listings.GetFilms
             return films.Values;
         }
 
-        private async Task<string> GetJson(Cinema cinema, DateTime date)
+        private async Task<ResponseDto> GetResponse(Cinema cinema, DateTime date)
         {
             var url = _uriGenerator.ForListings(cinema, date);
-            var json = await _httpClient.GetStringAsync(url).ConfigureAwait(false);
+            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
 
-            return json;
+            return response;
         }
 
         private Film MapWithoutShowings(FilmDto filmDto)

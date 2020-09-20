@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace FluentCineworld.Sites
 {
@@ -11,9 +11,7 @@ namespace FluentCineworld.Sites
         private readonly IUriGenerator _uriGenerator;
         private readonly HttpClient _httpClient;
 
-        public SiteDetailsQuery(
-            IUriGenerator uriGenerator,
-            HttpClient httpClient)
+        public SiteDetailsQuery(IUriGenerator uriGenerator, HttpClient httpClient)
         {
             _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
@@ -26,9 +24,7 @@ namespace FluentCineworld.Sites
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var json = await this.GetJson();
-
-            var response = JsonConvert.DeserializeObject<ResponseDto>(json);
+            var response = await GetResponse().ConfigureAwait(false);
 
             var allSites = response.Body.Cinemas.Select(this.Map).ToList();
             var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Value);
@@ -36,12 +32,12 @@ namespace FluentCineworld.Sites
             return targetSite;
         }
 
-        private async Task<string> GetJson()
+        private async Task<ResponseDto> GetResponse()
         {
             var url = _uriGenerator.ForCinemaSites();
-            var json = await _httpClient.GetStringAsync(url).ConfigureAwait(false);
+            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
 
-            return json;
+            return response;
         }
 
         private SiteDetails Map(SiteDto siteDto)

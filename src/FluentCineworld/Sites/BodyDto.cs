@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Sites
 {
     internal class BodyDto
     {
-        [JsonProperty("cinemas")]
-        internal List<SiteDto> Cinemas { get; set; }
+        [JsonPropertyName("cinemas")]
+        public List<SiteDto> Cinemas { get; set; }
     }
 }

@@ -1,42 +1,42 @@
 using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Listings.GetFilms
 {
     [DebuggerDisplay("Time = {Time}")]
     internal class ShowingDto
     {
-        [JsonProperty("dt")]
+        [JsonPropertyName("dt")]
         public long Dt { get; set; }
 
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public string Time { get; set; }
 
-        [JsonProperty("sub")]
+        [JsonPropertyName("sub")]
         public bool Sub { get; set; }
 
-        [JsonProperty("dattr")]
+        [JsonPropertyName("dattr")]
         public string AttributeDescriptions { get; set; }
 
-        [JsonProperty("Vt")]
+        [JsonPropertyName("Vt")]
         public int Vt { get; set; }
 
-        [JsonProperty("is3d")]
+        [JsonPropertyName("is3d")]
         public bool Is3D { get; set; }
 
-        [JsonProperty("attr")]
+        [JsonPropertyName("attr")]
         public string Attributes { get; set; }
 
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public string Code { get; set; }
 
-        [JsonProperty("dub")]
+        [JsonPropertyName("dub")]
         public bool Dubbed { get; set; }
 
-        [JsonProperty("vn")]
+        [JsonPropertyName("vn")]
         public string Screen { get; set; }
 
-        [JsonProperty("sold")]
+        [JsonPropertyName("sold")]
         public bool SoldOut { get; set; }
     }
 }

@@ -1,31 +1,31 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace FluentCineworld.Listings.GetFilms
 {
     internal class EventDto
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("filmId")]
+        [JsonPropertyName("filmId")]
         public string FilmId { get; set; }
 
-        [JsonProperty("cinemaId")]
+        [JsonPropertyName("cinemaId")]
         public string CinemaId { get; set; }
 
-        [JsonProperty("businessDay")]
+        [JsonPropertyName("businessDay")]
         public string BusinessDay { get; set; }
 
-        [JsonProperty("eventDateTime")]
+        [JsonPropertyName("eventDateTime")]
         public string EventDateTime { get; set; }
 
-        [JsonProperty("attributeIds")]
+        [JsonPropertyName("attributeIds")]
         public string[] AttributeIds { get; set; }
 
-        [JsonProperty("bookingLink")]
+        [JsonPropertyName("bookingLink")]
         public string BookingLink { get; set; }
 
-        [JsonProperty("soldOut")]
+        [JsonPropertyName("soldOut")]
         public bool SoldOut { get; set; }
     }
 }
