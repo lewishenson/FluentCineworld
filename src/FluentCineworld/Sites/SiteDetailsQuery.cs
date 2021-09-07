@@ -27,7 +27,7 @@ namespace FluentCineworld.Sites
             var response = await GetResponse().ConfigureAwait(false);
 
             var allSites = response.Body.Cinemas.Select(this.Map).ToList();
-            var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Value);
+            var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Id);
 
             return targetSite;
         }
@@ -35,6 +35,7 @@ namespace FluentCineworld.Sites
         private async Task<ResponseDto> GetResponse()
         {
             var url = _uriGenerator.ForCinemaSites();
+
             var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
 
             return response;
@@ -46,7 +47,7 @@ namespace FluentCineworld.Sites
             {
                 Address = siteDto.Address,
                 DisplayName = siteDto.DisplayName,
-                Id = Convert.ToInt32(siteDto.Id),
+                Id = siteDto.Id,
                 Link = siteDto.Link
             };
         }
