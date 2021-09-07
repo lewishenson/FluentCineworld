@@ -14,7 +14,7 @@ namespace FluentCineworld
         public static readonly Cinema Basildon = new("100", "Basildon");
         public static readonly Cinema Bedford = new("010", "Bedford");
         public static readonly Cinema BirminghamBroadStreet = new("044", "Birmingham - Broad Street");
-        public static readonly Cinema BirminghamNEC = new("090", "Birmingham - NEC");
+        public static readonly Cinema BirminghamNec = new("090", "Birmingham - NEC");
         public static readonly Cinema BoldonTyneAndWear = new("024", "Boldon Tyne and Wear");
         public static readonly Cinema Bolton = new("032", "Bolton");
         public static readonly Cinema Bracknell = new("107", "Bracknell");
