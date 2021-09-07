@@ -92,7 +92,7 @@ namespace FluentCineworld.Tests.Listings
 
             var films = await cinemaListings.RetrieveAsync();
 
-            films.Should().BeEquivalentTo(date1Film1, date1Film2, date2Film1, date2Film2);
+            films.Should().BeEquivalentTo(new[] { date1Film1, date1Film2, date2Film1, date2Film2 });
         }
 
         [Fact]

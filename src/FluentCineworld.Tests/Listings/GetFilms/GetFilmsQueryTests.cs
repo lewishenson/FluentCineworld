@@ -42,7 +42,7 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         }
 
         [Fact]
-        public void ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
+        public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
         {
             var mockUriGenerator = new Mock<IUriGenerator>();
             var mockFilmNameFormatter = new Mock<IFilmNameFormatter>();
@@ -51,7 +51,8 @@ namespace FluentCineworld.Tests.Listings.GetFilms
 
             Func<Task> action = async () => await getFilmsQuery.ExecuteAsync(null, DateTime.UtcNow);
 
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
+            var thrownException = await action.Should().ThrowExactlyAsync<ArgumentNullException>();
+            thrownException.Which.ParamName.Should().Be("cinema");
         }
 
         [Fact]
