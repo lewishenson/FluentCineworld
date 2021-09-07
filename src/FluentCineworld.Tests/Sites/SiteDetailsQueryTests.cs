@@ -28,7 +28,7 @@ namespace FluentCineworld.Tests.Sites
         }
 
         [Fact]
-        public void ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
+        public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
         {
             var mockUriGenerator = new Mock<IUriGenerator>();
 
@@ -36,7 +36,8 @@ namespace FluentCineworld.Tests.Sites
 
             Func<Task> action = async () => await siteDetailsQuery.ExecuteAsync(null);
 
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
+            var thrownException = await action.Should().ThrowExactlyAsync<ArgumentNullException>();
+            thrownException.Which.ParamName.Should().Be("cinema");
         }
 
         [Fact]

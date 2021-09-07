@@ -36,13 +36,14 @@ namespace FluentCineworld.Tests
         }
 
         [Fact]
-        public void SiteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
+        public async Task SiteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
         {
             var cineworld = new Cineworld(Shared.HttpClient);
 
             Func<Task> action = async () => await cineworld.SiteAsync(null);
 
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
+            var thrownException = await action.Should().ThrowExactlyAsync<ArgumentNullException>();
+            thrownException.Which.ParamName.Should().Be("cinema");
         }
 
         [Fact]
