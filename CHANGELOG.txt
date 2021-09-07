@@ -2,7 +2,9 @@
 =========================
 
 v6.0.0
+Target .NET 5.0.
 Switch from Newtonsoft.Json to System.Text.Json.
+Updated list of cinemas to use new string ids and latest locations.
 
 v5.4.0
 Updated list of cinemas:
