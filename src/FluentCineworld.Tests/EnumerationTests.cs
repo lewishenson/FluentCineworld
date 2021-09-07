@@ -16,7 +16,7 @@ namespace FluentCineworld.Tests
         [Fact]
         public void FromValue_ReturnsExpectedValue()
         {
-            var red = Enumeration.FromValue<Colour>(2);
+            var red = Enumeration.FromValue<Colour>("2");
 
             red.Should().Be(Colour.Red);
         }
@@ -78,10 +78,10 @@ namespace FluentCineworld.Tests
         }
 
         [Theory]
-        [InlineData(2, 1, 1)]
-        [InlineData(2, 2, 0)]
-        [InlineData(2, 3, -1)]
-        public void CompareTo_ReturnsExpectedValue(int firstColourValue, int secondColourValue, int expectedResult)
+        [InlineData("2", "1", 1)]
+        [InlineData("2", "2", 0)]
+        [InlineData("2", "3", -1)]
+        public void CompareTo_ReturnsExpectedValue(string firstColourValue, string secondColourValue, int expectedResult)
         {
             var firstColour = Enumeration.FromValue<Colour>(firstColourValue);
             var secondColour = Enumeration.FromValue<Colour>(secondColourValue);
@@ -93,15 +93,15 @@ namespace FluentCineworld.Tests
 
         public class Colour : Enumeration
         {
-            public static readonly Colour Blue = new Colour(1, "blue");
-            public static readonly Colour Red = new Colour(2, "red");
-            public static readonly Colour Yellow = new Colour(3, "yellow");
+            public static readonly Colour Blue = new Colour("1", "blue");
+            public static readonly Colour Red = new Colour("2", "red");
+            public static readonly Colour Yellow = new Colour("3", "yellow");
 
             protected Colour()
             {
             }
 
-            protected Colour(int id, string name)
+            protected Colour(string id, string name)
                 : base(id, name)
             {
             }

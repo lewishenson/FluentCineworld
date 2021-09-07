@@ -7,20 +7,20 @@ namespace FluentCineworld
 {
     public abstract class Enumeration : IComparable
     {
-        private readonly int value;
+        private readonly string value;
         private readonly string displayName;
 
         protected Enumeration()
         {
         }
 
-        protected Enumeration(int value, string displayName)
+        protected Enumeration(string value, string displayName)
         {
             this.value = value;
             this.displayName = displayName;
         }
 
-        public int Value => this.value;
+        public string Value => this.value;
 
         public string DisplayName => this.displayName;
 
@@ -32,9 +32,9 @@ namespace FluentCineworld
             return fields.Select(field => field.GetValue(null)).Cast<T>();
         }
 
-        public static T FromValue<T>(int value) where T : Enumeration
+        public static T FromValue<T>(string value) where T : Enumeration
         {
-            var matchingItem = Parse<T, int>(value, "value", item => item.Value == value);
+            var matchingItem = Parse<T, string>(value, "value", item => item.Value == value);
             return matchingItem;
         }
 

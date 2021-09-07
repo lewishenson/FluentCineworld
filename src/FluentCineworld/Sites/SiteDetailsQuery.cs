@@ -35,6 +35,7 @@ namespace FluentCineworld.Sites
         private async Task<ResponseDto> GetResponse()
         {
             var url = _uriGenerator.ForCinemaSites();
+
             var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
 
             return response;
@@ -46,7 +47,7 @@ namespace FluentCineworld.Sites
             {
                 Address = siteDto.Address,
                 DisplayName = siteDto.DisplayName,
-                Id = Convert.ToInt32(siteDto.Id),
+                Id = siteDto.Id,
                 Link = siteDto.Link
             };
         }
