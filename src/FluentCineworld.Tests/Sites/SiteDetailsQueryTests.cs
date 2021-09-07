@@ -10,22 +10,14 @@ namespace FluentCineworld.Tests.Sites
     public class SiteDetailsQueryTests
     {
         [Fact]
-        public void Constructor_GivenNullUriGenerator_ThenArgumentNullExceptionThrown()
-        {
-            Action action = () => new SiteDetailsQuery(null, Shared.HttpClient);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
-        }
+        public void Constructor_GivenNullUriGenerator_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new SiteDetailsQuery(null, Shared.HttpClient))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
 
         [Fact]
-        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown()
-        {
-            var mockUriGenerator = new Mock<IUriGenerator>();
-
-            Action action = () => new SiteDetailsQuery(mockUriGenerator.Object, null);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
-        }
+        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new SiteDetailsQuery(Mock.Of<IUriGenerator>(), null))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
 
         [Fact]
         public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
@@ -34,9 +26,9 @@ namespace FluentCineworld.Tests.Sites
 
             var siteDetailsQuery = new SiteDetailsQuery(mockUriGenerator.Object, Shared.HttpClient);
 
-            Func<Task> action = async () => await siteDetailsQuery.ExecuteAsync(null);
+            var thrownException = await FluentActions.Awaiting(() => siteDetailsQuery.ExecuteAsync(null))
+                .Should().ThrowExactlyAsync<ArgumentNullException>();
 
-            var thrownException = await action.Should().ThrowExactlyAsync<ArgumentNullException>();
             thrownException.Which.ParamName.Should().Be("cinema");
         }
 

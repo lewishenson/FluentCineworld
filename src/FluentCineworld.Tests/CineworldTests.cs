@@ -8,21 +8,17 @@ namespace FluentCineworld.Tests
     public class CineworldTests
     {
         [Fact]
-        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown()
-        {
-            Action action = () => new Cineworld(null);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
-        }
+        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new Cineworld(null))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
 
         [Fact]
         public void WhatsOn_GivenNullCinema_ThenArgumentNullExceptionThrown()
         {
             var cineworld = new Cineworld(Shared.HttpClient);
 
-            Action action = () => cineworld.WhatsOn(null);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
+            FluentActions.Invoking(() => cineworld.WhatsOn(null))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
         }
 
         [Fact]
@@ -40,9 +36,9 @@ namespace FluentCineworld.Tests
         {
             var cineworld = new Cineworld(Shared.HttpClient);
 
-            Func<Task> action = async () => await cineworld.SiteAsync(null);
+            var thrownException = await FluentActions.Awaiting(() => cineworld.SiteAsync(null))
+                .Should().ThrowExactlyAsync<ArgumentNullException>();
 
-            var thrownException = await action.Should().ThrowExactlyAsync<ArgumentNullException>();
             thrownException.Which.ParamName.Should().Be("cinema");
         }
 
