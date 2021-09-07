@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FluentCineworld;
 
 namespace FluentCineworld.TestClient
 {
@@ -31,7 +30,7 @@ namespace FluentCineworld.TestClient
 
             return string.IsNullOrWhiteSpace(cinemaName)
                     ? Cinema.MiltonKeynes
-                    : Enumeration.FromDisplayName<Cinema>(cinemaName);
+                    : Cinema.All.Single(cinema => cinema.DisplayName == cinemaName);
         }
 
         private static async Task GetSiteDetails(ICineworld cineworld, Cinema cinema)
