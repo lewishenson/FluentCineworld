@@ -14,49 +14,24 @@ namespace FluentCineworld.Tests.Listings
     public class CinemaListingsTests
     {
         [Fact]
-        public void Constructor_GivenNullCinema_ThenArgumentNullExceptionThrown()
-        {
-            var mockGetDatesQuery = new Mock<IGetDatesQuery>();
-            var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
-            var mockFilter = new Mock<IFilter>();
-
-            Action action = () => new CinemaListings(null, mockGetDatesQuery.Object, mockGetFilmsQuery.Object, mockFilter.Object);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
-        }
+        public void Constructor_GivenNullCinema_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new CinemaListings(null, Mock.Of<IGetDatesQuery>(), Mock.Of<IGetFilmsQuery>(), Mock.Of<IFilter>()))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
 
         [Fact]
-        public void Constructor_GivenNullGetDatesQuery_ThenArgumentNullExceptionThrown()
-        {
-            var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
-            var mockFilter = new Mock<IFilter>();
-
-            Action action = () => new CinemaListings(Cinema.LondonLeicesterSquare, null, mockGetFilmsQuery.Object, mockFilter.Object);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("getDatesQuery");
-        }
+        public void Constructor_GivenNullGetDatesQuery_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new CinemaListings(Cinema.LondonLeicesterSquare, null, Mock.Of<IGetFilmsQuery>(), Mock.Of<IFilter>()))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("getDatesQuery");
 
         [Fact]
-        public void Constructor_GivenNullGetFilmsQuery_ThenArgumentNullExceptionThrown()
-        {
-            var mockGetDatesQuery = new Mock<IGetDatesQuery>();
-            var mockFilter = new Mock<IFilter>();
-
-            Action action = () => new CinemaListings(Cinema.LondonLeicesterSquare, mockGetDatesQuery.Object, null, mockFilter.Object);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("getFilmsQuery");
-        }
+        public void Constructor_GivenNullGetFilmsQuery_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new CinemaListings(Cinema.LondonLeicesterSquare, Mock.Of<IGetDatesQuery>(), null, Mock.Of<IFilter>()))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("getFilmsQuery");
 
         [Fact]
-        public void Constructor_GivenNullFilter_ThenArgumentNullExceptionThrown()
-        {
-            var mockGetDatesQuery = new Mock<IGetDatesQuery>();
-            var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
-
-            Action action = () => new CinemaListings(Cinema.LondonTheO2Greenwich, mockGetDatesQuery.Object, mockGetFilmsQuery.Object, null);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("filter");
-        }
+        public void Constructor_GivenNullFilter_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new CinemaListings(Cinema.LondonTheO2Greenwich, Mock.Of<IGetDatesQuery>(), Mock.Of<IGetFilmsQuery>(), null))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("filter");
 
         [Fact]
         public async Task RetrieveAsync_GivenValidConstructorArguments_ThenWillReturnFilms()

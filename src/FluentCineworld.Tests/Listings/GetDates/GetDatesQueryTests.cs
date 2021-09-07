@@ -11,22 +11,14 @@ namespace FluentCineworld.Tests.Listings.GetDates
     public class GetDatesQueryTests
     {
         [Fact]
-        public void Constructor_GivenNullUriGenerator_ThenArgumentNullExceptionThrown()
-        {
-            Action action = () => new GetDatesQuery(null, Shared.HttpClient);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
-        }
+        public void Constructor_GivenNullUriGenerator_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new GetDatesQuery(null, Shared.HttpClient))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
 
         [Fact]
-        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown()
-        {
-            var mockUriGenerator = new Mock<IUriGenerator>();
-
-            Action action = () => new GetDatesQuery(mockUriGenerator.Object, null);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
-        }
+        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new GetDatesQuery(Mock.Of<IUriGenerator>(), null))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
 
         [Fact]
         public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
@@ -35,9 +27,9 @@ namespace FluentCineworld.Tests.Listings.GetDates
 
             var getDatesQuery = new GetDatesQuery(mockUriGenerator.Object, Shared.HttpClient);
 
-            Func<Task> action = async () => await getDatesQuery.ExecuteAsync(null);
+            var thrownException = await FluentActions.Awaiting(() => getDatesQuery.ExecuteAsync(null))
+                .Should().ThrowExactlyAsync<ArgumentNullException>();
 
-            var thrownException = await action.Should().ThrowExactlyAsync<ArgumentNullException>();
             thrownException.Which.ParamName.Should().Be("cinema");
         }
 

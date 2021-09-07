@@ -11,35 +11,19 @@ namespace FluentCineworld.Tests.Listings.GetFilms
     public class GetFilmsQueryTests
     {
         [Fact]
-        public void Constructor_GivenNullUriGenerator_ThenArgumentNullExceptionThrown()
-        {
-            var mockFilmNameFormatter = new Mock<IFilmNameFormatter>();
-
-            Action action = () => new GetFilmsQuery(null, Shared.HttpClient, mockFilmNameFormatter.Object);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
-        }
+        public void Constructor_GivenNullUriGenerator_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new GetFilmsQuery(null, Shared.HttpClient, Mock.Of<IFilmNameFormatter>()))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
 
         [Fact]
-        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown()
-        {
-            var mockUriGenerator = new Mock<IUriGenerator>();
-            var mockFilmNameFormatter = new Mock<IFilmNameFormatter>();
-
-            Action action = () => new GetFilmsQuery(mockUriGenerator.Object, null, mockFilmNameFormatter.Object);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
-        }
+        public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new GetFilmsQuery(Mock.Of<IUriGenerator>(), null, Mock.Of<IFilmNameFormatter>()))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
 
         [Fact]
-        public void Constructor_GivenNullFilmNameFormatter_ThenArgumentNullExceptionThrown()
-        {
-            var mockUriGenerator = new Mock<IUriGenerator>();
-
-            Action action = () => new GetFilmsQuery(mockUriGenerator.Object, Shared.HttpClient, null);
-
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("filmNameFormatter");
-        }
+        public void Constructor_GivenNullFilmNameFormatter_ThenArgumentNullExceptionThrown() =>
+            FluentActions.Invoking(() => new GetFilmsQuery(Mock.Of<IUriGenerator>(), Shared.HttpClient, null))
+                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("filmNameFormatter");
 
         [Fact]
         public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
@@ -49,9 +33,9 @@ namespace FluentCineworld.Tests.Listings.GetFilms
 
             var getFilmsQuery = new GetFilmsQuery(mockUriGenerator.Object, Shared.HttpClient, mockFilmNameFormatter.Object);
 
-            Func<Task> action = async () => await getFilmsQuery.ExecuteAsync(null, DateTime.UtcNow);
+            var thrownException = await FluentActions.Awaiting(() => getFilmsQuery.ExecuteAsync(null, DateTime.UtcNow))
+                .Should().ThrowExactlyAsync<ArgumentNullException>();
 
-            var thrownException = await action.Should().ThrowExactlyAsync<ArgumentNullException>();
             thrownException.Which.ParamName.Should().Be("cinema");
         }
 
