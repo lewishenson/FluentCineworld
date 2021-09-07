@@ -1,6 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+
 namespace FluentCineworld
 {
-    public class Cinema : Enumeration
+    public class Cinema
     {
         public static readonly Cinema AberdeenQueensLinks = new Cinema("022", "Aberdeen - Queens Links");
         public static readonly Cinema AberdeenUnionSquare = new Cinema("074", "Aberdeen - Union Square");
@@ -102,13 +106,24 @@ namespace FluentCineworld
         public static readonly Cinema Yeovil = new Cinema("059", "Yeovil");
         public static readonly Cinema York = new Cinema("116", "York");
 
-        protected Cinema()
+        public static readonly IEnumerable<Cinema> All;
+
+        static Cinema()
         {
+            All = typeof(Cinema).GetFields(BindingFlags.Public | BindingFlags.Static)
+                .Where(field => field.FieldType == typeof(Cinema))
+                .Select(field => (Cinema)field.GetValue(null))
+                .ToList();
         }
 
-        protected Cinema(string id, string displayName)
-            : base(id, displayName)
+        private Cinema(string id, string displayName)
         {
+            Id = id;
+            DisplayName = displayName;
         }
+
+        public string Id { get; }
+
+        public string DisplayName { get; }
     }
 }

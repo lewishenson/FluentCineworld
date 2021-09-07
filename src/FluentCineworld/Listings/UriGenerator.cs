@@ -15,7 +15,7 @@ namespace FluentCineworld.Listings
 
             var oneYearFromNow = this.GetOneYearFromNow();
 
-            return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/{cinema.Value}/until/{oneYearFromNow}?attr=&lang=en_GB";
+            return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/{cinema.Id}/until/{oneYearFromNow}?attr=&lang=en_GB";
         }
 
         private string GetOneYearFromNow()
@@ -32,7 +32,7 @@ namespace FluentCineworld.Listings
 
             var formattedDate = date.ToString(DateInUriFormat);
 
-            return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/film-events/in-cinema/{cinema.Value}/at-date/{formattedDate}?attr=&lang=en_GB";
+            return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/film-events/in-cinema/{cinema.Id}/at-date/{formattedDate}?attr=&lang=en_GB";
         }
     }
 }

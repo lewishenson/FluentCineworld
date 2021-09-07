@@ -27,7 +27,7 @@ namespace FluentCineworld.Sites
             var response = await GetResponse().ConfigureAwait(false);
 
             var allSites = response.Body.Cinemas.Select(this.Map).ToList();
-            var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Value);
+            var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Id);
 
             return targetSite;
         }
