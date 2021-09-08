@@ -7,7 +7,9 @@ Fluent C# API for obtaining Cineworld listings.
 The API uses the fluid builder pattern so the below examples can be combined.
 
 ## Version 6.x
-The same as version 5 but the Newtonsoft.Json library has been dropped in favour of System.Text.Json.
+FluentCineworld 6.x targets .NET 5 as it replaces .NET Standard.
+
+The API itself remains mostly untouched - cinema ids are now a string rather than an integer.
 
 ## Version 5.x
 FluentCineworld 5.x targets .NET Standard 2.0 and therefore can be run on either .NET Core and the full .NET Framework.
