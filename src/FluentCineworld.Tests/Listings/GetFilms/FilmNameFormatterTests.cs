@@ -34,6 +34,12 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         [InlineData("AUTISM FRIENDLY SCREENING: AVENGERS: AGE OF ULTRON", "AVENGERS: AGE OF ULTRON")]
         [InlineData("Classic Movies: Ant-Man", "Ant-Man")]
         [InlineData("CLASSIC MOVIES: ANT-MAN", "ANT-MAN")]
+        [InlineData("M4J : Captain America: Civil War", "Captain America: Civil War")]
+        [InlineData("M4J : CAPTAIN AMERICA: CIVIL WAR", "CAPTAIN AMERICA: CIVIL WAR")]
+        [InlineData("(2D) Doctor Strange", "Doctor Strange")]
+        [InlineData("(2D) DOCTOR STRANGE", "DOCTOR STRANGE")]
+        [InlineData("(M4J) Guardians of the Galaxy Vol. 2", "Guardians of the Galaxy Vol. 2")]
+        [InlineData("(M4J) GUARDIANS OF THE GALAXY VOL. 2", "GUARDIANS OF THE GALAXY VOL. 2")]
         public void Format_GivenInput_ReturnsExpectedOutput(string input, string expectedOutput)
         {
             var formatter = new FilmNameFormatter();

@@ -13,7 +13,13 @@ namespace FluentCineworld.Listings.GetFilms
                 return string.Empty;
             }
 
-            var result = this.RemoveMoviesForJuniorsText(trimmedName);
+            var result = this.RemoveScreeningTypeText(trimmedName);
+            if (result.HasChanged)
+            {
+                return result.Name;
+            }
+
+            result = this.RemoveMoviesForJuniorsText(trimmedName);
             if (result.HasChanged)
             {
                 return result.Name;
@@ -44,6 +50,16 @@ namespace FluentCineworld.Listings.GetFilms
             }
 
             return trimmedName;
+        }
+        private Result RemoveScreeningTypeText(string name)
+        {
+            if (name.StartsWith("(2D) ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("(2D) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
         }
 
         private Result RemoveMoviesForJuniorsText(string name)
@@ -81,6 +97,18 @@ namespace FluentCineworld.Listings.GetFilms
             if (name.EndsWith(" Movies For Juniors", StringComparison.CurrentCultureIgnoreCase))
             {
                 var formattedName = name.Replace(" Movies For Juniors", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("M4J : ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("M4J : ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("(M4J) ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("(M4J) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
@@ -131,7 +159,7 @@ namespace FluentCineworld.Listings.GetFilms
             return Result.AsUnchanged(name);
         }
 
-        private class Result
+        private record Result
         {
             private Result(string name, bool hasChanged)
             {
@@ -143,15 +171,9 @@ namespace FluentCineworld.Listings.GetFilms
 
             public bool HasChanged { get; }
 
-            public static Result AsChanged(string name)
-            {
-                return new Result(name, true);
-            }
+            public static Result AsChanged(string name) => new(name, true);
 
-            public static Result AsUnchanged(string name)
-            {
-                return new Result(name, false);
-            }
+            public static Result AsUnchanged(string name) => new(name, false);
         }
     }
 }
