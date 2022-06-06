@@ -1,6 +1,6 @@
+using System;
 using FluentAssertions;
 using FluentCineworld.Sites;
-using System;
 using Xunit;
 
 namespace FluentCineworld.Tests.Sites
