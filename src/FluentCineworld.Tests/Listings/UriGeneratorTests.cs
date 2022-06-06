@@ -5,6 +5,7 @@ using Xunit;
 
 namespace FluentCineworld.Tests.Listings
 {
+    [Collection("Time-sensitive tests")]
     public class UriGeneratorTests
     {
         [Fact]
