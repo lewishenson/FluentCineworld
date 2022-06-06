@@ -23,7 +23,7 @@ namespace FluentCineworld.Listings
             return SystemDate.UtcNow().AddYears(1).ToString(DateInUriFormat);
         }
 
-        public string ForListings(Cinema cinema, DateTime date)
+        public string ForListings(Cinema cinema, DateOnly date)
         {
             if (cinema == null)
             {

@@ -6,6 +6,6 @@ namespace FluentCineworld.Listings.GetFilms
 {
     public interface IGetFilmsQuery
     {
-        Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema, DateTime date);
+        Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema, DateOnly date);
     }
 }

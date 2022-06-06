@@ -6,6 +6,6 @@ namespace FluentCineworld.Listings
     {
         string ForDatesWithListings(Cinema cinema);
 
-        string ForListings(Cinema cinema, DateTime date);
+        string ForListings(Cinema cinema, DateOnly date);
     }
 }

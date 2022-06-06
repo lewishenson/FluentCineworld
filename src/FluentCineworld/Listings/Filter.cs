@@ -7,8 +7,8 @@ namespace FluentCineworld.Listings
     public class Filter : IFilter
     {
         private readonly ICollection<DayOfWeek> _daysOfWeek;
-        private DateTime? _from;
-        private DateTime? _to;
+        private DateOnly? _from;
+        private DateOnly? _to;
 
         public Filter()
         {
@@ -23,17 +23,17 @@ namespace FluentCineworld.Listings
             }
         }
 
-        public void From(DateTime value)
+        public void From(DateOnly value)
         {
-            _from = value.Date;
+            _from = value;
         }
 
-        public void To(DateTime value)
+        public void To(DateOnly value)
         {
-            _to = value.Date;
+            _to = value;
         }
 
-        public bool Apply(DateTime date)
+        public bool Apply(DateOnly date)
         {
             var include = true;
 
@@ -44,12 +44,12 @@ namespace FluentCineworld.Listings
 
             if (_from.HasValue)
             {
-                include = include && date >= _from.Value.Date;
+                include = include && date >= _from.Value;
             }
 
             if (_to.HasValue)
             {
-                include = include && date.Date <= _to.Value.Date;
+                include = include && date <= _to.Value;
             }
 
             return include;

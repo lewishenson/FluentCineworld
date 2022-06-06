@@ -23,7 +23,7 @@ namespace FluentCineworld.Listings.GetFilms
             _filmNameFormatter = filmNameFormatter ?? throw new ArgumentNullException(nameof(filmNameFormatter));
         }
 
-        public async Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema, DateTime date)
+        public async Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema, DateOnly date)
         {
             if (cinema == null)
             {
@@ -45,7 +45,7 @@ namespace FluentCineworld.Listings.GetFilms
             return films.Values;
         }
 
-        private async Task<ResponseDto> GetResponse(Cinema cinema, DateTime date)
+        private async Task<ResponseDto> GetResponse(Cinema cinema, DateOnly date)
         {
             var url = _uriGenerator.ForListings(cinema, date);
             var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
@@ -63,7 +63,7 @@ namespace FluentCineworld.Listings.GetFilms
             };
         }
 
-        private void AssignEventsToFilms(DateTime date, IDictionary<string, Film> films, IEnumerable<EventDto> eventDtos)
+        private void AssignEventsToFilms(DateOnly date, IDictionary<string, Film> films, IEnumerable<EventDto> eventDtos)
         {
             var groupedEvents = eventDtos.GroupBy(eventDto => eventDto.FilmId);
 
@@ -78,7 +78,7 @@ namespace FluentCineworld.Listings.GetFilms
             }
         }
 
-        private Day CreateDay(DateTime date, IEnumerable<EventDto> eventDtos)
+        private Day CreateDay(DateOnly date, IEnumerable<EventDto> eventDtos)
         {
             return new Day
             {

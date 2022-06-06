@@ -6,10 +6,10 @@ namespace FluentCineworld.Listings
     {
         void DayOfWeek(DayOfWeek dayOfWeek);
 
-        void From(DateTime value);
+        void From(DateOnly value);
 
-        void To(DateTime value);
+        void To(DateOnly value);
 
-        bool Apply(DateTime date);
+        bool Apply(DateOnly date);
     }
 }
