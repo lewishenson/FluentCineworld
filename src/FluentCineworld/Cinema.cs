@@ -13,6 +13,7 @@ namespace FluentCineworld
         public static readonly Cinema AshtonUnderLyne = new("068", "Ashton-under-Lyne");
         public static readonly Cinema Basildon = new("100", "Basildon");
         public static readonly Cinema Bedford = new("010", "Bedford");
+        public static readonly Cinema Belfast = new("117", "Belfast");
         public static readonly Cinema BirminghamBroadStreet = new("044", "Birmingham - Broad Street");
         public static readonly Cinema BirminghamNec = new("090", "Birmingham - NEC");
         public static readonly Cinema BoldonTyneAndWear = new("024", "Boldon Tyne and Wear");
@@ -60,6 +61,7 @@ namespace FluentCineworld
         public static readonly Cinema LondonBexleyheath = new("027", "London - Bexleyheath");
         public static readonly Cinema LondonEnfield = new("048", "London - Enfield");
         public static readonly Cinema LondonFeltham = new("023", "London - Feltham");
+        public static readonly Cinema LondonHounslow = new("118", "London - Hounslow");
         public static readonly Cinema LondonIlford = new("060", "London - Ilford");
         public static readonly Cinema LondonLeicesterSquare = new("103", "London - Leicester Square");
         public static readonly Cinema LondonSouthRuislip = new("106", "London - South Ruislip");
