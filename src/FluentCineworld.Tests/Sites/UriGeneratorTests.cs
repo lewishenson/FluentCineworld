@@ -5,6 +5,7 @@ using Xunit;
 
 namespace FluentCineworld.Tests.Sites
 {
+    [Collection("Time-sensitive tests")]
     public class UriGeneratorTests
     {
         [Fact]
@@ -18,7 +19,7 @@ namespace FluentCineworld.Tests.Sites
 
                 var uri = uriGenerator.ForCinemaSites();
 
-                uri.Should().Be("https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/cinemas/with-event/until/2020-10-31?attr=&lang=en_GB");
+                uri.Should().Be("https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/cinemas/with-event/until/2019-10-31?attr=&lang=en_GB");
             }
             finally
             {
