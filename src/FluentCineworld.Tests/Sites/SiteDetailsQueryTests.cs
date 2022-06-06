@@ -26,7 +26,7 @@ namespace FluentCineworld.Tests.Sites
 
             var siteDetailsQuery = new SiteDetailsQuery(mockUriGenerator.Object, Shared.HttpClient);
 
-            var thrownException = await FluentActions.Awaiting(() => siteDetailsQuery.ExecuteAsync(null))
+            var thrownException = await FluentActions.Awaiting(() => siteDetailsQuery.ExecuteAsync(null, default))
                 .Should().ThrowExactlyAsync<ArgumentNullException>();
 
             thrownException.Which.ParamName.Should().Be("cinema");
@@ -40,7 +40,7 @@ namespace FluentCineworld.Tests.Sites
 
             var getFilmsQuery = new SiteDetailsQuery(uriGenerator, Shared.HttpClient);
 
-            var site = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare);
+            var site = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare, default);
 
             site.Should().NotBeNull();
         }

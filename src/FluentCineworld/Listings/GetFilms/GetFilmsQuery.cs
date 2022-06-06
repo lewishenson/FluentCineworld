@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings.GetFilms
@@ -23,14 +24,14 @@ namespace FluentCineworld.Listings.GetFilms
             _filmNameFormatter = filmNameFormatter ?? throw new ArgumentNullException(nameof(filmNameFormatter));
         }
 
-        public async Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema, DateOnly date)
+        public async Task<IEnumerable<Film>> ExecuteAsync(Cinema cinema, DateOnly date, CancellationToken cancellationToken)
         {
             if (cinema == null)
             {
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var response = await this.GetResponse(cinema, date).ConfigureAwait(false);
+            var response = await this.GetResponse(cinema, date, cancellationToken).ConfigureAwait(false);
 
             if (response?.Body == null)
             {
@@ -45,10 +46,10 @@ namespace FluentCineworld.Listings.GetFilms
             return films.Values;
         }
 
-        private async Task<ResponseDto> GetResponse(Cinema cinema, DateOnly date)
+        private async Task<ResponseDto> GetResponse(Cinema cinema, DateOnly date, CancellationToken cancellationToken)
         {
             var url = _uriGenerator.ForListings(cinema, date);
-            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
+            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url, cancellationToken: cancellationToken).ConfigureAwait(false);
 
             return response;
         }

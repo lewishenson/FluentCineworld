@@ -1,9 +1,10 @@
-using FluentCineworld.Listings.GetDates;
-using FluentCineworld.Listings.GetFilms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using FluentCineworld.Listings.GetDates;
+using FluentCineworld.Listings.GetFilms;
 
 namespace FluentCineworld.Listings
 {
@@ -43,10 +44,10 @@ namespace FluentCineworld.Listings
             return this;
         }
 
-        public async Task<IEnumerable<Film>> RetrieveAsync()
+        public async Task<IEnumerable<Film>> RetrieveAsync(CancellationToken cancellationToken)
         {
-            var dates = await this.GetDates().ConfigureAwait(false);
-            var films = await this.GetFilms(dates).ConfigureAwait(false);
+            var dates = await this.GetDates(cancellationToken).ConfigureAwait(false);
+            var films = await this.GetFilms(dates, cancellationToken).ConfigureAwait(false);
 
             var mergedFilms = this.Merge(films);
             var orderedFilms = mergedFilms.OrderBy(film => film.Name);
@@ -54,21 +55,21 @@ namespace FluentCineworld.Listings
             return orderedFilms.ToList();
         }
 
-        private async Task<IEnumerable<DateOnly>> GetDates()
+        private async Task<IEnumerable<DateOnly>> GetDates(CancellationToken cancellationToken)
         {
-            var allDates = await _getDatesQuery.ExecuteAsync(_cinema).ConfigureAwait(false);
+            var allDates = await _getDatesQuery.ExecuteAsync(_cinema, cancellationToken).ConfigureAwait(false);
             var filteredDates = allDates.Where(_filter.Apply);
 
             return filteredDates;
         }
 
-        private async Task<IEnumerable<Film>> GetFilms(IEnumerable<DateOnly> dates)
+        private async Task<IEnumerable<Film>> GetFilms(IEnumerable<DateOnly> dates, CancellationToken cancellationToken)
         {
             var allTasks = new List<Task<IEnumerable<Film>>>();
 
             foreach (var date in dates)
             {
-                var task = _getFilmsQuery.ExecuteAsync(_cinema, date);
+                var task = _getFilmsQuery.ExecuteAsync(_cinema, date, cancellationToken);
                 allTasks.Add(task);
             }
 

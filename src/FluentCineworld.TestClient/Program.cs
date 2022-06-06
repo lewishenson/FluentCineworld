@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FluentCineworld.TestClient
@@ -35,7 +36,7 @@ namespace FluentCineworld.TestClient
 
         private static async Task GetSiteDetails(ICineworld cineworld, Cinema cinema)
         {
-            var siteDetails = await cineworld.SiteAsync(cinema);
+            var siteDetails = await cineworld.SiteAsync(cinema, CancellationToken.None);
 
             new SiteConsoleWriter().Output(siteDetails);
         }
@@ -47,7 +48,7 @@ namespace FluentCineworld.TestClient
             var films = await cineworld.WhatsOn(cinema)
                                        .From(today)
                                        .To(today.AddDays(30))
-                                       .RetrieveAsync();
+                                       .RetrieveAsync(CancellationToken.None);
 
             new FilmConsoleWriter().Output(films);
         }

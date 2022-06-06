@@ -27,7 +27,7 @@ namespace FluentCineworld.Tests.Listings.GetDates
 
             var getDatesQuery = new GetDatesQuery(mockUriGenerator.Object, Shared.HttpClient);
 
-            var thrownException = await FluentActions.Awaiting(() => getDatesQuery.ExecuteAsync(null))
+            var thrownException = await FluentActions.Awaiting(() => getDatesQuery.ExecuteAsync(null, default))
                 .Should().ThrowExactlyAsync<ArgumentNullException>();
 
             thrownException.Which.ParamName.Should().Be("cinema");
@@ -41,7 +41,7 @@ namespace FluentCineworld.Tests.Listings.GetDates
 
             var getDatesQuery = new GetDatesQuery(uriGenerator, Shared.HttpClient);
 
-            var dates = await getDatesQuery.ExecuteAsync(Cinema.MiltonKeynes);
+            var dates = await getDatesQuery.ExecuteAsync(Cinema.MiltonKeynes, default);
 
             dates.Should().NotBeNullOrEmpty();
         }
