@@ -1,6 +1,6 @@
 # FluentCineworld
 
-[![Build Status](https://dev.azure.com/lewishenson/FluentCineworld/_apis/build/status/lewishenson.FluentCineworld)](https://dev.azure.com/lewishenson/FluentCineworld/_build/latest?definitionId=1) [![NuGet package](https://buildstats.info/nuget/FluentCineworld)](https://www.nuget.org/packages/FluentCineworld)
+![Build Status](https://github.com/lewishenson/FluentCineworld/actions/workflows/build-and-test.yml/badge.svg) [![NuGet package](https://buildstats.info/nuget/FluentCineworld)](https://www.nuget.org/packages/FluentCineworld)
 
 Fluent C# API for obtaining Cineworld listings.
 
