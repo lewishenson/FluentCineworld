@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -108,14 +109,16 @@ namespace FluentCineworld
         public static readonly Cinema Yeovil = new("059", "Yeovil");
         public static readonly Cinema York = new("116", "York");
 
-        public static readonly IEnumerable<Cinema> All;
+        private static readonly IDictionary<string, Cinema> AllKeyedById;
+
+        public static IEnumerable<Cinema> All => AllKeyedById.Values;
 
         static Cinema()
         {
-            All = typeof(Cinema).GetFields(BindingFlags.Public | BindingFlags.Static)
+            AllKeyedById = typeof(Cinema).GetFields(BindingFlags.Public | BindingFlags.Static)
                 .Where(field => field.FieldType == typeof(Cinema))
                 .Select(field => (Cinema)field.GetValue(null))
-                .ToList();
+                .ToDictionary(cinema => cinema!.Id, cinema => cinema);
         }
 
         private Cinema(string id, string displayName)
@@ -127,5 +130,17 @@ namespace FluentCineworld
         public string Id { get; }
 
         public string DisplayName { get; }
+
+        public static Cinema GetById(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException("Value cannot be null or empty.", nameof(id));
+            }
+
+            return AllKeyedById.TryGetValue(id, out var cinema)
+                ? cinema
+                : throw new ArgumentOutOfRangeException(nameof(id), id, "Cinema not found with specified id");
+        }
     }
 }
