@@ -42,7 +42,7 @@ namespace FluentCineworld.TestClient
 
         private static async Task GetFilms(ICineworld cineworld, Cinema cinema)
         {
-            var today = DateTime.Now;
+            var today = DateOnly.FromDateTime(DateTime.Now);
 
             var films = await cineworld.WhatsOn(cinema)
                                        .From(today)

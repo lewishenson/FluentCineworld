@@ -6,6 +6,6 @@ namespace FluentCineworld.Listings.GetDates
 {
     public interface IGetDatesQuery
     {
-        Task<IEnumerable<DateTime>> ExecuteAsync(Cinema cinema);
+        Task<IEnumerable<DateOnly>> ExecuteAsync(Cinema cinema);
     }
 }

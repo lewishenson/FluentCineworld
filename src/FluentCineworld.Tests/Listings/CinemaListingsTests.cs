@@ -38,12 +38,12 @@ namespace FluentCineworld.Tests.Listings
         {
             var mockGetDatesQuery = new Mock<IGetDatesQuery>();
 
-            var date1 = new DateTime(2018, 10, 1);
-            var date2 = new DateTime(2018, 11, 2);
-            var dates = new List<DateTime> { date1, date2 };
+            var date1 = new DateOnly(2018, 10, 1);
+            var date2 = new DateOnly(2018, 11, 2);
+            var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
-                             .Returns(Task.FromResult<IEnumerable<DateTime>>(dates));
+                             .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
 
@@ -75,12 +75,12 @@ namespace FluentCineworld.Tests.Listings
         {
             var mockGetDatesQuery = new Mock<IGetDatesQuery>();
 
-            var date1 = new DateTime(2018, 10, 1);
-            var date2 = new DateTime(2018, 11, 2);
-            var dates = new List<DateTime> { date1, date2 };
+            var date1 = new DateOnly(2018, 10, 1);
+            var date2 = new DateOnly(2018, 11, 2);
+            var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
-                             .Returns(Task.FromResult<IEnumerable<DateTime>>(dates));
+                             .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
 
@@ -135,12 +135,12 @@ namespace FluentCineworld.Tests.Listings
         {
             var mockGetDatesQuery = new Mock<IGetDatesQuery>();
 
-            var date1 = new DateTime(2018, 10, 1);
-            var date2 = new DateTime(2018, 11, 2);
-            var dates = new List<DateTime> { date1, date2 };
+            var date1 = new DateOnly(2018, 10, 1);
+            var date2 = new DateOnly(2018, 11, 2);
+            var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
-                             .Returns(Task.FromResult<IEnumerable<DateTime>>(dates));
+                             .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
 
@@ -194,12 +194,12 @@ namespace FluentCineworld.Tests.Listings
         {
             var mockGetDatesQuery = new Mock<IGetDatesQuery>();
 
-            var date1 = new DateTime(2018, 10, 1);
-            var date2 = new DateTime(2018, 11, 2);
-            var dates = new List<DateTime> { date1, date2 };
+            var date1 = new DateOnly(2018, 10, 1);
+            var date2 = new DateOnly(2018, 11, 2);
+            var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
-                             .Returns(Task.FromResult<IEnumerable<DateTime>>(dates));
+                             .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
 
@@ -253,12 +253,12 @@ namespace FluentCineworld.Tests.Listings
         {
             var mockGetDatesQuery = new Mock<IGetDatesQuery>();
 
-            var date1 = new DateTime(2018, 10, 1);
-            var date2 = new DateTime(2018, 11, 2);
-            var dates = new List<DateTime> { date1, date2 };
+            var date1 = new DateOnly(2018, 10, 1);
+            var date2 = new DateOnly(2018, 11, 2);
+            var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
-                             .Returns(Task.FromResult<IEnumerable<DateTime>>(dates));
+                             .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
 

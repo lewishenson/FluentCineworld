@@ -1,10 +1,9 @@
+using FluentCineworld.Listings.GetDates;
+using FluentCineworld.Listings.GetFilms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using FluentCineworld.Listings.GetDates;
-using FluentCineworld.Listings.GetFilms;
 
 namespace FluentCineworld.Listings
 {
@@ -30,14 +29,14 @@ namespace FluentCineworld.Listings
             return this;
         }
 
-        public ICinemaListings From(DateTime from)
+        public ICinemaListings From(DateOnly from)
         {
             _filter.From(from);
 
             return this;
         }
 
-        public ICinemaListings To(DateTime to)
+        public ICinemaListings To(DateOnly to)
         {
             _filter.To(to);
 
@@ -55,7 +54,7 @@ namespace FluentCineworld.Listings
             return orderedFilms.ToList();
         }
 
-        private async Task<IEnumerable<DateTime>> GetDates()
+        private async Task<IEnumerable<DateOnly>> GetDates()
         {
             var allDates = await _getDatesQuery.ExecuteAsync(_cinema).ConfigureAwait(false);
             var filteredDates = allDates.Where(_filter.Apply);
@@ -63,7 +62,7 @@ namespace FluentCineworld.Listings
             return filteredDates;
         }
 
-        private async Task<IEnumerable<Film>> GetFilms(IEnumerable<DateTime> dates)
+        private async Task<IEnumerable<Film>> GetFilms(IEnumerable<DateOnly> dates)
         {
             var allTasks = new List<Task<IEnumerable<Film>>>();
 

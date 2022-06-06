@@ -18,7 +18,7 @@ namespace FluentCineworld.Listings.GetDates
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<IEnumerable<DateTime>> ExecuteAsync(Cinema cinema)
+        public async Task<IEnumerable<DateOnly>> ExecuteAsync(Cinema cinema)
         {
             if (cinema == null)
             {
@@ -27,7 +27,7 @@ namespace FluentCineworld.Listings.GetDates
 
             var response = await this.GetResponse(cinema).ConfigureAwait(false);
 
-            return response?.Body == null ? Enumerable.Empty<DateTime>() : response.Body.Dates;
+            return response?.Body == null ? Enumerable.Empty<DateOnly>() : response.Body.Dates.Select(DateOnly.FromDateTime);
         }
 
         private async Task<ResponseDto> GetResponse(Cinema cinema)

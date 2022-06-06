@@ -41,7 +41,7 @@ namespace FluentCineworld.Tests.Listings
         {
             var uriGenerator = new UriGenerator();
 
-            Action action = () => uriGenerator.ForListings(null, DateTime.UtcNow);
+            Action action = () => uriGenerator.ForListings(null, DateOnly.FromDateTime(DateTime.UtcNow));
 
             action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
         }
@@ -49,7 +49,7 @@ namespace FluentCineworld.Tests.Listings
         [Fact]
         public void ForListings_GivenCinemaAndDate_ThenUriReturned()
         {
-            var date = new DateTime(2018, 10, 31);
+            var date = new DateOnly(2018, 10, 31);
 
             var uriGenerator = new UriGenerator();
 
