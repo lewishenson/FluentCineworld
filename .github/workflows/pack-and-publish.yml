@@ -23,4 +23,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release ${{env.PROJECT_FOLDER}}FluentCineworld.csproj --no-restore
     - name: Publish
-      run: dotnet nuget push ${{env.PROJECT_FOLDER}}bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source ${{env.NUGET_URL}} --no-build
+      run: dotnet nuget push ${{env.PROJECT_FOLDER}}bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source ${{env.NUGET_URL}}
