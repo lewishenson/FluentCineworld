@@ -33,7 +33,7 @@ namespace FluentCineworld.Tests.Listings.GetFilms
 
             var getFilmsQuery = new GetFilmsQuery(mockUriGenerator.Object, Shared.HttpClient, mockFilmNameFormatter.Object);
 
-            var thrownException = await FluentActions.Awaiting(() => getFilmsQuery.ExecuteAsync(null, DateOnly.FromDateTime(DateTime.UtcNow)))
+            var thrownException = await FluentActions.Awaiting(() => getFilmsQuery.ExecuteAsync(null, DateOnly.FromDateTime(DateTime.UtcNow), default))
                 .Should().ThrowExactlyAsync<ArgumentNullException>();
 
             thrownException.Which.ParamName.Should().Be("cinema");
@@ -48,7 +48,7 @@ namespace FluentCineworld.Tests.Listings.GetFilms
 
             var getFilmsQuery = new GetFilmsQuery(uriGenerator, Shared.HttpClient, filmNameFormatter);
 
-            var films = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare, DateOnly.FromDateTime(DateTime.UtcNow.AddDays(1)));
+            var films = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare, DateOnly.FromDateTime(DateTime.UtcNow.AddDays(1)), default);
 
             films.Should().NotBeNullOrEmpty();
         }

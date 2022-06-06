@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FluentCineworld.Sites
@@ -17,14 +18,14 @@ namespace FluentCineworld.Sites
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<SiteDetails> ExecuteAsync(Cinema cinema)
+        public async Task<SiteDetails> ExecuteAsync(Cinema cinema, CancellationToken cancellationToken)
         {
             if (cinema == null)
             {
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var response = await GetResponse().ConfigureAwait(false);
+            var response = await GetResponse(cancellationToken).ConfigureAwait(false);
 
             var allSites = response.Body.Cinemas.Select(this.Map).ToList();
             var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Id);
@@ -32,11 +33,11 @@ namespace FluentCineworld.Sites
             return targetSite;
         }
 
-        private async Task<ResponseDto> GetResponse()
+        private async Task<ResponseDto> GetResponse(CancellationToken cancellationToken)
         {
             var url = _uriGenerator.ForCinemaSites();
 
-            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url).ConfigureAwait(false);
+            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url, cancellationToken: cancellationToken).ConfigureAwait(false);
 
             return response;
         }

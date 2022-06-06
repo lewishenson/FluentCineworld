@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings
@@ -12,6 +13,6 @@ namespace FluentCineworld.Listings
 
         ICinemaListings To(DateOnly to);
 
-        Task<IEnumerable<Film>> RetrieveAsync();
+        Task<IEnumerable<Film>> RetrieveAsync(CancellationToken cancellationToken);
     }
 }

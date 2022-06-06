@@ -42,7 +42,7 @@ namespace FluentCineworld.Tests.Listings
             var date2 = new DateOnly(2018, 11, 2);
             var dates = new List<DateOnly> { date1, date2 };
 
-            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
+            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, default))
                              .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
@@ -51,21 +51,21 @@ namespace FluentCineworld.Tests.Listings
             var date1Film2 = new Film { Id = "film-b", Days = Enumerable.Empty<Day>() };
             var date1Films = new List<Film> { date1Film1, date1Film2 };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film1 = new Film { Id = "film-c", Days = Enumerable.Empty<Day>() };
             var date2Film2 = new Film { Id = "film-d", Days = Enumerable.Empty<Day>() };
             var date2Films = new List<Film> { date2Film1, date2Film2 };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
 
             var cinemaListings = new CinemaListings(Cinema.LondonLeicesterSquare, mockGetDatesQuery.Object, mockGetFilmsQuery.Object, filter);
 
-            var films = await cinemaListings.RetrieveAsync();
+            var films = await cinemaListings.RetrieveAsync(default);
 
             films.Should().BeEquivalentTo(new[] { date1Film1, date1Film2, date2Film1, date2Film2 });
         }
@@ -79,7 +79,7 @@ namespace FluentCineworld.Tests.Listings
             var date2 = new DateOnly(2018, 11, 2);
             var dates = new List<DateOnly> { date1, date2 };
 
-            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
+            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, default))
                              .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
@@ -94,7 +94,7 @@ namespace FluentCineworld.Tests.Listings
             };
             var date1Films = new List<Film> { date1Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -107,14 +107,14 @@ namespace FluentCineworld.Tests.Listings
             };
             var date2Films = new List<Film> { date2Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
 
             var cinemaListings = new CinemaListings(Cinema.LondonLeicesterSquare, mockGetDatesQuery.Object, mockGetFilmsQuery.Object, filter);
 
-            var films = await cinemaListings.RetrieveAsync();
+            var films = await cinemaListings.RetrieveAsync(default);
 
             films.Count().Should().Be(1);
 
@@ -139,7 +139,7 @@ namespace FluentCineworld.Tests.Listings
             var date2 = new DateOnly(2018, 11, 2);
             var dates = new List<DateOnly> { date1, date2 };
 
-            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
+            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, default))
                              .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
@@ -154,7 +154,7 @@ namespace FluentCineworld.Tests.Listings
             };
             var date1Films = new List<Film> { date1Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -167,14 +167,14 @@ namespace FluentCineworld.Tests.Listings
             };
             var date2Films = new List<Film> { date2Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
 
             var cinemaListings = new CinemaListings(Cinema.LondonLeicesterSquare, mockGetDatesQuery.Object, mockGetFilmsQuery.Object, filter);
 
-            var films = await cinemaListings.From(date2).RetrieveAsync();
+            var films = await cinemaListings.From(date2).RetrieveAsync(default);
 
             films.Count().Should().Be(1);
 
@@ -198,7 +198,7 @@ namespace FluentCineworld.Tests.Listings
             var date2 = new DateOnly(2018, 11, 2);
             var dates = new List<DateOnly> { date1, date2 };
 
-            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
+            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, default))
                              .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
@@ -213,7 +213,7 @@ namespace FluentCineworld.Tests.Listings
             };
             var date1Films = new List<Film> { date1Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -226,14 +226,14 @@ namespace FluentCineworld.Tests.Listings
             };
             var date2Films = new List<Film> { date2Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
 
             var cinemaListings = new CinemaListings(Cinema.LondonLeicesterSquare, mockGetDatesQuery.Object, mockGetFilmsQuery.Object, filter);
 
-            var films = await cinemaListings.To(date1).RetrieveAsync();
+            var films = await cinemaListings.To(date1).RetrieveAsync(default);
 
             films.Count().Should().Be(1);
 
@@ -257,7 +257,7 @@ namespace FluentCineworld.Tests.Listings
             var date2 = new DateOnly(2018, 11, 2);
             var dates = new List<DateOnly> { date1, date2 };
 
-            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare))
+            mockGetDatesQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, default))
                              .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = new Mock<IGetFilmsQuery>();
@@ -272,7 +272,7 @@ namespace FluentCineworld.Tests.Listings
             };
             var date1Films = new List<Film> { date1Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date1, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -285,14 +285,14 @@ namespace FluentCineworld.Tests.Listings
             };
             var date2Films = new List<Film> { date2Film };
 
-            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2))
+            mockGetFilmsQuery.Setup(query => query.ExecuteAsync(Cinema.LondonLeicesterSquare, date2, default))
                              .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
 
             var cinemaListings = new CinemaListings(Cinema.LondonLeicesterSquare, mockGetDatesQuery.Object, mockGetFilmsQuery.Object, filter);
 
-            var films = await cinemaListings.ForDayOfWeek(date1.DayOfWeek).RetrieveAsync();
+            var films = await cinemaListings.ForDayOfWeek(date1.DayOfWeek).RetrieveAsync(default);
 
             films.Count().Should().Be(1);
 
