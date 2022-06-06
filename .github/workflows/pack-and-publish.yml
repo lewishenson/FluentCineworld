@@ -1,0 +1,26 @@
+name: .NET pack & publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+env:
+  PROJECT_FOLDER: ./src/FluentCineworld/
+  NUGET_URL: https://api.nuget.org/v3/index.json
+
+jobs:
+  pack-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore ${{env.PROJECT_FOLDER}}
+    - name: Pack
+      run: dotnet pack --configuration Release ${{env.PROJECT_FOLDER}}FluentCineworld.csproj --no-restore
+    - name: Publish
+      run: dotnet nuget push ${{env.PROJECT_FOLDER}}bin/Release/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source ${{env.NUGET_URL}} --no-build
