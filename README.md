@@ -6,6 +6,11 @@ Fluent C# API for obtaining Cineworld listings.
 
 The API uses the fluid builder pattern so the below examples can be combined.
 
+## Version 7.x
+FluentCineworld 7.x targets .NET 6 as .NET 5 has reached end of support.
+
+The API itself has changed slightly - `DateOnly` is now used where appropriate.
+
 ## Version 6.x
 FluentCineworld 6.x targets .NET 5 as it replaces .NET Standard.
 
