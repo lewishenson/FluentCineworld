@@ -1,26 +1,33 @@
 ﻿FluentCineworld changelog
 =========================
 
+v7.0.0
+Targeted .NET 6.0.
+Updated list of cinemas:
+    Add: Belfast, London Hounslow
+Use DateOnly struct where appropriate.
+Added Cinema.GetById method.
+
 v6.0.0
-Target .NET 5.0.
+Targeted .NET 5.0.
 Switch from Newtonsoft.Json to System.Text.Json.
 Updated list of cinemas to use new string ids and latest locations.
 Remove more unwanted film title prefixes.
 
 v5.4.0
 Updated list of cinemas:
-    Added: EastbourneAtTheBeacon, Plymouth, Warrington, York
+    Added: Eastbourne At The Beacon, Plymouth, Warrington, York
     Removed: LondonFulhamRoad
 
 v5.3.0
 Updated list of cinemas.
 
 v5.2.0
-Remove more unwanted film title prefixes and suffixes.
+Removed more unwanted film title prefixes and suffixes.
 
 v5.1.0
 Updated list of cinemas.
-Remove unwanted film title prefixes and suffixes.
+Removed unwanted film title prefixes and suffixes.
 
 v5.0.0
 New version that is easier to use with Dependency Injection.
