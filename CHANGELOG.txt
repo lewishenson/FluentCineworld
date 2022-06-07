@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v7.1.0
+Make cancellation token optional when retrieving listings.
+
 v7.0.0
 Targeted .NET 6.0.
 Updated list of cinemas:
