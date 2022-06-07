@@ -44,7 +44,7 @@ namespace FluentCineworld.Listings
             return this;
         }
 
-        public async Task<IEnumerable<Film>> RetrieveAsync(CancellationToken cancellationToken)
+        public async Task<IEnumerable<Film>> RetrieveAsync(CancellationToken cancellationToken = default)
         {
             var dates = await this.GetDates(cancellationToken).ConfigureAwait(false);
             var films = await this.GetFilms(dates, cancellationToken).ConfigureAwait(false);
