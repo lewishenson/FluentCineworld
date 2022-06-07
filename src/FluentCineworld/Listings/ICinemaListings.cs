@@ -13,6 +13,6 @@ namespace FluentCineworld.Listings
 
         ICinemaListings To(DateOnly to);
 
-        Task<IEnumerable<Film>> RetrieveAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<Film>> RetrieveAsync(CancellationToken cancellationToken = default);
     }
 }
