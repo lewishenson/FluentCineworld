@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using FluentCineworld.Sites;
-using Moq;
+using NSubstitute;
 using Xunit;
 
 namespace FluentCineworld.Tests.Sites
@@ -16,15 +16,15 @@ namespace FluentCineworld.Tests.Sites
 
         [Fact]
         public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown() =>
-            FluentActions.Invoking(() => new SiteDetailsQuery(Mock.Of<IUriGenerator>(), null))
+            FluentActions.Invoking(() => new SiteDetailsQuery(Substitute.For<IUriGenerator>(), null))
                 .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
 
         [Fact]
         public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
         {
-            var mockUriGenerator = new Mock<IUriGenerator>();
+            var mockUriGenerator = Substitute.For<IUriGenerator>();
 
-            var siteDetailsQuery = new SiteDetailsQuery(mockUriGenerator.Object, Shared.HttpClient);
+            var siteDetailsQuery = new SiteDetailsQuery(mockUriGenerator, Shared.HttpClient);
 
             var thrownException = await FluentActions.Awaiting(() => siteDetailsQuery.ExecuteAsync(null, default))
                 .Should().ThrowExactlyAsync<ArgumentNullException>();
