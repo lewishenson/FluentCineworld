@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using FluentCineworld.Listings;
 using FluentCineworld.Listings.GetDates;
-using Moq;
+using NSubstitute;
 using Xunit;
 
 namespace FluentCineworld.Tests.Listings.GetDates
@@ -17,15 +17,15 @@ namespace FluentCineworld.Tests.Listings.GetDates
 
         [Fact]
         public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown() =>
-            FluentActions.Invoking(() => new GetDatesQuery(Mock.Of<IUriGenerator>(), null))
+            FluentActions.Invoking(() => new GetDatesQuery(Substitute.For<IUriGenerator>(), null))
                 .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
 
         [Fact]
         public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
         {
-            var mockUriGenerator = new Mock<IUriGenerator>();
+            var mockUriGenerator = Substitute.For<IUriGenerator>();
 
-            var getDatesQuery = new GetDatesQuery(mockUriGenerator.Object, Shared.HttpClient);
+            var getDatesQuery = new GetDatesQuery(mockUriGenerator, Shared.HttpClient);
 
             var thrownException = await FluentActions.Awaiting(() => getDatesQuery.ExecuteAsync(null, default))
                 .Should().ThrowExactlyAsync<ArgumentNullException>();
