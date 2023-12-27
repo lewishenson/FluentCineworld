@@ -40,6 +40,16 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         [InlineData("(2D) DOCTOR STRANGE", "DOCTOR STRANGE")]
         [InlineData("(M4J) Guardians of the Galaxy Vol. 2", "Guardians of the Galaxy Vol. 2")]
         [InlineData("(M4J) GUARDIANS OF THE GALAXY VOL. 2", "GUARDIANS OF THE GALAXY VOL. 2")]
+        [InlineData("(4DX) Doctor Strange in the Multiverse of Madness", "Doctor Strange in the Multiverse of Madness")]
+        [InlineData("(4DX) DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS", "DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS")]
+        [InlineData("(ScreenX) Black Panther: Wakanda Forever", "Black Panther: Wakanda Forever")]
+        [InlineData("(SCREENX) BLACK PANTHER: WAKANDA FOREVER", "BLACK PANTHER: WAKANDA FOREVER")]
+        [InlineData("(SS) Ant-Man and the Wasp: Quantumania", "Ant-Man and the Wasp: Quantumania")]
+        [InlineData("(SS) ANT-MAN AND THE WASP: QUANTUMANIA", "ANT-MAN AND THE WASP: QUANTUMANIA")]
+        [InlineData("Guardians of the Galaxy Vol. 3 (Subtitled)", "Guardians of the Galaxy Vol. 3")]
+        [InlineData("GUARDIANS OF THE GALAXY VOL. 3 (SUBTITLED)", "GUARDIANS OF THE GALAXY VOL. 3")]
+        [InlineData("The Marvels Unlimited Scr", "The Marvels")]
+        [InlineData("THE MARVELS UNLIMITED SCR", "THE MARVELS")]
         public void Format_GivenInput_ReturnsExpectedOutput(string input, string expectedOutput)
         {
             var formatter = new FilmNameFormatter();
