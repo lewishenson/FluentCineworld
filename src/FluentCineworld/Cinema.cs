@@ -12,6 +12,7 @@ namespace FluentCineworld
         public static readonly Cinema Aldershot = new("080", "Aldershot");
         public static readonly Cinema Ashford = new("035", "Ashford");
         public static readonly Cinema AshtonUnderLyne = new("068", "Ashton-under-Lyne");
+        public static readonly Cinema Barnsley = new("119", "Barnsley");
         public static readonly Cinema Basildon = new("100", "Basildon");
         public static readonly Cinema Bedford = new("010", "Bedford");
         public static readonly Cinema Belfast = new("117", "Belfast");
@@ -23,7 +24,6 @@ namespace FluentCineworld
         public static readonly Cinema Bradford = new("058", "Bradford");
         public static readonly Cinema Braintree = new("061", "Braintree");
         public static readonly Cinema Brighton = new("014", "Brighton");
-        public static readonly Cinema Bristol = new("072", "Bristol");
         public static readonly Cinema Broughton = new("089", "Broughton");
         public static readonly Cinema BurtonUponTrent = new("047", "Burton upon Trent");
         public static readonly Cinema BuryStEdmunds = new("070", "Bury St Edmunds");
@@ -84,7 +84,6 @@ namespace FluentCineworld
         public static readonly Cinema Poole = new("104", "Poole");
         public static readonly Cinema Rochester = new("020", "Rochester");
         public static readonly Cinema Rugby = new("049", "Rugby");
-        public static readonly Cinema Runcorn = new("038", "Runcorn");
         public static readonly Cinema RushdenLakes = new("112", "Rushden Lakes");
         public static readonly Cinema Sheffield = new("031", "Sheffield");
         public static readonly Cinema Shrewsbury = new("033", "Shrewsbury");

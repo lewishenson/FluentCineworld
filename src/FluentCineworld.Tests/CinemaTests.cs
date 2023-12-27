@@ -9,9 +9,9 @@ public class CinemaTests
     [Fact]
     public void GetById_GivenValidId_ThenCinemaIsReturned()
     {
-        var cinema = Cinema.GetById("072");
+        var cinema = Cinema.GetById("119");
 
-        cinema.Should().BeSameAs(Cinema.Bristol);
+        cinema.Should().BeSameAs(Cinema.Barnsley);
     }
 
     [Fact]
