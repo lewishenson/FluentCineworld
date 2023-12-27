@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <PackageId>FluentCineworld</PackageId>
-    <Version>7.1.0</Version>
-    <AssemblyVersion>7.1.0.0</AssemblyVersion>
+    <Version>8.0.0</Version>
+    <AssemblyVersion>8.0.0.0</AssemblyVersion>
     <Title>FluentCineworld</Title>
     <Authors>Lewis Henson</Authors>
     <Description>C# API for obtaining Cineworld listings.</Description>

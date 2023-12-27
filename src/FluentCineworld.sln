@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2048
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentCineworld", "FluentCineworld\FluentCineworld.csproj", "{F2CC8E01-03A5-4C5D-A4F4-324D42E2B2B9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentCineworld.TestClient", "FluentCineworld.TestClient\FluentCineworld.TestClient.csproj", "{22E20D20-09F4-423D-B0D6-547145137ABD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentCineworld.Tests", "FluentCineworld.Tests\FluentCineworld.Tests.csproj", "{F3299306-718E-493C-BBC8-00D0B0AFE807}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1C717575-F4F0-4BA3-9C46-7583B04ABDD0}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.txt = ..\CHANGELOG.txt
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
