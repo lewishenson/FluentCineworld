@@ -59,6 +59,30 @@ namespace FluentCineworld.Listings.GetFilms
                 return Result.AsChanged(formattedName);
             }
 
+            if (name.StartsWith("(4DX) ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("(4DX) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("(ScreenX) ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("(ScreenX) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("(SS) ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("(SS) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(" (Subtitled)", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(" (Subtitled)", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
             return Result.AsUnchanged(name);
         }
 
@@ -120,6 +144,12 @@ namespace FluentCineworld.Listings.GetFilms
             if (name.EndsWith(": Unlimited Screening", StringComparison.CurrentCultureIgnoreCase))
             {
                 var formattedName = name.Replace(": Unlimited Screening", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(" Unlimited Scr", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(" Unlimited Scr", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
