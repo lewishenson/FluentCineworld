@@ -1,6 +1,13 @@
 ﻿FluentCineworld changelog
 =========================
 
+v8.0.0
+Updated list of cinemas:
+    Add: Barnsley
+    Remove: Bristol, Runcorn
+Remove more unwanted film title prefixes and suffixes.
+Replace Moq with NSubstitute.
+
 v7.1.0
 Make cancellation token optional when retrieving listings.
 
