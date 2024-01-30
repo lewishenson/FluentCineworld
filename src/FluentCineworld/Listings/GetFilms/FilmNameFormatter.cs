@@ -13,44 +13,52 @@ namespace FluentCineworld.Listings.GetFilms
                 return string.Empty;
             }
 
-            var result = this.RemoveScreeningTypeText(trimmedName);
+            var mutatedName = this.RemoveSeasonText(trimmedName);
+
+            var result = this.RemoveScreeningTypeText(mutatedName);
             if (result.HasChanged)
             {
                 return result.Name;
             }
 
-            result = this.RemoveMoviesForJuniorsText(trimmedName);
+            result = this.RemoveMoviesForJuniorsText(mutatedName);
             if (result.HasChanged)
             {
                 return result.Name;
             }
 
-            result = this.RemoveUnlimitedScreeningText(trimmedName);
+            result = this.RemoveUnlimitedScreeningText(mutatedName);
             if (result.HasChanged)
             {
                 return result.Name;
             }
 
-            result = this.RemoveRereleaseText(trimmedName);
+            result = this.RemoveRereleaseText(mutatedName);
             if (result.HasChanged)
             {
                 return result.Name;
             }
 
-            result = this.RemoveAutismFriendlyScreeningText(trimmedName);
+            result = this.RemoveAutismFriendlyScreeningText(mutatedName);
             if (result.HasChanged)
             {
                 return result.Name;
             }
 
-            result = this.RemoveClassicMoviesText(trimmedName);
+            result = this.RemoveClassicMoviesText(mutatedName);
             if (result.HasChanged)
             {
                 return result.Name;
             }
 
-            return trimmedName;
+            return mutatedName;
         }
+
+        private string RemoveSeasonText(string name) =>
+            name.Contains("Sci-Fi Season: ", StringComparison.CurrentCultureIgnoreCase)
+                ? name.Replace("Sci-Fi Season: ", string.Empty, StringComparison.CurrentCultureIgnoreCase)
+                : name;
+
         private Result RemoveScreeningTypeText(string name)
         {
             if (name.StartsWith("(2D) ", StringComparison.CurrentCultureIgnoreCase))
@@ -74,6 +82,12 @@ namespace FluentCineworld.Listings.GetFilms
             if (name.StartsWith("(SS) ", StringComparison.CurrentCultureIgnoreCase))
             {
                 var formattedName = name.Replace("(SS) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("(IMAX) ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("(IMAX) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
@@ -130,6 +144,12 @@ namespace FluentCineworld.Listings.GetFilms
                 return Result.AsChanged(formattedName);
             }
 
+            if (name.StartsWith("M4J: ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace("M4J: ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
             if (name.StartsWith("(M4J) ", StringComparison.CurrentCultureIgnoreCase))
             {
                 var formattedName = name.Replace("(M4J) ", string.Empty, StringComparison.CurrentCultureIgnoreCase);
@@ -161,6 +181,18 @@ namespace FluentCineworld.Listings.GetFilms
             if (name.EndsWith(" - Rerelease", StringComparison.CurrentCultureIgnoreCase))
             {
                 var formattedName = name.Replace(" - Rerelease", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(" (10th Anniversary)", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(" (10th Anniversary)", string.Empty, StringComparison.CurrentCultureIgnoreCase);
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(" (25th Anniversary)", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(" (25th Anniversary)", string.Empty, StringComparison.CurrentCultureIgnoreCase);
                 return Result.AsChanged(formattedName);
             }
 
