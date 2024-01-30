@@ -50,6 +50,18 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         [InlineData("GUARDIANS OF THE GALAXY VOL. 3 (SUBTITLED)", "GUARDIANS OF THE GALAXY VOL. 3")]
         [InlineData("The Marvels Unlimited Scr", "The Marvels")]
         [InlineData("THE MARVELS UNLIMITED SCR", "THE MARVELS")]
+        [InlineData("(IMAX) Interstellar", "Interstellar")]
+        [InlineData("(IMAX) INTERSTELLAR", "INTERSTELLAR")]
+        [InlineData("(IMAX) Sci-Fi Season: Interstellar", "Interstellar")]
+        [InlineData("(IMAX) SCI-FI SEASON: INTERSTELLAR", "INTERSTELLAR")]
+        [InlineData("Sci-Fi Season: Dune (2021)", "Dune (2021)")]
+        [InlineData("SCI-FI SEASON: DUNE (2021)", "DUNE (2021)")]
+        [InlineData("M4J: Soul", "Soul")]
+        [InlineData("M4J: SOUL", "SOUL")]
+        [InlineData("Sci-Fi Season: Interstellar (10th Anniversary)", "Interstellar")]
+        [InlineData("SCI-FI SEASON: INTERSTELLAR (10TH ANNIVERSARY)", "INTERSTELLAR")]
+        [InlineData("The Matrix (25th Anniversary)", "The Matrix")]
+        [InlineData("THE MATRIX (25TH ANNIVERSARY)", "THE MATRIX")]
         public void Format_GivenInput_ReturnsExpectedOutput(string input, string expectedOutput)
         {
             var formatter = new FilmNameFormatter();
