@@ -1,6 +1,9 @@
 ﻿FluentCineworld changelog
 =========================
 
+v8.1.0
+Remove more unwanted film title prefixes.
+
 v8.0.0
 Updated list of cinemas:
     Add: Barnsley
