@@ -18,20 +18,38 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         [InlineData("IRON MAN 2 MOVIES FOR JUNIORS", "IRON MAN 2")]
         [InlineData("Thor: Movies For Juniors", "Thor")]
         [InlineData("THOR: MOVIES FOR JUNIORS", "THOR")]
-        [InlineData("Captain America: The First Avenger - Movies For Juniors", "Captain America: The First Avenger")]
-        [InlineData("CAPTAIN AMERICA: THE FIRST AVENGER - MOVIES FOR JUNIORS", "CAPTAIN AMERICA: THE FIRST AVENGER")]
+        [InlineData(
+            "Captain America: The First Avenger - Movies For Juniors",
+            "Captain America: The First Avenger"
+        )]
+        [InlineData(
+            "CAPTAIN AMERICA: THE FIRST AVENGER - MOVIES FOR JUNIORS",
+            "CAPTAIN AMERICA: THE FIRST AVENGER"
+        )]
         [InlineData("The Avengers Subtitled Movies For Juniors", "The Avengers")]
         [InlineData("THE AVENGERS SUBTITLED MOVIES FOR JUNIORS", "THE AVENGERS")]
         [InlineData("Iron Man 3: Subtitled Movies For Juniors", "Iron Man 3")]
         [InlineData("IRON MAN 3: SUBTITLED MOVIES FOR JUNIORS", "IRON MAN 3")]
         [InlineData("Thor: The Dark World - Subtitled Movies For Juniors", "Thor: The Dark World")]
         [InlineData("THOR: THE DARK WORLD - SUBTITLED MOVIES FOR JUNIORS", "THOR: THE DARK WORLD")]
-        [InlineData("Captain America: The Winter Soldier - Rerelease", "Captain America: The Winter Soldier")]
-        [InlineData("CAPTAIN AMERICA: THE WINTER SOLDIER - RERELEASE", "CAPTAIN AMERICA: THE WINTER SOLDIER")]
+        [InlineData(
+            "Captain America: The Winter Soldier - Rerelease",
+            "Captain America: The Winter Soldier"
+        )]
+        [InlineData(
+            "CAPTAIN AMERICA: THE WINTER SOLDIER - RERELEASE",
+            "CAPTAIN AMERICA: THE WINTER SOLDIER"
+        )]
         [InlineData("Guardians of the Galaxy: Unlimited Screening", "Guardians of the Galaxy")]
         [InlineData("GUARDIANS OF THE GALAXY: UNLIMITED SCREENING", "GUARDIANS OF THE GALAXY")]
-        [InlineData("Autism Friendly Screening: Avengers: Age of Ultron", "Avengers: Age of Ultron")]
-        [InlineData("AUTISM FRIENDLY SCREENING: AVENGERS: AGE OF ULTRON", "AVENGERS: AGE OF ULTRON")]
+        [InlineData(
+            "Autism Friendly Screening: Avengers: Age of Ultron",
+            "Avengers: Age of Ultron"
+        )]
+        [InlineData(
+            "AUTISM FRIENDLY SCREENING: AVENGERS: AGE OF ULTRON",
+            "AVENGERS: AGE OF ULTRON"
+        )]
         [InlineData("Classic Movies: Ant-Man", "Ant-Man")]
         [InlineData("CLASSIC MOVIES: ANT-MAN", "ANT-MAN")]
         [InlineData("M4J : Captain America: Civil War", "Captain America: Civil War")]
@@ -40,8 +58,14 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         [InlineData("(2D) DOCTOR STRANGE", "DOCTOR STRANGE")]
         [InlineData("(M4J) Guardians of the Galaxy Vol. 2", "Guardians of the Galaxy Vol. 2")]
         [InlineData("(M4J) GUARDIANS OF THE GALAXY VOL. 2", "GUARDIANS OF THE GALAXY VOL. 2")]
-        [InlineData("(4DX) Doctor Strange in the Multiverse of Madness", "Doctor Strange in the Multiverse of Madness")]
-        [InlineData("(4DX) DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS", "DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS")]
+        [InlineData(
+            "(4DX) Doctor Strange in the Multiverse of Madness",
+            "Doctor Strange in the Multiverse of Madness"
+        )]
+        [InlineData(
+            "(4DX) DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS",
+            "DOCTOR STRANGE IN THE MULTIVERSE OF MADNESS"
+        )]
         [InlineData("(ScreenX) Black Panther: Wakanda Forever", "Black Panther: Wakanda Forever")]
         [InlineData("(SCREENX) BLACK PANTHER: WAKANDA FOREVER", "BLACK PANTHER: WAKANDA FOREVER")]
         [InlineData("(SS) Ant-Man and the Wasp: Quantumania", "Ant-Man and the Wasp: Quantumania")]

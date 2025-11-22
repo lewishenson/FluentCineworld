@@ -16,7 +16,10 @@ namespace FluentCineworld
         public static readonly Cinema Basildon = new("100", "Basildon");
         public static readonly Cinema Bedford = new("010", "Bedford");
         public static readonly Cinema Belfast = new("117", "Belfast");
-        public static readonly Cinema BirminghamBroadStreet = new("044", "Birmingham - Broad Street");
+        public static readonly Cinema BirminghamBroadStreet = new(
+            "044",
+            "Birmingham - Broad Street"
+        );
         public static readonly Cinema BirminghamNec = new("090", "Birmingham - NEC");
         public static readonly Cinema BoldonTyneAndWear = new("024", "Boldon Tyne and Wear");
         public static readonly Cinema Bolton = new("032", "Bolton");
@@ -38,7 +41,10 @@ namespace FluentCineworld
         public static readonly Cinema Didsbury = new("051", "Didsbury");
         public static readonly Cinema Dover = new("099", "Dover");
         public static readonly Cinema Dundee = new("036", "Dundee");
-        public static readonly Cinema EastbourneAtTheBeacon = new("113", "Eastbourne at The Beacon");
+        public static readonly Cinema EastbourneAtTheBeacon = new(
+            "113",
+            "Eastbourne at The Beacon"
+        );
         public static readonly Cinema Edinburgh = new("037", "Edinburgh");
         public static readonly Cinema Ely = new("097", "Ely");
         public static readonly Cinema Falkirk = new("052", "Falkirk");
@@ -64,9 +70,15 @@ namespace FluentCineworld
         public static readonly Cinema LondonFeltham = new("023", "London - Feltham");
         public static readonly Cinema LondonHounslow = new("118", "London - Hounslow");
         public static readonly Cinema LondonIlford = new("060", "London - Ilford");
-        public static readonly Cinema LondonLeicesterSquare = new("103", "London - Leicester Square");
+        public static readonly Cinema LondonLeicesterSquare = new(
+            "103",
+            "London - Leicester Square"
+        );
         public static readonly Cinema LondonSouthRuislip = new("106", "London - South Ruislip");
-        public static readonly Cinema LondonTheO2Greenwich = new("077", "London - The O2 Greenwich");
+        public static readonly Cinema LondonTheO2Greenwich = new(
+            "077",
+            "London - The O2 Greenwich"
+        );
         public static readonly Cinema LondonWandsworth = new("066", "London - Wandsworth");
         public static readonly Cinema LondonWembley = new("082", "London - Wembley");
         public static readonly Cinema LondonWestIndiaQuay = new("041", "London - West India Quay");
@@ -114,7 +126,8 @@ namespace FluentCineworld
 
         static Cinema()
         {
-            AllKeyedById = typeof(Cinema).GetFields(BindingFlags.Public | BindingFlags.Static)
+            AllKeyedById = typeof(Cinema)
+                .GetFields(BindingFlags.Public | BindingFlags.Static)
                 .Where(field => field.FieldType == typeof(Cinema))
                 .Select(field => (Cinema)field.GetValue(null))
                 .ToDictionary(cinema => cinema!.Id, cinema => cinema);
@@ -139,7 +152,11 @@ namespace FluentCineworld
 
             return AllKeyedById.TryGetValue(id, out var cinema)
                 ? cinema
-                : throw new ArgumentOutOfRangeException(nameof(id), id, "Cinema not found with specified id");
+                : throw new ArgumentOutOfRangeException(
+                    nameof(id),
+                    id,
+                    "Cinema not found with specified id"
+                );
         }
     }
 }

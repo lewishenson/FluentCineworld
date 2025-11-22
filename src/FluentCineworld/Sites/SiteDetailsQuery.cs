@@ -18,7 +18,10 @@ namespace FluentCineworld.Sites
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<SiteDetails> ExecuteAsync(Cinema cinema, CancellationToken cancellationToken)
+        public async Task<SiteDetails> ExecuteAsync(
+            Cinema cinema,
+            CancellationToken cancellationToken
+        )
         {
             if (cinema == null)
             {
@@ -37,7 +40,9 @@ namespace FluentCineworld.Sites
         {
             var url = _uriGenerator.ForCinemaSites();
 
-            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url, cancellationToken: cancellationToken).ConfigureAwait(false);
+            var response = await _httpClient
+                .GetFromJsonAsync<ResponseDto>(url, cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
 
             return response;
         }
@@ -49,7 +54,7 @@ namespace FluentCineworld.Sites
                 Address = siteDto.Address,
                 DisplayName = siteDto.DisplayName,
                 Id = siteDto.Id,
-                Link = siteDto.Link
+                Link = siteDto.Link,
             };
         }
     }

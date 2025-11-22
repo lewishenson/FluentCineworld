@@ -19,7 +19,10 @@ namespace FluentCineworld.Listings.GetDates
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<IEnumerable<DateOnly>> ExecuteAsync(Cinema cinema, CancellationToken cancellationToken)
+        public async Task<IEnumerable<DateOnly>> ExecuteAsync(
+            Cinema cinema,
+            CancellationToken cancellationToken
+        )
         {
             if (cinema == null)
             {
@@ -28,13 +31,20 @@ namespace FluentCineworld.Listings.GetDates
 
             var response = await this.GetResponse(cinema, cancellationToken).ConfigureAwait(false);
 
-            return response?.Body == null ? Enumerable.Empty<DateOnly>() : response.Body.Dates.Select(DateOnly.FromDateTime);
+            return response?.Body == null
+                ? Enumerable.Empty<DateOnly>()
+                : response.Body.Dates.Select(DateOnly.FromDateTime);
         }
 
-        private async Task<ResponseDto> GetResponse(Cinema cinema, CancellationToken cancellationToken)
+        private async Task<ResponseDto> GetResponse(
+            Cinema cinema,
+            CancellationToken cancellationToken
+        )
         {
             var url = _uriGenerator.ForDatesWithListings(cinema);
-            var response = await _httpClient.GetFromJsonAsync<ResponseDto>(url, cancellationToken: cancellationToken).ConfigureAwait(false);
+            var response = await _httpClient
+                .GetFromJsonAsync<ResponseDto>(url, cancellationToken: cancellationToken)
+                .ConfigureAwait(false);
 
             return response;
         }

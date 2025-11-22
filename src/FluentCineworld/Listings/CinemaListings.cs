@@ -15,11 +15,18 @@ namespace FluentCineworld.Listings
         private readonly IGetFilmsQuery _getFilmsQuery;
         private readonly IFilter _filter;
 
-        public CinemaListings(Cinema cinema, IGetDatesQuery getDatesQuery, IGetFilmsQuery getFilmsQuery, IFilter filter)
+        public CinemaListings(
+            Cinema cinema,
+            IGetDatesQuery getDatesQuery,
+            IGetFilmsQuery getFilmsQuery,
+            IFilter filter
+        )
         {
             _cinema = cinema ?? throw new ArgumentNullException(nameof(cinema));
-            _getDatesQuery = getDatesQuery ?? throw new ArgumentNullException(nameof(getDatesQuery));
-            _getFilmsQuery = getFilmsQuery ?? throw new ArgumentNullException(nameof(getFilmsQuery));
+            _getDatesQuery =
+                getDatesQuery ?? throw new ArgumentNullException(nameof(getDatesQuery));
+            _getFilmsQuery =
+                getFilmsQuery ?? throw new ArgumentNullException(nameof(getFilmsQuery));
             _filter = filter ?? throw new ArgumentNullException(nameof(filter));
         }
 
@@ -44,7 +51,9 @@ namespace FluentCineworld.Listings
             return this;
         }
 
-        public async Task<IEnumerable<Film>> RetrieveAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Film>> RetrieveAsync(
+            CancellationToken cancellationToken = default
+        )
         {
             var dates = await this.GetDates(cancellationToken).ConfigureAwait(false);
             var films = await this.GetFilms(dates, cancellationToken).ConfigureAwait(false);
@@ -57,13 +66,18 @@ namespace FluentCineworld.Listings
 
         private async Task<IEnumerable<DateOnly>> GetDates(CancellationToken cancellationToken)
         {
-            var allDates = await _getDatesQuery.ExecuteAsync(_cinema, cancellationToken).ConfigureAwait(false);
+            var allDates = await _getDatesQuery
+                .ExecuteAsync(_cinema, cancellationToken)
+                .ConfigureAwait(false);
             var filteredDates = allDates.Where(_filter.Apply);
 
             return filteredDates;
         }
 
-        private async Task<IEnumerable<Film>> GetFilms(IEnumerable<DateOnly> dates, CancellationToken cancellationToken)
+        private async Task<IEnumerable<Film>> GetFilms(
+            IEnumerable<DateOnly> dates,
+            CancellationToken cancellationToken
+        )
         {
             var allTasks = new List<Task<IEnumerable<Film>>>();
 
@@ -80,17 +94,17 @@ namespace FluentCineworld.Listings
 
         private IEnumerable<Film> Merge(IEnumerable<Film> films)
         {
-            return films.GroupBy(film => film.Id)
-                        .Select(group =>
-                        {
-                            var allDays = group.SelectMany(f => f.Days)
-                                               .OrderBy(day => day.Date);
+            return films
+                .GroupBy(film => film.Id)
+                .Select(group =>
+                {
+                    var allDays = group.SelectMany(f => f.Days).OrderBy(day => day.Date);
 
-                            var film = group.First();
-                            film.Days = allDays.ToList();
+                    var film = group.First();
+                    film.Days = allDays.ToList();
 
-                            return film;
-                        });
+                    return film;
+                });
         }
     }
 }

@@ -35,7 +35,10 @@ namespace FluentCineworld
             return cinemaListings;
         }
 
-        public async Task<SiteDetails> SiteAsync(Cinema cinema, CancellationToken cancellationToken = default)
+        public async Task<SiteDetails> SiteAsync(
+            Cinema cinema,
+            CancellationToken cancellationToken = default
+        )
         {
             if (cinema == null)
             {
@@ -44,7 +47,9 @@ namespace FluentCineworld
 
             var uriGenerator = new Sites.UriGenerator();
             var siteDetailsQuery = new SiteDetailsQuery(uriGenerator, _httpClient);
-            var siteDetails = await siteDetailsQuery.ExecuteAsync(cinema, cancellationToken).ConfigureAwait(false);
+            var siteDetails = await siteDetailsQuery
+                .ExecuteAsync(cinema, cancellationToken)
+                .ConfigureAwait(false);
 
             return siteDetails;
         }
