@@ -45,7 +45,7 @@ namespace FluentCineworld.Tests
             var cineworld = new Cineworld(Shared.HttpClient);
 
             var thrownException = await FluentActions
-                .Awaiting(() => cineworld.SiteAsync(null))
+                .Awaiting(() => cineworld.SiteAsync(null, TestContext.Current.CancellationToken))
                 .Should()
                 .ThrowExactlyAsync<ArgumentNullException>();
 
@@ -58,7 +58,7 @@ namespace FluentCineworld.Tests
         {
             var cineworld = new Cineworld(Shared.HttpClient);
 
-            var site = await cineworld.SiteAsync(Cinema.MiltonKeynes);
+            var site = await cineworld.SiteAsync(Cinema.MiltonKeynes, TestContext.Current.CancellationToken);
 
             site.Should().NotBeNull();
         }

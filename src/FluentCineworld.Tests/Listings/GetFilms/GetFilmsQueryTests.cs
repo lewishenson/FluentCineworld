@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using AwesomeAssertions;
 using FluentCineworld.Listings;
@@ -65,7 +64,7 @@ namespace FluentCineworld.Tests.Listings.GetFilms
                     getFilmsQuery.ExecuteAsync(
                         null,
                         DateOnly.FromDateTime(DateTime.UtcNow),
-                        CancellationToken.None
+                        TestContext.Current.CancellationToken
                     )
                 )
                 .Should()
@@ -90,7 +89,7 @@ namespace FluentCineworld.Tests.Listings.GetFilms
             var films = await getFilmsQuery.ExecuteAsync(
                 Cinema.LondonLeicesterSquare,
                 DateOnly.FromDateTime(DateTime.UtcNow.AddDays(1)),
-                CancellationToken.None
+                TestContext.Current.CancellationToken
             );
 
             films.Should().NotBeNullOrEmpty();

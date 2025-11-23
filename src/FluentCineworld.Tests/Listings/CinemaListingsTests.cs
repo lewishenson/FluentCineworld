@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using AwesomeAssertions;
 using FluentCineworld.Listings;
@@ -88,7 +87,7 @@ namespace FluentCineworld.Tests.Listings
             var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = Substitute.For<IGetFilmsQuery>();
@@ -98,7 +97,7 @@ namespace FluentCineworld.Tests.Listings
             var date1Films = new List<Film> { date1Film1, date1Film2 };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film1 = new Film { Id = "film-c", Days = [] };
@@ -106,7 +105,7 @@ namespace FluentCineworld.Tests.Listings
             var date2Films = new List<Film> { date2Film1, date2Film2 };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
@@ -118,7 +117,7 @@ namespace FluentCineworld.Tests.Listings
                 filter
             );
 
-            var films = await cinemaListings.RetrieveAsync(CancellationToken.None);
+            var films = await cinemaListings.RetrieveAsync(TestContext.Current.CancellationToken);
 
             films.Should().BeEquivalentTo([date1Film1, date1Film2, date2Film1, date2Film2]);
         }
@@ -133,7 +132,7 @@ namespace FluentCineworld.Tests.Listings
             var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = Substitute.For<IGetFilmsQuery>();
@@ -146,7 +145,7 @@ namespace FluentCineworld.Tests.Listings
             var date1Films = new List<Film> { date1Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -157,7 +156,7 @@ namespace FluentCineworld.Tests.Listings
             var date2Films = new List<Film> { date2Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
@@ -169,7 +168,7 @@ namespace FluentCineworld.Tests.Listings
                 filter
             );
 
-            var films = await cinemaListings.RetrieveAsync(CancellationToken.None);
+            var films = await cinemaListings.RetrieveAsync(TestContext.Current.CancellationToken);
 
             films.Count().Should().Be(1);
 
@@ -195,7 +194,7 @@ namespace FluentCineworld.Tests.Listings
             var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = Substitute.For<IGetFilmsQuery>();
@@ -208,7 +207,7 @@ namespace FluentCineworld.Tests.Listings
             var date1Films = new List<Film> { date1Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -219,7 +218,7 @@ namespace FluentCineworld.Tests.Listings
             var date2Films = new List<Film> { date2Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
@@ -231,7 +230,7 @@ namespace FluentCineworld.Tests.Listings
                 filter
             );
 
-            var films = await cinemaListings.From(date2).RetrieveAsync(CancellationToken.None);
+            var films = await cinemaListings.From(date2).RetrieveAsync(TestContext.Current.CancellationToken);
 
             films.Count().Should().Be(1);
 
@@ -253,7 +252,7 @@ namespace FluentCineworld.Tests.Listings
             var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = Substitute.For<IGetFilmsQuery>();
@@ -266,7 +265,7 @@ namespace FluentCineworld.Tests.Listings
             var date1Films = new List<Film> { date1Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -277,7 +276,7 @@ namespace FluentCineworld.Tests.Listings
             var date2Films = new List<Film> { date2Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
@@ -289,7 +288,7 @@ namespace FluentCineworld.Tests.Listings
                 filter
             );
 
-            var films = await cinemaListings.To(date1).RetrieveAsync(CancellationToken.None);
+            var films = await cinemaListings.To(date1).RetrieveAsync(TestContext.Current.CancellationToken);
 
             films.Count().Should().Be(1);
 
@@ -311,7 +310,7 @@ namespace FluentCineworld.Tests.Listings
             var dates = new List<DateOnly> { date1, date2 };
 
             mockGetDatesQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<DateOnly>>(dates));
 
             var mockGetFilmsQuery = Substitute.For<IGetFilmsQuery>();
@@ -324,7 +323,7 @@ namespace FluentCineworld.Tests.Listings
             var date1Films = new List<Film> { date1Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date1, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date1Films));
 
             var date2Film = new Film
@@ -335,7 +334,7 @@ namespace FluentCineworld.Tests.Listings
             var date2Films = new List<Film> { date2Film };
 
             mockGetFilmsQuery
-                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, CancellationToken.None)
+                .ExecuteAsync(Cinema.LondonLeicesterSquare, date2, TestContext.Current.CancellationToken)
                 .Returns(Task.FromResult<IEnumerable<Film>>(date2Films));
 
             var filter = new Filter();
@@ -347,7 +346,7 @@ namespace FluentCineworld.Tests.Listings
                 filter
             );
 
-            var films = await cinemaListings.ForDayOfWeek(date1.DayOfWeek).RetrieveAsync(CancellationToken.None);
+            var films = await cinemaListings.ForDayOfWeek(date1.DayOfWeek).RetrieveAsync(TestContext.Current.CancellationToken);
 
             films.Count().Should().Be(1);
 
