@@ -58,7 +58,7 @@ namespace FluentCineworld.Tests
         {
             var cineworld = new Cineworld(Shared.HttpClient);
 
-            var site = await cineworld.SiteAsync(Cinema.Northampton);
+            var site = await cineworld.SiteAsync(Cinema.MiltonKeynes);
 
             site.Should().NotBeNull();
         }
