@@ -30,8 +30,8 @@ namespace FluentCineworld.TestClient
             var cinemaName = args.FirstOrDefault();
 
             return string.IsNullOrWhiteSpace(cinemaName)
-                    ? Cinema.MiltonKeynes
-                    : Cinema.All.Single(cinema => cinema.DisplayName == cinemaName);
+                ? Cinema.MiltonKeynes
+                : Cinema.All.Single(cinema => cinema.DisplayName == cinemaName);
         }
 
         private static async Task GetSiteDetails(ICineworld cineworld, Cinema cinema)
@@ -45,10 +45,11 @@ namespace FluentCineworld.TestClient
         {
             var today = DateOnly.FromDateTime(DateTime.Now);
 
-            var films = await cineworld.WhatsOn(cinema)
-                                       .From(today)
-                                       .To(today.AddDays(30))
-                                       .RetrieveAsync(CancellationToken.None);
+            var films = await cineworld
+                .WhatsOn(cinema)
+                .From(today)
+                .To(today.AddDays(30))
+                .RetrieveAsync(CancellationToken.None);
 
             new FilmConsoleWriter().Output(films);
         }

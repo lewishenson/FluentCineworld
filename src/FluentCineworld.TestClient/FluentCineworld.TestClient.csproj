@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
     <ProjectReference Include="..\FluentCineworld\FluentCineworld.csproj" />
   </ItemGroup>
@@ -9,5 +8,4 @@
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-
 </Project>

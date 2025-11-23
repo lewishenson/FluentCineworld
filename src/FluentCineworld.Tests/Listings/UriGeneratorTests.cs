@@ -15,7 +15,11 @@ namespace FluentCineworld.Tests.Listings
 
             Action action = () => uriGenerator.ForDatesWithListings(null);
 
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
+            action
+                .Should()
+                .ThrowExactly<ArgumentNullException>()
+                .And.ParamName.Should()
+                .Be("cinema");
         }
 
         [Fact]
@@ -29,7 +33,10 @@ namespace FluentCineworld.Tests.Listings
 
                 var uri = uriGenerator.ForDatesWithListings(Cinema.LondonTheO2Greenwich);
 
-                uri.Should().Be("https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/077/until/2020-10-31?attr=&lang=en_GB");
+                uri.Should()
+                    .Be(
+                        "https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/077/until/2020-10-31?attr=&lang=en_GB"
+                    );
             }
             finally
             {
@@ -42,9 +49,14 @@ namespace FluentCineworld.Tests.Listings
         {
             var uriGenerator = new UriGenerator();
 
-            Action action = () => uriGenerator.ForListings(null, DateOnly.FromDateTime(DateTime.UtcNow));
+            Action action = () =>
+                uriGenerator.ForListings(null, DateOnly.FromDateTime(DateTime.UtcNow));
 
-            action.Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("cinema");
+            action
+                .Should()
+                .ThrowExactly<ArgumentNullException>()
+                .And.ParamName.Should()
+                .Be("cinema");
         }
 
         [Fact]
@@ -56,7 +68,10 @@ namespace FluentCineworld.Tests.Listings
 
             var uri = uriGenerator.ForListings(Cinema.LondonTheO2Greenwich, date);
 
-            uri.Should().Be("https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/film-events/in-cinema/077/at-date/2018-10-31?attr=&lang=en_GB");
+            uri.Should()
+                .Be(
+                    "https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/film-events/in-cinema/077/at-date/2018-10-31?attr=&lang=en_GB"
+                );
         }
     }
 }

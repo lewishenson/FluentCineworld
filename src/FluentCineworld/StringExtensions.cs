@@ -4,7 +4,12 @@ namespace FluentCineworld
 {
     public static class StringExtensions
     {
-        public static string Replace(this string source, string oldValue, string newValue, StringComparison comparison)
+        public static string Replace(
+            this string source,
+            string oldValue,
+            string newValue,
+            StringComparison comparison
+        )
         {
             int index = source.IndexOf(oldValue, comparison);
 

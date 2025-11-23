@@ -4,6 +4,6 @@ namespace FluentCineworld.Listings
     {
         AgeRestriction,
         Extra,
-        ScreeningType
+        ScreeningType,
     }
 }

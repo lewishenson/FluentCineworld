@@ -16,15 +16,19 @@ public class CinemaTests
 
     [Fact]
     public void GetById_GivenInvalidId_ThenOutOfRangeExceptionThrown() =>
-        FluentActions.Invoking(() => Cinema.GetById("999"))
-            .Should().ThrowExactly<ArgumentOutOfRangeException>()
+        FluentActions
+            .Invoking(() => Cinema.GetById("999"))
+            .Should()
+            .ThrowExactly<ArgumentOutOfRangeException>()
             .WithParameterName("id");
 
     [Theory]
     [InlineData(null)]
     [InlineData("")]
     public void GetById_GivenMissingId_ThenOutOfRangeExceptionThrown(string id) =>
-        FluentActions.Invoking(() => Cinema.GetById(id))
-            .Should().ThrowExactly<ArgumentException>()
+        FluentActions
+            .Invoking(() => Cinema.GetById(id))
+            .Should()
+            .ThrowExactly<ArgumentException>()
             .WithParameterName("id");
 }

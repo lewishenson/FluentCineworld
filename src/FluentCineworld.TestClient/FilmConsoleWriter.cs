@@ -39,6 +39,5 @@ namespace FluentCineworld.TestClient
 
             Console.WriteLine();
         }
-
     }
 }

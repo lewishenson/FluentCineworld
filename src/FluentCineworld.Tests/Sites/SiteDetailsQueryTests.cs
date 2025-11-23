@@ -11,13 +11,21 @@ namespace FluentCineworld.Tests.Sites
     {
         [Fact]
         public void Constructor_GivenNullUriGenerator_ThenArgumentNullExceptionThrown() =>
-            FluentActions.Invoking(() => new SiteDetailsQuery(null, Shared.HttpClient))
-                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("uriGenerator");
+            FluentActions
+                .Invoking(() => new SiteDetailsQuery(null, Shared.HttpClient))
+                .Should()
+                .ThrowExactly<ArgumentNullException>()
+                .And.ParamName.Should()
+                .Be("uriGenerator");
 
         [Fact]
         public void Constructor_GivenNullHttpClient_ThenArgumentNullExceptionThrown() =>
-            FluentActions.Invoking(() => new SiteDetailsQuery(Substitute.For<IUriGenerator>(), null))
-                .Should().ThrowExactly<ArgumentNullException>().And.ParamName.Should().Be("httpClient");
+            FluentActions
+                .Invoking(() => new SiteDetailsQuery(Substitute.For<IUriGenerator>(), null))
+                .Should()
+                .ThrowExactly<ArgumentNullException>()
+                .And.ParamName.Should()
+                .Be("httpClient");
 
         [Fact]
         public async Task ExecuteAsync_GivenNullCinema_ThenArgumentNullExceptionThrown()
@@ -26,8 +34,10 @@ namespace FluentCineworld.Tests.Sites
 
             var siteDetailsQuery = new SiteDetailsQuery(mockUriGenerator, Shared.HttpClient);
 
-            var thrownException = await FluentActions.Awaiting(() => siteDetailsQuery.ExecuteAsync(null, default))
-                .Should().ThrowExactlyAsync<ArgumentNullException>();
+            var thrownException = await FluentActions
+                .Awaiting(() => siteDetailsQuery.ExecuteAsync(null, default))
+                .Should()
+                .ThrowExactlyAsync<ArgumentNullException>();
 
             thrownException.Which.ParamName.Should().Be("cinema");
         }
