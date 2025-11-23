@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using FluentAssertions;
+using AwesomeAssertions;
 using FluentCineworld.Listings;
 using FluentCineworld.Listings.GetDates;
 using NSubstitute;
@@ -36,7 +36,7 @@ namespace FluentCineworld.Tests.Listings.GetDates
             var getDatesQuery = new GetDatesQuery(mockUriGenerator, Shared.HttpClient);
 
             var thrownException = await FluentActions
-                .Awaiting(() => getDatesQuery.ExecuteAsync(null, default))
+                .Awaiting(() => getDatesQuery.ExecuteAsync(null, TestContext.Current.CancellationToken))
                 .Should()
                 .ThrowExactlyAsync<ArgumentNullException>();
 
@@ -51,7 +51,7 @@ namespace FluentCineworld.Tests.Listings.GetDates
 
             var getDatesQuery = new GetDatesQuery(uriGenerator, Shared.HttpClient);
 
-            var dates = await getDatesQuery.ExecuteAsync(Cinema.MiltonKeynes, default);
+            var dates = await getDatesQuery.ExecuteAsync(Cinema.MiltonKeynes, TestContext.Current.CancellationToken);
 
             dates.Should().NotBeNullOrEmpty();
         }

@@ -1,4 +1,4 @@
-using FluentAssertions;
+using AwesomeAssertions;
 using FluentCineworld.Listings.GetFilms;
 using Xunit;
 

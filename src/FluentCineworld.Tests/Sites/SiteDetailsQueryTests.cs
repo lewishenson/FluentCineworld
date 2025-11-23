@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using FluentAssertions;
+using AwesomeAssertions;
 using FluentCineworld.Sites;
 using NSubstitute;
 using Xunit;
@@ -35,7 +35,7 @@ namespace FluentCineworld.Tests.Sites
             var siteDetailsQuery = new SiteDetailsQuery(mockUriGenerator, Shared.HttpClient);
 
             var thrownException = await FluentActions
-                .Awaiting(() => siteDetailsQuery.ExecuteAsync(null, default))
+                .Awaiting(() => siteDetailsQuery.ExecuteAsync(null, TestContext.Current.CancellationToken))
                 .Should()
                 .ThrowExactlyAsync<ArgumentNullException>();
 
@@ -50,7 +50,7 @@ namespace FluentCineworld.Tests.Sites
 
             var getFilmsQuery = new SiteDetailsQuery(uriGenerator, Shared.HttpClient);
 
-            var site = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare, default);
+            var site = await getFilmsQuery.ExecuteAsync(Cinema.LondonLeicesterSquare, TestContext.Current.CancellationToken);
 
             site.Should().NotBeNull();
         }
