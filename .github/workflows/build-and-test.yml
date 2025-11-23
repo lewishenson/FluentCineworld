@@ -2,9 +2,9 @@ name: .NET build & test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 env:
@@ -14,15 +14,15 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore ${{env.SOLUTION_FOLDER}}
-    - name: Build
-      run: dotnet build ${{env.SOLUTION_FOLDER}} --no-restore
-    # Comment out until Forbidden issue is solved
-    # - name: Test
-    #   run: dotnet test ${{env.SOLUTION_FOLDER}} --no-build --verbosity normal
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore dependencies
+        run: dotnet restore ${{env.SOLUTION_FOLDER}}
+      - name: Build
+        run: dotnet build ${{env.SOLUTION_FOLDER}} --no-restore
+      # Comment out until Forbidden issue is solved
+      # - name: Test
+      #   run: dotnet test ${{env.SOLUTION_FOLDER}} --no-build --verbosity normal
