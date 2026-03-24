@@ -34,7 +34,7 @@ namespace FluentCineworld.Tests
         {
             var cineworld = new Cineworld(Shared.HttpClient);
 
-            var listings = cineworld.WhatsOn(Cinema.Northampton);
+            var listings = cineworld.WhatsOn(Cinema.IsleOfWight);
 
             listings.Should().NotBeNull();
         }
@@ -58,7 +58,10 @@ namespace FluentCineworld.Tests
         {
             var cineworld = new Cineworld(Shared.HttpClient);
 
-            var site = await cineworld.SiteAsync(Cinema.MiltonKeynes, TestContext.Current.CancellationToken);
+            var site = await cineworld.SiteAsync(
+                Cinema.MiltonKeynes,
+                TestContext.Current.CancellationToken
+            );
 
             site.Should().NotBeNull();
         }
