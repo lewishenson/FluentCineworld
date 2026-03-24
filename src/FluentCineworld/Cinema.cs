@@ -57,7 +57,7 @@ namespace FluentCineworld
         public static readonly Cinema Hull = new("040", "Hull");
         public static readonly Cinema Huntingdon = new("043", "Huntingdon");
         public static readonly Cinema Ipswich = new("028", "Ipswich");
-        public static readonly Cinema IsleofWight = new("045", "Isle of Wight");
+        public static readonly Cinema IsleOfWight = new("045", "Isle of Wight");
         public static readonly Cinema Jersey = new("062", "Jersey");
         public static readonly Cinema LeedsWhiteRose = new("108", "Leeds - White Rose");
         public static readonly Cinema Llandudno = new("053", "Llandudno");
