@@ -13,57 +13,84 @@ namespace FluentCineworld.Listings.GetFilms
                 return string.Empty;
             }
 
-            var mutatedName = this.RemoveSeasonText(trimmedName);
+            var mutatedName = RemovePrefix(trimmedName);
 
-            var result = this.RemoveScreeningTypeText(mutatedName);
-            if (result.HasChanged)
-            {
-                return result.Name;
-            }
-
-            result = this.RemoveMoviesForJuniorsText(mutatedName);
-            if (result.HasChanged)
-            {
-                return result.Name;
-            }
-
-            result = this.RemoveUnlimitedScreeningText(mutatedName);
-            if (result.HasChanged)
-            {
-                return result.Name;
-            }
-
-            result = this.RemoveRereleaseText(mutatedName);
-            if (result.HasChanged)
-            {
-                return result.Name;
-            }
-
-            result = this.RemoveAutismFriendlyScreeningText(mutatedName);
-            if (result.HasChanged)
-            {
-                return result.Name;
-            }
-
-            result = this.RemoveClassicMoviesText(mutatedName);
-            if (result.HasChanged)
-            {
-                return result.Name;
-            }
-
-            return mutatedName;
+            return RemoveSuffix(mutatedName);
         }
 
-        private string RemoveSeasonText(string name) =>
-            name.Contains("Sci-Fi Season: ", StringComparison.CurrentCultureIgnoreCase)
-                ? name.Replace(
+        private string RemovePrefix(string name)
+        {
+            var result = this.RemoveScreeningTypePrefixText(name);
+
+            result = this.RemoveSeasonText(result.Name);
+
+            result = this.RemoveFamilyFilmsText(result.Name);
+
+            result = this.RemoveMoviesForJuniorsPrefixText(result.Name);
+
+            result = this.RemoveAutismFriendlyScreeningText(result.Name);
+
+            result = this.RemoveClassicMoviesText(result.Name);
+
+            return result.Name;
+        }
+
+        private Result RemoveSeasonText(string name)
+        {
+            if (name.StartsWith("Sci-Fi Season: ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
                     "Sci-Fi Season: ",
                     string.Empty,
                     StringComparison.CurrentCultureIgnoreCase
-                )
-                : name;
+                );
+                return Result.AsChanged(formattedName);
+            }
 
-        private Result RemoveScreeningTypeText(string name)
+            if (name.StartsWith("X-Mas Season: ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "X-Mas Season: ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("Awards Season: ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "Awards Season: ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("Music Icons Season: ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "Music Icons Season: ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("Baz Luhrmann Season ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "Baz Luhrmann Season ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
+        }
+
+        private Result RemoveScreeningTypePrefixText(string name)
         {
             if (name.StartsWith("(2D) ", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -115,6 +142,124 @@ namespace FluentCineworld.Listings.GetFilms
                 return Result.AsChanged(formattedName);
             }
 
+            return Result.AsUnchanged(name);
+        }
+
+        private Result RemoveFamilyFilmsText(string name)
+        {
+            if (name.StartsWith("£2 Family Films : ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "£2 Family Films : ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
+        }
+
+        private Result RemoveMoviesForJuniorsPrefixText(string name)
+        {
+            if (name.StartsWith("M4J : ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "M4J : ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("M4J: ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "M4J: ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.StartsWith("(M4J) ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "(M4J) ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
+        }
+
+        private Result RemoveAutismFriendlyScreeningText(string name)
+        {
+            if (
+                name.StartsWith(
+                    "Autism Friendly Screening: ",
+                    StringComparison.CurrentCultureIgnoreCase
+                )
+            )
+            {
+                var formattedName = name.Replace(
+                    "Autism Friendly Screening: ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            if (
+                name.StartsWith(
+                    "Autism Friendly Screening : ",
+                    StringComparison.CurrentCultureIgnoreCase
+                )
+            )
+            {
+                var formattedName = name.Replace(
+                    "Autism Friendly Screening : ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
+        }
+
+        private Result RemoveClassicMoviesText(string name)
+        {
+            if (name.StartsWith("Classic Movies: ", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    "Classic Movies: ",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            return Result.AsUnchanged(name);
+        }
+
+        private string RemoveSuffix(string name)
+        {
+            var result = this.RemoveScreeningTypeSuffixText(name);
+
+            result = this.RemoveMoviesForJuniorsSuffixText(result.Name);
+
+            result = this.RemoveUnlimitedScreeningText(result.Name);
+
+            result = this.RemoveRereleaseText(result.Name);
+
+            return result.Name;
+        }
+
+        private Result RemoveScreeningTypeSuffixText(string name)
+        {
             if (name.EndsWith(" (Subtitled)", StringComparison.CurrentCultureIgnoreCase))
             {
                 var formattedName = name.Replace(
@@ -128,7 +273,7 @@ namespace FluentCineworld.Listings.GetFilms
             return Result.AsUnchanged(name);
         }
 
-        private Result RemoveMoviesForJuniorsText(string name)
+        private Result RemoveMoviesForJuniorsSuffixText(string name)
         {
             if (
                 name.EndsWith(
@@ -205,36 +350,6 @@ namespace FluentCineworld.Listings.GetFilms
                 return Result.AsChanged(formattedName);
             }
 
-            if (name.StartsWith("M4J : ", StringComparison.CurrentCultureIgnoreCase))
-            {
-                var formattedName = name.Replace(
-                    "M4J : ",
-                    string.Empty,
-                    StringComparison.CurrentCultureIgnoreCase
-                );
-                return Result.AsChanged(formattedName);
-            }
-
-            if (name.StartsWith("M4J: ", StringComparison.CurrentCultureIgnoreCase))
-            {
-                var formattedName = name.Replace(
-                    "M4J: ",
-                    string.Empty,
-                    StringComparison.CurrentCultureIgnoreCase
-                );
-                return Result.AsChanged(formattedName);
-            }
-
-            if (name.StartsWith("(M4J) ", StringComparison.CurrentCultureIgnoreCase))
-            {
-                var formattedName = name.Replace(
-                    "(M4J) ",
-                    string.Empty,
-                    StringComparison.CurrentCultureIgnoreCase
-                );
-                return Result.AsChanged(formattedName);
-            }
-
             return Result.AsUnchanged(name);
         }
 
@@ -244,6 +359,16 @@ namespace FluentCineworld.Listings.GetFilms
             {
                 var formattedName = name.Replace(
                     ": Unlimited Screening",
+                    string.Empty,
+                    StringComparison.CurrentCultureIgnoreCase
+                );
+                return Result.AsChanged(formattedName);
+            }
+
+            if (name.EndsWith(" Unlimited Screening", StringComparison.CurrentCultureIgnoreCase))
+            {
+                var formattedName = name.Replace(
+                    " Unlimited Screening",
                     string.Empty,
                     StringComparison.CurrentCultureIgnoreCase
                 );
@@ -289,41 +414,6 @@ namespace FluentCineworld.Listings.GetFilms
             {
                 var formattedName = name.Replace(
                     " (25th Anniversary)",
-                    string.Empty,
-                    StringComparison.CurrentCultureIgnoreCase
-                );
-                return Result.AsChanged(formattedName);
-            }
-
-            return Result.AsUnchanged(name);
-        }
-
-        private Result RemoveAutismFriendlyScreeningText(string name)
-        {
-            if (
-                name.StartsWith(
-                    "Autism Friendly Screening: ",
-                    StringComparison.CurrentCultureIgnoreCase
-                )
-            )
-            {
-                var formattedName = name.Replace(
-                    "Autism Friendly Screening: ",
-                    string.Empty,
-                    StringComparison.CurrentCultureIgnoreCase
-                );
-                return Result.AsChanged(formattedName);
-            }
-
-            return Result.AsUnchanged(name);
-        }
-
-        private Result RemoveClassicMoviesText(string name)
-        {
-            if (name.StartsWith("Classic Movies: ", StringComparison.CurrentCultureIgnoreCase))
-            {
-                var formattedName = name.Replace(
-                    "Classic Movies: ",
                     string.Empty,
                     StringComparison.CurrentCultureIgnoreCase
                 );
