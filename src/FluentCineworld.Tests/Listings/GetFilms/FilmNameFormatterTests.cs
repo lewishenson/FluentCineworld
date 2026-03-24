@@ -86,6 +86,20 @@ namespace FluentCineworld.Tests.Listings.GetFilms
         [InlineData("SCI-FI SEASON: INTERSTELLAR (10TH ANNIVERSARY)", "INTERSTELLAR")]
         [InlineData("The Matrix (25th Anniversary)", "The Matrix")]
         [InlineData("THE MATRIX (25TH ANNIVERSARY)", "THE MATRIX")]
+        [InlineData("£2 Family Films : Zootropolis 2", "Zootropolis 2")]
+        [InlineData("£2 FAMILY FILMS : ZOOTROPOLIS 2", "ZOOTROPOLIS 2")]
+        [InlineData("Autism Friendly Screening : Hoppers", "Hoppers")]
+        [InlineData("AUTISM FRIENDLY SCREENING : HOPPERS", "HOPPERS")]
+        [InlineData("Awards Season: One Battle After Another", "One Battle After Another")]
+        [InlineData("AWARDS SEASON: ONE BATTLE AFTER ANOTHER", "ONE BATTLE AFTER ANOTHER")]
+        [InlineData("Baz Luhrmann Season The Great Gatsby (2013)", "The Great Gatsby (2013)")]
+        [InlineData("BAZ LUHRMANN SEASON THE GREAT GATSBY (2013)", "THE GREAT GATSBY (2013)")]
+        [InlineData("Music Icons Season: 8 Mile", "8 Mile")]
+        [InlineData("MUSIC ICONS SEASON: 8 MILE", "8 MILE")]
+        [InlineData("X-Mas Season: Elf", "Elf")]
+        [InlineData("X-MAS SEASON: ELF", "ELF")]
+        [InlineData("California Schemin' Unlimited Screening", "California Schemin'")]
+        [InlineData("CALIFORNIA SCHEMIN' UNLIMITED SCREENING", "CALIFORNIA SCHEMIN'")]
         public void Format_GivenInput_ReturnsExpectedOutput(string input, string expectedOutput)
         {
             var formatter = new FilmNameFormatter();
