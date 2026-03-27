@@ -8,27 +8,20 @@ using FluentCineworld.Listings.GetFilms;
 
 namespace FluentCineworld.Listings
 {
-    public class CinemaListings : ICinemaListings
+    public class CinemaListings(
+        Cinema cinema,
+        IGetDatesQuery getDatesQuery,
+        IGetFilmsQuery getFilmsQuery,
+        IFilter filter
+    ) : ICinemaListings
     {
-        private readonly Cinema _cinema;
-        private readonly IGetDatesQuery _getDatesQuery;
-        private readonly IGetFilmsQuery _getFilmsQuery;
-        private readonly IFilter _filter;
-
-        public CinemaListings(
-            Cinema cinema,
-            IGetDatesQuery getDatesQuery,
-            IGetFilmsQuery getFilmsQuery,
-            IFilter filter
-        )
-        {
-            _cinema = cinema ?? throw new ArgumentNullException(nameof(cinema));
-            _getDatesQuery =
-                getDatesQuery ?? throw new ArgumentNullException(nameof(getDatesQuery));
-            _getFilmsQuery =
-                getFilmsQuery ?? throw new ArgumentNullException(nameof(getFilmsQuery));
-            _filter = filter ?? throw new ArgumentNullException(nameof(filter));
-        }
+        private readonly Cinema _cinema = cinema ?? throw new ArgumentNullException(nameof(cinema));
+        private readonly IGetDatesQuery _getDatesQuery =
+            getDatesQuery ?? throw new ArgumentNullException(nameof(getDatesQuery));
+        private readonly IGetFilmsQuery _getFilmsQuery =
+            getFilmsQuery ?? throw new ArgumentNullException(nameof(getFilmsQuery));
+        private readonly IFilter _filter =
+            filter ?? throw new ArgumentNullException(nameof(filter));
 
         public ICinemaListings ForDayOfWeek(DayOfWeek dayOfWeek)
         {

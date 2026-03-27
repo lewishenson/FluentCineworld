@@ -9,14 +9,10 @@ using FluentCineworld.Sites;
 
 namespace FluentCineworld
 {
-    public class Cineworld : ICineworld
+    public class Cineworld(HttpClient httpClient) : ICineworld
     {
-        private readonly HttpClient _httpClient;
-
-        public Cineworld(HttpClient httpClient)
-        {
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        }
+        private readonly HttpClient _httpClient =
+            httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
         public ICinemaListings WhatsOn(Cinema cinema)
         {

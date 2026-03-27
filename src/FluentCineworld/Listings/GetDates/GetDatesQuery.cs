@@ -8,16 +8,12 @@ using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings.GetDates
 {
-    public class GetDatesQuery : IGetDatesQuery
+    public class GetDatesQuery(IUriGenerator uriGenerator, HttpClient httpClient) : IGetDatesQuery
     {
-        private readonly IUriGenerator _uriGenerator;
-        private readonly HttpClient _httpClient;
-
-        public GetDatesQuery(IUriGenerator uriGenerator, HttpClient httpClient)
-        {
-            _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        }
+        private readonly IUriGenerator _uriGenerator =
+            uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
+        private readonly HttpClient _httpClient =
+            httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
         public async Task<IEnumerable<DateOnly>> ExecuteAsync(
             Cinema cinema,

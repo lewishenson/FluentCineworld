@@ -8,23 +8,18 @@ using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings.GetFilms
 {
-    public class GetFilmsQuery : IGetFilmsQuery
+    public class GetFilmsQuery(
+        IUriGenerator uriGenerator,
+        HttpClient httpClient,
+        IFilmNameFormatter filmNameFormatter
+    ) : IGetFilmsQuery
     {
-        private readonly IUriGenerator _uriGenerator;
-        private readonly HttpClient _httpClient;
-        private readonly IFilmNameFormatter _filmNameFormatter;
-
-        public GetFilmsQuery(
-            IUriGenerator uriGenerator,
-            HttpClient httpClient,
-            IFilmNameFormatter filmNameFormatter
-        )
-        {
-            _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-            _filmNameFormatter =
-                filmNameFormatter ?? throw new ArgumentNullException(nameof(filmNameFormatter));
-        }
+        private readonly IUriGenerator _uriGenerator =
+            uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
+        private readonly HttpClient _httpClient =
+            httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        private readonly IFilmNameFormatter _filmNameFormatter =
+            filmNameFormatter ?? throw new ArgumentNullException(nameof(filmNameFormatter));
 
         public async Task<IEnumerable<Film>> ExecuteAsync(
             Cinema cinema,
@@ -37,8 +32,7 @@ namespace FluentCineworld.Listings.GetFilms
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var response = await GetResponse(cinema, date, cancellationToken)
-                .ConfigureAwait(false);
+            var response = await GetResponse(cinema, date, cancellationToken).ConfigureAwait(false);
 
             if (response?.Body == null)
             {
