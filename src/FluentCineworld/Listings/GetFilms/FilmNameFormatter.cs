@@ -20,17 +20,17 @@ namespace FluentCineworld.Listings.GetFilms
 
         private string RemovePrefix(string name)
         {
-            var result = this.RemoveScreeningTypePrefixText(name);
+            var result = RemoveScreeningTypePrefixText(name);
 
-            result = this.RemoveSeasonText(result.Name);
+            result = RemoveSeasonText(result.Name);
 
-            result = this.RemoveFamilyFilmsText(result.Name);
+            result = RemoveFamilyFilmsText(result.Name);
 
-            result = this.RemoveMoviesForJuniorsPrefixText(result.Name);
+            result = RemoveMoviesForJuniorsPrefixText(result.Name);
 
-            result = this.RemoveAutismFriendlyScreeningText(result.Name);
+            result = RemoveAutismFriendlyScreeningText(result.Name);
 
-            result = this.RemoveClassicMoviesText(result.Name);
+            result = RemoveClassicMoviesText(result.Name);
 
             return result.Name;
         }
@@ -247,13 +247,13 @@ namespace FluentCineworld.Listings.GetFilms
 
         private string RemoveSuffix(string name)
         {
-            var result = this.RemoveScreeningTypeSuffixText(name);
+            var result = RemoveScreeningTypeSuffixText(name);
 
-            result = this.RemoveMoviesForJuniorsSuffixText(result.Name);
+            result = RemoveMoviesForJuniorsSuffixText(result.Name);
 
-            result = this.RemoveUnlimitedScreeningText(result.Name);
+            result = RemoveUnlimitedScreeningText(result.Name);
 
-            result = this.RemoveRereleaseText(result.Name);
+            result = RemoveRereleaseText(result.Name);
 
             return result.Name;
         }
@@ -427,8 +427,8 @@ namespace FluentCineworld.Listings.GetFilms
         {
             private Result(string name, bool hasChanged)
             {
-                this.Name = name;
-                this.HasChanged = hasChanged;
+                Name = name;
+                HasChanged = hasChanged;
             }
 
             public string Name { get; }

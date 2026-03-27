@@ -29,7 +29,7 @@ namespace FluentCineworld.Listings.GetDates
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var response = await this.GetResponse(cinema, cancellationToken).ConfigureAwait(false);
+            var response = await GetResponse(cinema, cancellationToken).ConfigureAwait(false);
 
             return response?.Body == null
                 ? Enumerable.Empty<DateOnly>()

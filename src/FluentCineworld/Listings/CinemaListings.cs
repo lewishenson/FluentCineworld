@@ -55,10 +55,10 @@ namespace FluentCineworld.Listings
             CancellationToken cancellationToken = default
         )
         {
-            var dates = await this.GetDates(cancellationToken).ConfigureAwait(false);
-            var films = await this.GetFilms(dates, cancellationToken).ConfigureAwait(false);
+            var dates = await GetDates(cancellationToken).ConfigureAwait(false);
+            var films = await GetFilms(dates, cancellationToken).ConfigureAwait(false);
 
-            var mergedFilms = this.Merge(films);
+            var mergedFilms = Merge(films);
             var orderedFilms = mergedFilms.OrderBy(film => film.Name);
 
             return orderedFilms.ToList();

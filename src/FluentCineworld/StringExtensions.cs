@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace FluentCineworld
 {
@@ -11,7 +11,7 @@ namespace FluentCineworld
             StringComparison comparison
         )
         {
-            int index = source.IndexOf(oldValue, comparison);
+            var index = source.IndexOf(oldValue, comparison);
 
             while (index > -1)
             {

@@ -37,7 +37,7 @@ namespace FluentCineworld.Listings.GetFilms
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var response = await this.GetResponse(cinema, date, cancellationToken)
+            var response = await GetResponse(cinema, date, cancellationToken)
                 .ConfigureAwait(false);
 
             if (response?.Body == null)
@@ -46,10 +46,10 @@ namespace FluentCineworld.Listings.GetFilms
             }
 
             var films = response
-                .Body.Films.Select(this.MapWithoutShowings)
+                .Body.Films.Select(MapWithoutShowings)
                 .ToDictionary(film => film.Id, film => film);
 
-            this.AssignEventsToFilms(date, films, response.Body.Events);
+            AssignEventsToFilms(date, films, response.Body.Events);
 
             return films.Values;
         }
@@ -90,16 +90,16 @@ namespace FluentCineworld.Listings.GetFilms
             {
                 var film = films[group.Key];
 
-                var day = this.CreateDay(date, group);
+                var day = CreateDay(date, group);
                 film.Days = new List<Day> { day };
 
-                film.Rating = this.GetRating(group.First());
+                film.Rating = GetRating(group.First());
             }
         }
 
         private Day CreateDay(DateOnly date, IEnumerable<EventDto> eventDtos)
         {
-            return new Day { Date = date, Showings = eventDtos.Select(this.Map).ToList() };
+            return new Day { Date = date, Showings = eventDtos.Select(Map).ToList() };
         }
 
         private Showing Map(EventDto eventDto)

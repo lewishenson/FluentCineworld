@@ -13,7 +13,7 @@ namespace FluentCineworld.TestClient
 
             foreach (var film in films)
             {
-                this.Output(film);
+                Output(film);
             }
         }
 
@@ -23,7 +23,7 @@ namespace FluentCineworld.TestClient
 
             foreach (var day in film.Days)
             {
-                this.Output(day);
+                Output(day);
             }
         }
 

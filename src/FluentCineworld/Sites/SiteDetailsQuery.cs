@@ -30,7 +30,7 @@ namespace FluentCineworld.Sites
 
             var response = await GetResponse(cancellationToken).ConfigureAwait(false);
 
-            var allSites = response.Body.Cinemas.Select(this.Map).ToList();
+            var allSites = response.Body.Cinemas.Select(Map).ToList();
             var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Id);
 
             return targetSite;
