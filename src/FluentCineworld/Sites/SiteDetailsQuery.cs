@@ -7,16 +7,12 @@ using System.Threading.Tasks;
 
 namespace FluentCineworld.Sites
 {
-    public class SiteDetailsQuery
+    public class SiteDetailsQuery(IUriGenerator uriGenerator, HttpClient httpClient)
     {
-        private readonly IUriGenerator _uriGenerator;
-        private readonly HttpClient _httpClient;
-
-        public SiteDetailsQuery(IUriGenerator uriGenerator, HttpClient httpClient)
-        {
-            _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        }
+        private readonly IUriGenerator _uriGenerator =
+            uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
+        private readonly HttpClient _httpClient =
+            httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 
         public async Task<SiteDetails> ExecuteAsync(
             Cinema cinema,
@@ -30,7 +26,7 @@ namespace FluentCineworld.Sites
 
             var response = await GetResponse(cancellationToken).ConfigureAwait(false);
 
-            var allSites = response.Body.Cinemas.Select(this.Map).ToList();
+            var allSites = response.Body.Cinemas.Select(Map).ToList();
             var targetSite = allSites.SingleOrDefault(site => site.Id == cinema.Id);
 
             return targetSite;
@@ -47,15 +43,13 @@ namespace FluentCineworld.Sites
             return response;
         }
 
-        private SiteDetails Map(SiteDto siteDto)
-        {
-            return new SiteDetails
+        private SiteDetails Map(SiteDto siteDto) =>
+            new()
             {
                 Address = siteDto.Address,
                 DisplayName = siteDto.DisplayName,
                 Id = siteDto.Id,
                 Link = siteDto.Link,
             };
-        }
     }
 }

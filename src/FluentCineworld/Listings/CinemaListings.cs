@@ -8,27 +8,20 @@ using FluentCineworld.Listings.GetFilms;
 
 namespace FluentCineworld.Listings
 {
-    public class CinemaListings : ICinemaListings
+    public class CinemaListings(
+        Cinema cinema,
+        IGetDatesQuery getDatesQuery,
+        IGetFilmsQuery getFilmsQuery,
+        IFilter filter
+    ) : ICinemaListings
     {
-        private readonly Cinema _cinema;
-        private readonly IGetDatesQuery _getDatesQuery;
-        private readonly IGetFilmsQuery _getFilmsQuery;
-        private readonly IFilter _filter;
-
-        public CinemaListings(
-            Cinema cinema,
-            IGetDatesQuery getDatesQuery,
-            IGetFilmsQuery getFilmsQuery,
-            IFilter filter
-        )
-        {
-            _cinema = cinema ?? throw new ArgumentNullException(nameof(cinema));
-            _getDatesQuery =
-                getDatesQuery ?? throw new ArgumentNullException(nameof(getDatesQuery));
-            _getFilmsQuery =
-                getFilmsQuery ?? throw new ArgumentNullException(nameof(getFilmsQuery));
-            _filter = filter ?? throw new ArgumentNullException(nameof(filter));
-        }
+        private readonly Cinema _cinema = cinema ?? throw new ArgumentNullException(nameof(cinema));
+        private readonly IGetDatesQuery _getDatesQuery =
+            getDatesQuery ?? throw new ArgumentNullException(nameof(getDatesQuery));
+        private readonly IGetFilmsQuery _getFilmsQuery =
+            getFilmsQuery ?? throw new ArgumentNullException(nameof(getFilmsQuery));
+        private readonly IFilter _filter =
+            filter ?? throw new ArgumentNullException(nameof(filter));
 
         public ICinemaListings ForDayOfWeek(DayOfWeek dayOfWeek)
         {
@@ -55,10 +48,10 @@ namespace FluentCineworld.Listings
             CancellationToken cancellationToken = default
         )
         {
-            var dates = await this.GetDates(cancellationToken).ConfigureAwait(false);
-            var films = await this.GetFilms(dates, cancellationToken).ConfigureAwait(false);
+            var dates = await GetDates(cancellationToken).ConfigureAwait(false);
+            var films = await GetFilms(dates, cancellationToken).ConfigureAwait(false);
 
-            var mergedFilms = this.Merge(films);
+            var mergedFilms = Merge(films);
             var orderedFilms = mergedFilms.OrderBy(film => film.Name);
 
             return orderedFilms.ToList();
@@ -92,9 +85,8 @@ namespace FluentCineworld.Listings
             return films.SelectMany(film => film);
         }
 
-        private IEnumerable<Film> Merge(IEnumerable<Film> films)
-        {
-            return films
+        private IEnumerable<Film> Merge(IEnumerable<Film> films) =>
+            films
                 .GroupBy(film => film.Id)
                 .Select(group =>
                 {
@@ -105,6 +97,5 @@ namespace FluentCineworld.Listings
 
                     return film;
                 });
-        }
     }
 }

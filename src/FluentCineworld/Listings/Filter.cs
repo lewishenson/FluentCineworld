@@ -6,14 +6,9 @@ namespace FluentCineworld.Listings
 {
     public class Filter : IFilter
     {
-        private readonly ICollection<DayOfWeek> _daysOfWeek;
+        private readonly ICollection<DayOfWeek> _daysOfWeek = new HashSet<DayOfWeek>();
         private DateOnly? _from;
         private DateOnly? _to;
-
-        public Filter()
-        {
-            _daysOfWeek = new HashSet<DayOfWeek>();
-        }
 
         public void DayOfWeek(DayOfWeek value)
         {

@@ -1,18 +1,11 @@
 namespace FluentCineworld.Listings
 {
-    public class ShowingAttribute
+    public class ShowingAttribute(string id, string text, ShowingAttributeType attributeType)
     {
-        public ShowingAttribute(string id, string text, ShowingAttributeType attributeType)
-        {
-            Id = id;
-            Text = text;
-            AttributeType = attributeType;
-        }
+        public string Id { get; } = id;
 
-        public string Id { get; }
+        public string Text { get; } = text;
 
-        public string Text { get; }
-
-        public ShowingAttributeType AttributeType { get; }
+        public ShowingAttributeType AttributeType { get; } = attributeType;
     }
 }

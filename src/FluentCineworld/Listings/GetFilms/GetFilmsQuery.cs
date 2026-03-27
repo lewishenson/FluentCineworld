@@ -8,23 +8,18 @@ using System.Threading.Tasks;
 
 namespace FluentCineworld.Listings.GetFilms
 {
-    public class GetFilmsQuery : IGetFilmsQuery
+    public class GetFilmsQuery(
+        IUriGenerator uriGenerator,
+        HttpClient httpClient,
+        IFilmNameFormatter filmNameFormatter
+    ) : IGetFilmsQuery
     {
-        private readonly IUriGenerator _uriGenerator;
-        private readonly HttpClient _httpClient;
-        private readonly IFilmNameFormatter _filmNameFormatter;
-
-        public GetFilmsQuery(
-            IUriGenerator uriGenerator,
-            HttpClient httpClient,
-            IFilmNameFormatter filmNameFormatter
-        )
-        {
-            _uriGenerator = uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
-            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-            _filmNameFormatter =
-                filmNameFormatter ?? throw new ArgumentNullException(nameof(filmNameFormatter));
-        }
+        private readonly IUriGenerator _uriGenerator =
+            uriGenerator ?? throw new ArgumentNullException(nameof(uriGenerator));
+        private readonly HttpClient _httpClient =
+            httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        private readonly IFilmNameFormatter _filmNameFormatter =
+            filmNameFormatter ?? throw new ArgumentNullException(nameof(filmNameFormatter));
 
         public async Task<IEnumerable<Film>> ExecuteAsync(
             Cinema cinema,
@@ -37,8 +32,7 @@ namespace FluentCineworld.Listings.GetFilms
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var response = await this.GetResponse(cinema, date, cancellationToken)
-                .ConfigureAwait(false);
+            var response = await GetResponse(cinema, date, cancellationToken).ConfigureAwait(false);
 
             if (response?.Body == null)
             {
@@ -46,10 +40,10 @@ namespace FluentCineworld.Listings.GetFilms
             }
 
             var films = response
-                .Body.Films.Select(this.MapWithoutShowings)
+                .Body.Films.Select(MapWithoutShowings)
                 .ToDictionary(film => film.Id, film => film);
 
-            this.AssignEventsToFilms(date, films, response.Body.Events);
+            AssignEventsToFilms(date, films, response.Body.Events);
 
             return films.Values;
         }
@@ -90,16 +84,16 @@ namespace FluentCineworld.Listings.GetFilms
             {
                 var film = films[group.Key];
 
-                var day = this.CreateDay(date, group);
+                var day = CreateDay(date, group);
                 film.Days = new List<Day> { day };
 
-                film.Rating = this.GetRating(group.First());
+                film.Rating = GetRating(group.First());
             }
         }
 
         private Day CreateDay(DateOnly date, IEnumerable<EventDto> eventDtos)
         {
-            return new Day { Date = date, Showings = eventDtos.Select(this.Map).ToList() };
+            return new Day { Date = date, Showings = eventDtos.Select(Map).ToList() };
         }
 
         private Showing Map(EventDto eventDto)

@@ -4,6 +4,6 @@ namespace FluentCineworld
 {
     public static class Shared
     {
-        public static readonly HttpClient HttpClient = new HttpClient();
+        public static readonly HttpClient HttpClient = new();
     }
 }

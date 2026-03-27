@@ -13,14 +13,12 @@ namespace FluentCineworld.Listings
                 throw new ArgumentNullException(nameof(cinema));
             }
 
-            var oneYearFromNow = this.GetOneYearFromNow();
+            var oneYearFromNow = GetOneYearFromNow();
 
             return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/dates/in-cinema/{cinema.Id}/until/{oneYearFromNow}?attr=&lang=en_GB";
-        }
 
-        private string GetOneYearFromNow()
-        {
-            return SystemDate.UtcNow().AddYears(1).ToString(DateInUriFormat);
+            static string GetOneYearFromNow() =>
+                SystemDate.UtcNow().AddYears(1).ToString(DateInUriFormat);
         }
 
         public string ForListings(Cinema cinema, DateOnly date)
