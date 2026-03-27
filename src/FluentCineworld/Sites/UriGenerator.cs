@@ -9,11 +9,9 @@ namespace FluentCineworld.Sites
             var oneYearFromNow = GetOneYearFromNow();
 
             return $"https://www.cineworld.co.uk/uk/data-api-service/v1/quickbook/10108/cinemas/with-event/until/{oneYearFromNow}?attr=&lang=en_GB";
-        }
 
-        private string GetOneYearFromNow()
-        {
-            return SystemDate.UtcNow().AddYears(1).ToString(DateInUriFormat);
+            static string GetOneYearFromNow() =>
+                SystemDate.UtcNow().AddYears(1).ToString(DateInUriFormat);
         }
     }
 }

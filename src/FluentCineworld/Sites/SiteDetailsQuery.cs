@@ -43,15 +43,13 @@ namespace FluentCineworld.Sites
             return response;
         }
 
-        private SiteDetails Map(SiteDto siteDto)
-        {
-            return new SiteDetails
+        private SiteDetails Map(SiteDto siteDto) =>
+            new()
             {
                 Address = siteDto.Address,
                 DisplayName = siteDto.DisplayName,
                 Id = siteDto.Id,
                 Link = siteDto.Link,
             };
-        }
     }
 }

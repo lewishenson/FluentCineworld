@@ -85,9 +85,8 @@ namespace FluentCineworld.Listings
             return films.SelectMany(film => film);
         }
 
-        private IEnumerable<Film> Merge(IEnumerable<Film> films)
-        {
-            return films
+        private IEnumerable<Film> Merge(IEnumerable<Film> films) =>
+            films
                 .GroupBy(film => film.Id)
                 .Select(group =>
                 {
@@ -98,6 +97,5 @@ namespace FluentCineworld.Listings
 
                     return film;
                 });
-        }
     }
 }

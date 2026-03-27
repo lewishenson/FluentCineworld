@@ -19,7 +19,7 @@ namespace FluentCineworld.Listings
             {
                 var attributes = string.Join(", ", AttributeTexts);
 
-                return $"{Time.ToString("HH:mm")} ({attributes})";
+                return $"{Time:HH:mm} ({attributes})";
             }
         }
     }
