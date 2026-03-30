@@ -6,6 +6,11 @@ Fluent C# API for obtaining Cineworld listings.
 
 The API uses the fluid builder pattern so the below examples can be combined.
 
+## Version 9.x
+FluentCineworld 9.x was released as Cineworld closed multiple cinemas, resulting in a breaking change to the API.
+
+FluentCineworld 9.x targets .NET 10 as .NET 6 has reached end of support.
+
 ## Version 8.x
 FluentCineworld 8.x was released as Cineworld closed two cinemas, resulting in a breaking change to the API.
 

@@ -1,5 +1,12 @@
-﻿FluentCineworld changelog
+FluentCineworld changelog
 =========================
+
+v9.0.0
+Targeted .NET 10.0
+Updated list of cinemas:
+    Remove: Bedford, Castleford, Glasgow Parkhead, Glasgow Renfrew Street, Leigh, Loughborough, Middlesbrough, Northampton, Nottingham, Poole, Swindon Regent Circus, Weymouth, Yate
+    Rename: Isle of Wight, Newport Spytty Park
+Remove more unwanted film title prefixes and suffixes.
 
 v8.1.0
 Remove more unwanted film title prefixes.
