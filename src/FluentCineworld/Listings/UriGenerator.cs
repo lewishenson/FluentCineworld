@@ -8,10 +8,7 @@ namespace FluentCineworld.Listings
 
         public string ForDatesWithListings(Cinema cinema)
         {
-            if (cinema == null)
-            {
-                throw new ArgumentNullException(nameof(cinema));
-            }
+            ArgumentNullException.ThrowIfNull(cinema);
 
             var oneYearFromNow = GetOneYearFromNow();
 
@@ -23,10 +20,7 @@ namespace FluentCineworld.Listings
 
         public string ForListings(Cinema cinema, DateOnly date)
         {
-            if (cinema == null)
-            {
-                throw new ArgumentNullException(nameof(cinema));
-            }
+            ArgumentNullException.ThrowIfNull(cinema);
 
             var formattedDate = date.ToString(DateInUriFormat);
 

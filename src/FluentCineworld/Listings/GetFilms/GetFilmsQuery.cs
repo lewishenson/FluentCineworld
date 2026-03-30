@@ -27,10 +27,7 @@ namespace FluentCineworld.Listings.GetFilms
             CancellationToken cancellationToken
         )
         {
-            if (cinema == null)
-            {
-                throw new ArgumentNullException(nameof(cinema));
-            }
+            ArgumentNullException.ThrowIfNull(cinema);
 
             var response = await GetResponse(cinema, date, cancellationToken).ConfigureAwait(false);
 

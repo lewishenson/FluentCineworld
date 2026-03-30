@@ -19,10 +19,7 @@ namespace FluentCineworld.Sites
             CancellationToken cancellationToken
         )
         {
-            if (cinema == null)
-            {
-                throw new ArgumentNullException(nameof(cinema));
-            }
+            ArgumentNullException.ThrowIfNull(cinema);
 
             var response = await GetResponse(cancellationToken).ConfigureAwait(false);
 

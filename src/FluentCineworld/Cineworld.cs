@@ -16,10 +16,7 @@ namespace FluentCineworld
 
         public ICinemaListings WhatsOn(Cinema cinema)
         {
-            if (cinema == null)
-            {
-                throw new ArgumentNullException(nameof(cinema));
-            }
+            ArgumentNullException.ThrowIfNull(cinema);
 
             var uriGenerator = new Listings.UriGenerator();
             var getDatesQuery = new GetDatesQuery(uriGenerator, _httpClient);
@@ -36,10 +33,7 @@ namespace FluentCineworld
             CancellationToken cancellationToken = default
         )
         {
-            if (cinema == null)
-            {
-                throw new ArgumentNullException(nameof(cinema));
-            }
+            ArgumentNullException.ThrowIfNull(cinema);
 
             var uriGenerator = new Sites.UriGenerator();
             var siteDetailsQuery = new SiteDetailsQuery(uriGenerator, _httpClient);
